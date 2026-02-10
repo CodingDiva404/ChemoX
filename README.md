@@ -14,3 +14,8 @@ npm install
 ```bash
 npm start
 ```
+
+## Create and switch to the new branch
+```bash
+git checkout -b branch-name
+```
