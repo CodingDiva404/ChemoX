@@ -1,0 +1,111 @@
+.pt-wrapper {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.pt-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(18, 60px); /* 18 groups */
+  grid-auto-rows: 60px; /* uniform row height */
+  gap: 2px;
+  justify-content: center;
+}
+
+.pt-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+/* Color by type */
+.pt-card.nonmetal { background: #8fd3f4; }
+.pt-card.noble { background: #ffcc99; }
+.pt-card.alkali { background: #ff6666; }
+.pt-card.alkaline { background: #ffcc66; }
+.pt-card.transition { background: #ffd700; }
+.pt-card.post-transition { background: #cccccc; }
+.pt-card.metalloid { background: #66ff66; }
+.pt-card.halogen { background: #66ccff; }
+.pt-card.lanthanoid { background: #ff99cc; }
+.pt-card.actinoid { background: #ff99ff; }
+.pt-card.empty { background: transparent; border: none; }
+.pt-card.lanthanide {
+  background-color: #4fc3f7; 
+  color: #000;
+}
+
+.pt-card.actinide {
+  background-color: #ff8a65;
+  color: #000;
+}
+
+/* Text styling */
+.pt-number { font-size: 10px; display: block; }
+.pt-symbol { font-size: 16px; margin: 0; }
+.pt-name { font-size: 10px; margin: 0; }
+
+.pt-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.pt-popup {
+  position: absolute;
+  top: -120px; /* above the element */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+  display: none;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.pt-card:hover .pt-popup {
+  display: block;
+}
+
+/* Nucleus and electrons */
+.nucleus {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 5px auto 0;
+  border-radius: 50%;
+  background: #ff6666;
+}
+
+.electron {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #66ccff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: -20px 0;
+  animation: orbit 2s linear infinite;
+}
+
+.electron:nth-child(2) { animation-delay: 0.5s; }
+.electron:nth-child(3) { animation-delay: 1s; }
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(-20px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(-20px) rotate(-360deg); }
+}

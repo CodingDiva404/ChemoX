@@ -1,0 +1,32 @@
+Star Game 
+Play with Perodic Table 
+
+
+10th Practical
+Experiment 1: Determining the Boiling Point of Water
+Methodology and Procedure
+Setup: Use a clean beaker and fill it with distilled water. Place it on a tripod stand and heat it using a Bunsen burner.
+Observation: Record the temperature at regular intervals until the water starts boiling.
+Analysis: Note the constant temperature when the water boils and compare it with the standard boiling point of water (100°C).
+Explanation of Scientific Principles
+The boiling point of water is the temperature at which it transitions from a liquid to a gas. This experiment illustrates the concept of phase changes and the properties of water.
+
+Common Mistakes and How to Avoid Them
+Incorrect Temperature Recording: Ensure the thermometer is placed correctly in the water without touching the beaker’s sides.
+Contaminated Water: Use distilled water to avoid impurities affecting the boiling point.
+Real-World Applications
+Understanding boiling points is crucial in various industries, including food processing and chemical manufacturing.
+
+Experiment 2: Observing Plant Cell Structure Under a Microscope
+Methodology and Procedure
+Preparation: Take a fresh leaf and cut a thin slice to prepare a wet mount slide.
+Observation: Use a microscope to observe the plant cells and identify the cell wall, nucleus, and chloroplasts.
+Analysis: Draw and label the observed structures.
+Explanation of Scientific Principles
+This experiment helps students understand cell structure and function, highlighting the differences between plant and animal cells.
+
+Common Mistakes and How to Avoid Them
+Improper Slide Preparation: Ensure the slice is thin enough for light to pass through easily.
+Incorrect Focus: Adjust the microscope properly to get a clear view of the cells.
+Real-World Applications
+Knowledge of cell structure is fundamental in fields such as botany, genetics, and biotechnology.

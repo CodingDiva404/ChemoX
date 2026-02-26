@@ -1,0 +1,57 @@
+.library-wrapper {
+  min-height: 100vh;
+  padding: 40px;
+  background: #0f172a;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+.library-title {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.library-subtitle {
+  color: #94a3b8;
+  margin-bottom: 40px;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.library-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.library-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.library-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.library-card-title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.library-card-desc {
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+.library-card.wide {
+  grid-column: span 2;
+}

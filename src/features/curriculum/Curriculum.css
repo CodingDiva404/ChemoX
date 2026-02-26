@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Baloo 2', cursive;
+}
+
+/* Notebook Background */
+.curriculum-section {
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  background:
+    repeating-linear-gradient(
+      #fffef8,
+      #fffef8 28px,
+      #e3f2fd 29px
+    );
+}
+
+/* Heading */
+.curriculum-heading {
+  text-align: center;
+  font-size: 3rem;
+  color: #ff7043;
+  margin-bottom: 3rem;
+  text-shadow: 3px 3px #ffd54f;
+}
+
+/* Grid */
+.curriculum-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Card Base */
+.curriculum-box {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border-radius: 26px;
+  text-decoration: none;
+  color: #333;
+  background: #fff;
+  box-shadow:
+    0 10px 0 rgba(0,0,0,0.1),
+    0 20px 30px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+/* Hover bounce */
+.curriculum-box:hover {
+  transform: translateY(-10px) rotate(-1deg);
+}
+
+/* Subject Colors */
+.curriculum-box.biology {
+  border-left: 10px solid #66bb6a;
+}
+.curriculum-box.physics {
+  border-left: 10px solid #42a5f5;
+}
+.curriculum-box.chemistry {
+  border-left: 10px solid #ab47bc;
+}
+
+/* Title */
+.curriculum-box h3 {
+  margin-top: 20px;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Subject label */
+.curriculum-box p {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 14px;
+  background: #f1f1f1;
+  font-size: 1rem;
+}
+
+/* Class Badge */
+.class-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffcc80;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  box-shadow: 2px 2px #ffb300;
+}
+
+/* Floating Icon */
+.floating-icon {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Icons per subject */
+.biology .floating-icon::after {
+  content: "🌿";
+}
+.physics .floating-icon::after {
+  content: "⚡";
+}
+.chemistry .floating-icon::after {
+  content: "🧪";
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .curriculum-heading {
+    font-size: 2.2rem;
+  }
+}

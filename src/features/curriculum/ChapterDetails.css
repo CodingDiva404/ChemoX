@@ -1,0 +1,283 @@
+/* =========================
+   MAIN PAGE LAYOUT
+========================= */
+
+.lab-container {
+  padding: 20px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* =========================
+   LEFT SIDE – Chapter Content
+========================= */
+
+.right-panel {
+  flex: 0 0 40%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  max-height: 90vh;
+  box-sizing: border-box;
+}
+
+/* Prevent table overflow */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* =========================
+   RIGHT SIDE – Stimulator Panel
+========================= */
+
+.stimulator-panel {
+  flex: 0 0 60%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  overflow: hidden; /* Important fix */
+  box-sizing: border-box;
+}
+
+/* =========================
+   Stimulator Content Split
+========================= */
+
+.stimulator-content {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  margin-top: 15px;
+  overflow: hidden;
+  min-height: 0; /* CRITICAL for flex scroll fix */
+}
+
+/* =========================
+   75% Simulator Box
+========================= */
+
+.stimulator-box {
+  flex: 3;
+  border: 2px dashed #4a90e2;
+  border-radius: 10px;
+  background: #f0f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.stimulator-box:hover {
+  background: #e6f2ff;
+}
+
+/* =========================
+   25% Materials Box
+========================= */
+
+.materials-box {
+  flex: 1;
+  background: #ffffff;
+  border-left: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-height: 0; /* VERY important */
+  box-sizing: border-box;
+}
+
+/* Scrollable area */
+.materials-scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-right: 5px;
+  min-height: 0;
+}
+
+/* Smooth scrollbar */
+.materials-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.materials-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.materials-scroll::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* =========================
+   Draggable Items
+========================= */
+
+.draggable-item {
+  background: #ffffff;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: grab;
+  border: 1px solid #ddd;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.draggable-item:hover {
+  background: #eaf4ff;
+  border-color: #4a90e2;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.stimulator-controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #4a90e2;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: #357abd;
+}
+
+/* =========================
+   Observation Table
+========================= */
+
+.observation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.observation-table th,
+.observation-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.observation-table th {
+  background-color: #4a90e2;
+  color: white;
+}
+
+/* =========================
+   Procedure Section
+========================= */
+
+.procedure-section {
+  margin-top: 15px;
+}
+
+.procedure-card {
+  background: #f9fbff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #dce7f7;
+  animation: fadeSlide 0.4s ease;
+}
+
+.step-number {
+  font-weight: bold;
+  color: #4a90e2;
+  margin-bottom: 8px;
+}
+
+.step-text {
+  min-height: 60px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.step-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-animation {
+  text-align: center;
+  padding: 20px;
+  animation: fadeSlide 0.4s ease;
+}
+
+.step-badge {
+  background: #4a90e2;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.step-text {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

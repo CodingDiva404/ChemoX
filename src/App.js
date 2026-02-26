@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './pages/HomePage.jsx';
+import PerodicTable from './pages/PeriodicTable.jsx';
+import Curriculum from "./features/curriculum/Curriculum.jsx";
+import ChapterDetail from "./features/curriculum/ChapterDetail.jsx";
+import Layout from "./components/layout/Layout.jsx";
+import Library from './features/library/Library.jsx';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/perodic-table' element={<PerodicTable />} />
+          <Route path='/curriculum' element={<Curriculum />} />
+          <Route path="/chapter/:id" element={<ChapterDetail />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/library/fundamentals" element={<div>Fundamentals Page</div>} />
+          <Route path="/library/reactions" element={<div>Reactions Page</div>} />
+          <Route path="/library/measurements" element={<div>Measurements Page</div>} />
+          <Route path="/library/revision" element={<div>Revision Page</div>} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
