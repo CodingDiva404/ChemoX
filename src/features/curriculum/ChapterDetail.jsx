@@ -1,52 +1,21 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
-import emojiStore from "../../utils/emojiStore";
+import LeafPractical from "../practical/LeafPractical.jsx";
+import GenericSimulator from "../practical/GenericSimulator.jsx";
 
 const ChapterDetail = () => {
   const { id } = useParams();
-  const [simStep, setSimStep] = useState(0);
+  const navigate = useNavigate();
 
-  const chapter = sciencePractical.classes
+  const allChapters = sciencePractical.classes
     .flatMap((cls) => cls.subjects)
-    .flatMap((sub) => sub.practicals)
-    .find((p) => p.id === id);
+    .flatMap((sub) => sub.practicals);
 
-  // Buttons Logic
-  const totalSteps = chapter.procedure?.length || 0;
+  const chapter = allChapters.find((p) => p.id === id);
+  const currentIndex = allChapters.findIndex((p) => p.id === id);
 
-  const nextStep = () => {
-    if (simStep < totalSteps - 1) {
-      setSimStep((prev) => prev + 1);
-    }
-  };
-
-  const prevStep = () => {
-    if (simStep > 0) {
-      setSimStep((prev) => prev - 1);
-    }
-  };
-
-  if (!chapter) return <h2 className="error">Chapter not found 😬</h2>;
-
-  /* ------------------ Drag & Drop ------------------ */
-
-  const handleDragStart = (e, item) => {
-    e.dataTransfer.setData("text/plain", item);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const droppedItem = e.dataTransfer.getData("text/plain");
-    alert(`You dropped: ${droppedItem}`);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  /* ------------------ Dynamic Renderer ------------------ */
+  if (!chapter) return <h2>Chapter not found 😬</h2>;
 
   const renderContent = (data) => {
     if (!data) return null;
@@ -55,26 +24,24 @@ const ChapterDetail = () => {
       const headers = Object.keys(data[0]);
 
       return (
-        <div className="table-wrapper">
-          <table className="observation-table">
-            <thead>
-              <tr>
+        <table className="observation-table">
+          <thead>
+            <tr>
+              {headers.map((key) => (
+                <th key={key}>{key}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row, index) => (
+              <tr key={index}>
                 {headers.map((key) => (
-                  <th key={key}>{key}</th>
+                  <td key={key}>{row[key]}</td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {data.map((row, index) => (
-                <tr key={index}>
-                  {headers.map((key) => (
-                    <td key={key}>{row[key]}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       );
     }
 
@@ -91,140 +58,127 @@ const ChapterDetail = () => {
     return <p>{data}</p>;
   };
 
-  const materialsList = chapter.materials || chapter.requirements || [];
+  const materialsList = chapter.materials ?? chapter.requirements ?? [];
+  const hasLeafPractical = chapter.id === "bio-7-01";
+
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      navigate(`/chapter/${allChapters[currentIndex - 1].id}`);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < allChapters.length - 1) {
+      navigate(`/chapter/${allChapters[currentIndex + 1].id}`);
+    }
+  };
 
   return (
-    <div className="lab-container">
-      <div className="content-wrapper">
+    <div className="chapter-detail-container">
+      {/* Main header */}
+      <header className="chapter-main-header">
+        <h1 className="chapter-main-title">{chapter.title}</h1>
+      </header>
 
-        {/* ---------------- THEORY PANEL ---------------- */}
-        <div className="right-panel">
-          <h2>{chapter.title}</h2>
+      {/* Main content area: two columns */}
+      <main className="chapter-main-content">
+        {/* Left column: document with all details */}
+        <aside className="chapter-doc-panel">
+          <h2 className="chapter-doc-title">{chapter.title}</h2>
+          <div className="chapter-doc-content">
+            {chapter.aim && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">Aim</h4>
+                {renderContent(chapter.aim)}
+              </section>
+            )}
+            {(materialsList.length > 0 || chapter.chemical?.length > 0) && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">
+                  Materials / Requirements
+                </h4>
+                {materialsList.length > 0 && renderContent(materialsList)}
+                {chapter.chemical?.length > 0 && (
+                  <>
+                    <p className="chapter-doc-subheading">Chemical</p>
+                    {renderContent(chapter.chemical)}
+                  </>
+                )}
+              </section>
+            )}
+            {chapter.procedure?.length > 0 && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">Procedure</h4>
+                <ol>
+                  {chapter.procedure.map((step, i) => (
+                    <li key={i}>{step}</li>
+                  ))}
+                </ol>
+              </section>
+            )}
+            {(chapter.observation?.length > 0 ||
+              chapter.observations?.length > 0 ||
+              chapter.observationsAndConclusions?.length > 0) && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">Observation</h4>
+                {chapter.observation?.length > 0
+                  ? renderContent(chapter.observation)
+                  : chapter.observations?.length > 0
+                  ? renderContent(chapter.observations)
+                  : renderContent(chapter.observationsAndConclusions)}
+              </section>
+            )}
+            {chapter.chemicalReaction && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">Chemical Reaction</h4>
+                <p className="chapter-doc-reaction">{chapter.chemicalReaction}</p>
+              </section>
+            )}
+            {chapter.conclusion && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">Conclusion</h4>
+                {renderContent(chapter.conclusion)}
+              </section>
+            )}
+          </div>
+        </aside>
 
-          {chapter.aim && (
-            <section>
-              <h4>Aim</h4>
-              {renderContent(chapter.aim)}
-            </section>
-          )}
-
-          {materialsList.length > 0 && (
-            <section>
-              <h4>Materials / Requirements</h4>
-              {renderContent(materialsList)}
-            </section>
-          )}
-
-          {chapter.procedure?.length > 0 && (
-            <section>
-              <h4>Procedure</h4>
-              <ol>
-                {chapter.procedure.map((step, i) => (
-                  <li key={i}>{step}</li>
-                ))}
-              </ol>
-            </section>
-          )}
-
-          {chapter.observation?.length > 0 && (
-            <section>
-              <h4>Observation</h4>
-              {renderContent(chapter.observation)}
-            </section>
-          )}
-
-          {chapter.conclusion && (
-            <section>
-              <h4>Conclusion</h4>
-              {renderContent(chapter.conclusion)}
-            </section>
-          )}
-
-          {chapter.result && (
-            <section>
-              <h4>Result</h4>
-              {renderContent(chapter.result)}
-            </section>
-          )}
-        </div>
-
-        {/* ---------------- STIMULATOR PANEL ---------------- */}
-        <div className="stimulator-panel">
-          <div className="stimulator-inner">
-
-            <h3>Stimulator</h3>
-
-            <div className="stimulator-content">
-
-              {/* Drop Area */}
-              <div
-                className="stimulator-box"
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-              >
-                <div className="step-animation" key={simStep}>
-                  {chapter.procedure && (
-                    <>
-                      <div className="step-badge">
-                        Step {simStep + 1}
-                      </div>
-
-                      <div className="step-text">
-                        {chapter.procedure[simStep]}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* Materials List */}
-              <div className="materials-box">
-                <h4>Materials</h4>
-
-                <div className="materials-scroll">
-                  <ul>
-                    {materialsList.map((item, index) => (
-                      <li
-                        key={index}
-                        draggable
-                        onDragStart={(e) => handleDragStart(e, item)}
-                        className="draggable-item"
-                      >
-                        <span className="material-icon">
-                          {emojiStore[item] || "🧰"}
-                        </span>
-                        <span className="material-name">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Controls */}
-            <div className="stimulator-controls">
-              <button
-                className="btn prev-btn"
-                onClick={prevStep}
-                disabled={simStep === 0}
-              >
-                Previous
-              </button>
-
-              <button
-                className="btn next-btn"
-                onClick={nextStep}
-                disabled={simStep === totalSteps - 1}
-              >
-                Next
-              </button>
+        {/* Right column: Stimulator + Materials */}
+        <div className="chapter-content-panel">
+          <h2 className="chapter-content-title">{chapter.title}</h2>
+          <div className="chapter-content-split">
+            {/* Stimulator section (main content ~70–75%) */}
+            <div className="chapter-stimulator-section">
+              {hasLeafPractical ? (
+                <LeafPractical chapter={chapter} />
+              ) : (
+                <GenericSimulator chapter={chapter} />
+              )}
             </div>
 
           </div>
         </div>
+      </main>
 
-      </div>
+      {/* Bottom navigation */}
+      <footer className="chapter-nav-footer">
+        <button
+          type="button"
+          className="chapter-nav-btn chapter-nav-prev"
+          onClick={handlePrevious}
+          disabled={currentIndex <= 0}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          className="chapter-nav-btn chapter-nav-next"
+          onClick={handleNext}
+          disabled={currentIndex >= allChapters.length - 1}
+        >
+          Next
+        </button>
+      </footer>
     </div>
   );
 };

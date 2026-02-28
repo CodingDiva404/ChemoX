@@ -1,188 +1,253 @@
 /* =========================
-   MAIN PAGE LAYOUT
+   Chapter Detail Layout (from wireframe)
 ========================= */
 
-.lab-container {
+.chapter-detail-container {
   padding: 20px;
   background: #f4f6f9;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
-}
-
-.content-wrapper {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  flex-direction: column;
 }
 
 /* =========================
-   LEFT SIDE – Chapter Content
+   Main Header
 ========================= */
 
-.right-panel {
-  flex: 0 0 40%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  overflow-y: auto;
-  max-height: 90vh;
-  box-sizing: border-box;
-}
-
-/* Prevent table overflow */
-.table-wrapper {
+.chapter-main-header {
   width: 100%;
-  overflow-x: auto;
+  text-align: center;
+}
+
+.chapter-main-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a1a2e;
 }
 
 /* =========================
-   RIGHT SIDE – Stimulator Panel
+   Main Content - Two Columns
 ========================= */
 
-.stimulator-panel {
-  flex: 0 0 60%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+.chapter-main-content {
   display: flex;
-  flex-direction: column;
-  height: 90vh;
-  overflow: hidden; /* Important fix */
-  box-sizing: border-box;
-}
-
-/* =========================
-   Stimulator Content Split
-========================= */
-
-.stimulator-content {
-  display: flex;
-  gap: 15px;
+  gap: 24px;
   flex: 1;
-  margin-top: 15px;
-  overflow: hidden;
-  min-height: 0; /* CRITICAL for flex scroll fix */
-}
-
-/* =========================
-   75% Simulator Box
-========================= */
-
-.stimulator-box {
-  flex: 3;
-  border: 2px dashed #4a90e2;
-  border-radius: 10px;
-  background: #f0f7ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 350px;
-  transition: 0.3s ease;
-  box-sizing: border-box;
-}
-
-.stimulator-box:hover {
-  background: #e6f2ff;
-}
-
-/* =========================
-   25% Materials Box
-========================= */
-
-.materials-box {
-  flex: 1;
-  background: #ffffff;
-  border-left: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  min-height: 0; /* VERY important */
-  box-sizing: border-box;
-}
-
-/* Scrollable area */
-.materials-scroll {
-  flex: 1;
-  overflow-y: auto;
-  margin-top: 10px;
-  padding-right: 5px;
   min-height: 0;
-}
-
-/* Smooth scrollbar */
-.materials-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-
-.materials-scroll::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-.materials-scroll::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  align-items: stretch;
 }
 
 /* =========================
-   Draggable Items
+   Left Column - Document with all details
 ========================= */
 
-.draggable-item {
+.chapter-doc-panel {
+  flex: 0 0 470px;
   background: #ffffff;
-  padding: 8px 10px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  cursor: grab;
   border: 1px solid #ddd;
-  transition: 0.2s ease;
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  word-break: break-word;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.draggable-item:hover {
-  background: #eaf4ff;
-  border-color: #4a90e2;
-}
-
-.draggable-item:active {
-  cursor: grabbing;
-  transform: scale(0.98);
-}
-
-/* =========================
-   Buttons
-========================= */
-
-.stimulator-controls {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
+.chapter-doc-title {
+  margin: 0 0 20px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1a1a2e;
   flex-shrink: 0;
 }
 
-.btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #4a90e2;
-  color: white;
-  transition: 0.2s ease;
+.chapter-doc-content {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.btn:hover {
-  background: #357abd;
+.chapter-doc-section {
+  margin-bottom: 20px;
+}
+
+.chapter-doc-section:last-child {
+  margin-bottom: 0;
+}
+
+.chapter-doc-heading {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.chapter-doc-subheading {
+  margin: 12px 0 6px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.chapter-doc-section ul,
+.chapter-doc-section ol {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.chapter-doc-section li {
+  margin-bottom: 6px;
+}
+
+.chapter-doc-section p {
+  margin: 0 0 8px 0;
+}
+
+.chapter-doc-section table {
+  margin-top: 8px;
+}
+
+.chapter-doc-reaction {
+  font-family: "Cambria Math", "Times New Roman", serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 /* =========================
-   Observation Table
+   Right Column - Stimulator + Materials
+========================= */
+
+.chapter-content-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+}
+
+.chapter-content-title {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1a1a2e;
+}
+
+.chapter-content-split {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Stimulator section - main content (~70-75%) */
+.chapter-stimulator-section {
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.chapter-theory-placeholder,
+.chapter-theory-content {
+  padding: 20px;
+  background: #f9fbff;
+  border: 2px dashed #dce7f7;
+  border-radius: 12px;
+  min-height: 350px;
+}
+
+.chapter-theory-content {
+  border-style: solid;
+  overflow-y: auto;
+}
+
+/* Materials section - sidebar (~25-30%) */
+.chapter-materials-section {
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  background: #f9fbff;
+  border: 1px solid #dce7f7;
+  border-radius: 10px;
+  padding: 16px;
+  overflow: scroll;
+}
+
+.chapter-materials-section h4 {
+  margin: 0 0 12px 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.chapter-materials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.chapter-material-item {
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #e8eef7;
+}
+
+/* Override LeafPractical container when nested */
+.chapter-stimulator-section .leaf-container {
+  flex: 1;
+  height: auto;
+  min-height: 400px;
+  margin: 0;
+}
+
+/* =========================
+   Bottom Navigation
+========================= */
+
+.chapter-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 20px;
+}
+
+.chapter-nav-btn {
+  padding: 10px 24px;
+  border: 2px solid #4a90e2;
+  border-radius: 10px;
+  background: #fff;
+  color: #4a90e2;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chapter-nav-btn:hover:not(:disabled) {
+  background: #4a90e2;
+  color: white;
+}
+
+.chapter-nav-btn:disabled {
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Observation Table (theory content)
 ========================= */
 
 .observation-table {
@@ -201,83 +266,4 @@
 .observation-table th {
   background-color: #4a90e2;
   color: white;
-}
-
-/* =========================
-   Procedure Section
-========================= */
-
-.procedure-section {
-  margin-top: 15px;
-}
-
-.procedure-card {
-  background: #f9fbff;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #dce7f7;
-  animation: fadeSlide 0.4s ease;
-}
-
-.step-number {
-  font-weight: bold;
-  color: #4a90e2;
-  margin-bottom: 8px;
-}
-
-.step-text {
-  min-height: 60px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.step-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.step-animation {
-  text-align: center;
-  padding: 20px;
-  animation: fadeSlide 0.4s ease;
-}
-
-.step-badge {
-  background: #4a90e2;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  margin-bottom: 15px;
-  display: inline-block;
-}
-
-.step-text {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
