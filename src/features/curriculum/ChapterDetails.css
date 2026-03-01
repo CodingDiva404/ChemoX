@@ -48,7 +48,7 @@
   background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 24px;
+  padding: 19px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -57,7 +57,7 @@
 
 .chapter-doc-title {
   margin: 0 0 20px 0;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
   color: #1a1a2e;
@@ -67,7 +67,7 @@
 .chapter-doc-content {
   flex: 1;
   overflow-y: auto;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 1.6;
 }
 
@@ -135,7 +135,7 @@
 
 .chapter-content-title {
   margin: 0 0 16px 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
   color: #1a1a2e;

@@ -1,71 +1,70 @@
 {
-   "classes":[
+   "classes": [
       {
-         "class":5,
-         "subjects":[
+         "class": 5,
+         "subjects": [
             {
-               "subject":"Biology",
-               "practicals":[
+               "subject": "Biology",
+               "practicals": [
                   {
-                     "id":"bio-7-01",
-                     "title":"Plants: Structure and Function",
-                     "aim":"To study the leaf structure, arrangement of leaves and venation",
-                     "materials":[
+                     "id": "bio-7-01",
+                     "title": "Plants: Structure and Function",
+                     "aim": "To study the leaf structure, arrangement of leaves and venation",
+                     "materials": [
                         "Maize",
                         "Peepal",
-                        "Canna",
-                        "Newspapers"
+                        "Canna"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Collect leaves of different plants found in your surroundings. Wash them with water and wipe them dry.",
                         "Select one leaf of each plant and keep it between the folds of a newspaper.",
                         "Every day, change the newspaper to avoid fungal growth.",
                         "After a week, observe the structure and venation of each leaf."
                      ],
-                     "observation":[
+                     "observation": [
                         {
-                           "siNo":1,
-                           "nameOfPlant":"Maize",
-                           "typeOfLeaf":"Simple",
-                           "shapeOfLeafBlade":"Linear",
-                           "venation":"Parallel",
-                           "leafMargin":"Smooth",
-                           "leafApex":"Pointed",
-                           "petiole":"No",
-                           "stipule":"No",
-                           "arrangementOnStem":"Opposite"
+                           "siNo": 1,
+                           "nameOfPlant": "Maize",
+                           "typeOfLeaf": "Simple",
+                           "shapeOfLeafBlade": "Linear",
+                           "venation": "Parallel",
+                           "leafMargin": "Smooth",
+                           "leafApex": "Pointed",
+                           "petiole": "No",
+                           "stipule": "No",
+                           "arrangementOnStem": "Opposite"
                         },
                         {
-                           "siNo":2,
-                           "nameOfPlant":"Canna",
-                           "typeOfLeaf":"Simple",
-                           "shapeOfLeafBlade":"Linear",
-                           "venation":"Reticulate",
-                           "leafMargin":"Smooth",
-                           "leafApex":"Pointed",
-                           "petiole":"No",
-                           "stipule":"No",
-                           "arrangementOnStem":"Alternate"
+                           "siNo": 2,
+                           "nameOfPlant": "Canna",
+                           "typeOfLeaf": "Simple",
+                           "shapeOfLeafBlade": "Linear",
+                           "venation": "Reticulate",
+                           "leafMargin": "Smooth",
+                           "leafApex": "Pointed",
+                           "petiole": "No",
+                           "stipule": "No",
+                           "arrangementOnStem": "Alternate"
                         },
                         {
-                           "siNo":3,
-                           "nameOfPlant":"Peepal",
-                           "typeOfLeaf":"Simple",
-                           "shapeOfLeafBlade":"Lanceolate",
-                           "venation":"Reticulate",
-                           "leafMargin":"Smooth",
-                           "leafApex":"Pointed",
-                           "petiole":"Yes",
-                           "stipule":"No",
-                           "arrangementOnStem":"Spiral"
+                           "siNo": 3,
+                           "nameOfPlant": "Peepal",
+                           "typeOfLeaf": "Simple",
+                           "shapeOfLeafBlade": "Lanceolate",
+                           "venation": "Reticulate",
+                           "leafMargin": "Smooth",
+                           "leafApex": "Pointed",
+                           "petiole": "Yes",
+                           "stipule": "No",
+                           "arrangementOnStem": "Spiral"
                         }
                      ],
-                     "conclusion":[
+                     "conclusion": [
                         "Based on the structure of the leaf blade, there are two types of leaves: simple leaves and compound leaves.",
                         "Leaves of different plants differ in the shape of the leaf blade, margin, apex, and the presence or absence of petiole and stipule.",
                         "There are two types of venation: reticulate venation and parallel venation."
                      ],
-                     "explanation":[
+                     "explanation": [
                         "Reticulate venation - Veins are interconnected and form a fine web-like structure.",
                         "Parallel venation - Veins run parallel to each other."
                      ]
@@ -75,17 +74,17 @@
          ]
       },
       {
-         "class":7,
-         "subjects":[
+         "class": 7,
+         "subjects": [
             {
-               "subject":"Biology",
-               "practicals":[
+               "subject": "Biology",
+               "practicals": [
                   {
-                     "id":"bio-8-01",
-                     "title":"Observation of Fungus",
-                     "aim":"To observe fungus on the bread.",
-                     "materials":[
-                        "Bread with Mucor",
+                     "id": "bio-8-01",
+                     "title": "Observation of Fungus",
+                     "aim": "To observe fungus on the bread.",
+                     "materials": [
+                        "Bread or roti",
                         "Glass Slide",
                         "Coverslip",
                         "Forceps",
@@ -94,105 +93,105 @@
                         "Water",
                         "Container"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Take a piece of bread or roti on a glass slide. Dampen it with a little water. Keep it in a container.",
                         "Place it in a warm and humid corner.",
                         "Observe the bread piece after 2–3 days.",
                         "The stale bread shows fine cottony growth of fungal hyphae belonging to Mucor.",
                         "Take a few fragments of this fungus and observe under the microscope."
                      ],
-                     "observation":[
+                     "observation": [
                         "Most of the fungal hyphae are horizontally spreading.",
                         "There are some erect hyphae called sporangiophores.",
                         "At the end of these sporangiophores, there are rounded structures called sporangia.",
                         "A single sporangium liberates black coloured spores.",
                         "Root-like structures called rhizoids are clearly seen under the microscope."
                      ],
-                     "conclusion":"Mucor is non-green, heterotrophic, and eukaryotic. It is saprotrophic as it grows on decomposing organic matter and belongs to the kingdom Fungi."
+                     "conclusion": "Mucor is non-green, heterotrophic, and eukaryotic. It is saprotrophic as it grows on decomposing organic matter and belongs to the kingdom Fungi."
                   }
                ]
             }
          ]
       },
       {
-         "class":6,
-         "subjects":[
+         "class": 6,
+         "subjects": [
             {
-               "subject":"Physics",
-               "practicals":[
+               "subject": "Physics",
+               "practicals": [
                   {
-                     "id":"phy-7-02",
-                     "title":"Static Electricity",
-                     "aim":"To study the presence of static electricity",
-                     "materials":[
+                     "id": "phy-7-02",
+                     "title": "Static Electricity",
+                     "aim": "To study the presence of static electricity",
+                     "materials": [
                         "Straws",
                         "Woollen Cloth",
                         "Glass Bottle"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Keep a straw on a glass bottle. Bring another straw near the first straw and observe.",
                         "Rub the second straw on a woollen cloth and bring it near the straw kept on the bottle. Observe.",
                         "Rub both straws on the woollen cloth. Keep one on the bottle and bring the other near it.",
                         "Bring the woollen cloth (used to rub the straw) near the straw kept on the bottle. Observe."
                      ],
-                     "observationsAndConclusions":[
+                     "observationsAndConclusions": [
                         {
-                           "slNo":1,
-                           "strawOnBottle":"Uncharged",
-                           "objectBroughtNear":"Uncharged straw",
-                           "interaction":"No attraction or repulsion",
-                           "conclusion":"No force is observed between two uncharged objects"
+                           "slNo": 1,
+                           "strawOnBottle": "Uncharged",
+                           "objectBroughtNear": "Uncharged straw",
+                           "interaction": "No attraction or repulsion",
+                           "conclusion": "No force is observed between two uncharged objects"
                         },
                         {
-                           "slNo":2,
-                           "strawOnBottle":"Uncharged",
-                           "objectBroughtNear":"Charged straw",
-                           "interaction":"Attraction",
-                           "conclusion":"A charged object can attract an uncharged object"
+                           "slNo": 2,
+                           "strawOnBottle": "Uncharged",
+                           "objectBroughtNear": "Charged straw",
+                           "interaction": "Attraction",
+                           "conclusion": "A charged object can attract an uncharged object"
                         },
                         {
-                           "slNo":3,
-                           "strawOnBottle":"Charged",
-                           "objectBroughtNear":"Similarly charged straw",
-                           "interaction":"Repulsion",
-                           "conclusion":"Like charges repel each other"
+                           "slNo": 3,
+                           "strawOnBottle": "Charged",
+                           "objectBroughtNear": "Similarly charged straw",
+                           "interaction": "Repulsion",
+                           "conclusion": "Like charges repel each other"
                         },
                         {
-                           "slNo":4,
-                           "strawOnBottle":"Charged",
-                           "objectBroughtNear":"Oppositely charged woollen cloth",
-                           "interaction":"Attraction",
-                           "conclusion":"Unlike charges attract each other"
+                           "slNo": 4,
+                           "strawOnBottle": "Charged",
+                           "objectBroughtNear": "Oppositely charged woollen cloth",
+                           "interaction": "Attraction",
+                           "conclusion": "Unlike charges attract each other"
                         }
                      ],
-                     "explanation":"When certain objects are rubbed together, one becomes positively charged and the other becomes negatively charged."
+                     "explanation": "When certain objects are rubbed together, one becomes positively charged and the other becomes negatively charged."
                   }
                ]
             }
          ]
       },
       {
-         "class":8,
-         "subjects":[
+         "class": 8,
+         "subjects": [
             {
-               "subject":"Chemistry",
-               "practicals":[
+               "subject": "Chemistry",
+               "practicals": [
                   {
-                     "id":"phy-8-01",
-                     "title":"Preparation of Ferric Sulphide and Study its Properties",
-                     "aim":"To prepare the compound iron sulphide in the laboratory and study its properties.",
-                     "materials":[
+                     "id": "phy-8-01",
+                     "title": "Preparation of Ferric Sulphide and Study its Properties",
+                     "aim": "To prepare the compound iron sulphide in the laboratory and study its properties.",
+                     "materials": [
                         "Evaporating dish",
                         "Tripod stand",
                         "Horseshoe magnet",
                         "Bunsen burner",
                         "Glass rod"
                      ],
-                     "chemical":[
+                     "chemical": [
                         "Iron filings",
                         "Sulphur powder"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Take two evaporating dishes. Take 7 g iron filings in the first dish and 4 g sulphur powder in the second.",
                         "Take a horseshoe magnet near the matter in both the dishes and observe the effect of magnet on it.",
                         "Observe the colours of iron filings and sulphur powder.",
@@ -201,22 +200,22 @@
                         "Observe the colour change, if any, in the matter and observe whether there is any effect of the horseshoe magnet on it.",
                         "Record all your observations."
                      ],
-                     "observations":[
+                     "observations": [
                         {
-                           "slNo":1,
-                           "observation":"Colour of the matter",
-                           "beforeHeating":"The black colour of iron filings and yellow colour of sulphur are observed distinctly",
-                           "afterHeating":"The characteristic yellow colour of sulphur disappeared after heating the mixture"
+                           "slNo": 1,
+                           "observation": "Colour of the matter",
+                           "beforeHeating": "The black colour of iron filings and yellow colour of sulphur are observed distinctly",
+                           "afterHeating": "The characteristic yellow colour of sulphur disappeared after heating the mixture"
                         },
                         {
-                           "slNo":2,
-                           "observation":"Effect of horseshoe magnet on the matter",
-                           "beforeHeating":"Iron filings get attracted towards magnet",
-                           "afterHeating":"The matter obtained after heating does not get attracted towards magnet"
+                           "slNo": 2,
+                           "observation": "Effect of horseshoe magnet on the matter",
+                           "beforeHeating": "Iron filings get attracted towards magnet",
+                           "afterHeating": "The matter obtained after heating does not get attracted towards magnet"
                         }
                      ],
-                     "chemicalReaction":"Fe + S → FeS",
-                     "conclusion":[
+                     "chemicalReaction": "Fe + S → FeS",
+                     "conclusion": [
                         "The properties of components of a mixture are retained in the mixture.",
                         "The properties of components of a compound get changed in compound state."
                      ]
@@ -226,21 +225,21 @@
          ]
       },
       {
-         "class":9,
-         "subjects":[
+         "class": 9,
+         "subjects": [
             {
-               "subject":"Chemistry",
-               "practicals":[
+               "subject": "Chemistry",
+               "practicals": [
                   {
-                     "id":"phy-9-01",
-                     "title":"Identification of Acids and Bases using Indicators",
-                     "aim":"To identify acids and bases using indicators.",
-                     "materials":[
+                     "id": "phy-9-01",
+                     "title": "Identification of Acids and Bases using Indicators",
+                     "aim": "To identify acids and bases using indicators.",
+                     "materials": [
                         "Test tubes",
                         "Test Tube Stand",
                         "Water"
                      ],
-                     "chemical":[
+                     "chemical": [
                         "Red litmus paper",
                         "Blue litmus paper",
                         "Phenolphthalein",
@@ -253,7 +252,7 @@
                         "Soap solution",
                         "Dilute hydrochloric acid"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Take 5 ml of lime juice in four different test tubes. Keep them in a test tube stand.",
                         "Dip red litmus paper strip in the solution in test tube 1 and observe.",
                         "Dip blue litmus paper strip in the solution in test tube 2 and observe.",
@@ -261,10 +260,8 @@
                         "Add 3–4 drops of methyl orange in test tube 4 and observe.",
                         "Repeat the same steps for vinegar, ammonium hydroxide, baking soda solution, soap solution, dilute hydrochloric acid and distilled water."
                      ],
-                     "observations":[
-                        
-                     ],
-                     "conclusion":[
+                     "observations": [],
+                     "conclusion": [
                         "Indicators help in identifying acids and bases.",
                         "Distilled water is neutral in nature."
                      ]
@@ -274,21 +271,21 @@
          ]
       },
       {
-         "class":10,
-         "subjects":[
+         "class": 10,
+         "subjects": [
             {
-               "subject":"Chemistry",
-               "practicals":[
+               "subject": "Chemistry",
+               "practicals": [
                   {
-                     "id":"phy-10-01",
-                     "title":"Identification of Acids and Bases using Indicators",
-                     "aim":"To identify acids and bases using indicators.",
-                     "materials":[
+                     "id": "phy-10-01",
+                     "title": "Identification of Acids and Bases using Indicators",
+                     "aim": "To identify acids and bases using indicators.",
+                     "materials": [
                         "Test tubes",
                         "Test Tube Stand",
                         "Water"
                      ],
-                     "chemical":[
+                     "chemical": [
                         "Red litmus paper",
                         "Blue litmus paper",
                         "Phenolphthalein",
@@ -301,14 +298,12 @@
                         "Soap solution",
                         "Dilute hydrochloric acid"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Repeat the indicator tests for all given solutions.",
                         "Observe and record the colour changes carefully."
                      ],
-                     "observations":[
-                        
-                     ],
-                     "conclusion":[
+                     "observations": [],
+                     "conclusion": [
                         "Indicators are reliable tools for identifying acidic and basic substances."
                      ]
                   }
@@ -317,16 +312,16 @@
          ]
       },
       {
-         "class":11,
-         "subjects":[
+         "class": 11,
+         "subjects": [
             {
-               "subject":"Chemistry",
-               "practicals":[
+               "subject": "Chemistry",
+               "practicals": [
                   {
-                     "id":"chem-11-01",
-                     "title":"To find the pH of various solutions using (A) pH paper and (B) universal indicator",
-                     "aim":"To find the pH of the following solutions using (A) pH paper and (B) universal indicator: Dilute HCl, Dilute NaOH solution, Lemon juice, Distilled water, Acetic (ethanoic) acid solution, Sodium sulphate solution, Ammonium chloride solution, Sodium bicarbonate solution.",
-                     "materials":[
+                     "id": "chem-11-01",
+                     "title": "To find the pH of various solutions using (A) pH paper and (B) universal indicator",
+                     "aim": "To find the pH of the following solutions using (A) pH paper and (B) universal indicator: Dilute HCl, Dilute NaOH solution, Lemon juice, Distilled water, Acetic (ethanoic) acid solution, Sodium sulphate solution, Ammonium chloride solution, Sodium bicarbonate solution.",
+                     "materials": [
                         "Test tubes",
                         "Test tube stand",
                         "Dropper",
@@ -336,9 +331,9 @@
                         "Distilled water",
                         "Given sample solutions"
                      ],
-                     "methods":{
-                        "partA_pHPaper":{
-                           "procedure":[
+                     "methods": {
+                        "partA_pHPaper": {
+                           "procedure": [
                               "Take eight clean and dry test tubes and label them from 1 to 8.",
                               "Take 10 ml of each given solution in the respective test tubes.",
                               "Place a small piece of pH paper on a white glazed tile.",
@@ -348,8 +343,8 @@
                               "Repeat the same steps for test tubes 2 to 8."
                            ]
                         },
-                        "partB_universalIndicator":{
-                           "procedure":[
+                        "partB_universalIndicator": {
+                           "procedure": [
                               "Take eight clean and dry test tubes and label them from 1 to 8.",
                               "Add 10 ml of each given solution into the respective test tubes.",
                               "Using a dropper, add two drops of universal indicator solution to each test tube.",
@@ -359,57 +354,57 @@
                            ]
                         }
                      },
-                     "observations":[
+                     "observations": [
                         {
-                           "slNo":1,
-                           "sample":"Dilute HCl",
-                           "colourProduced":"Red",
-                           "approximatePH":"0-1"
+                           "slNo": 1,
+                           "sample": "Dilute HCl",
+                           "colourProduced": "Red",
+                           "approximatePH": "0-1"
                         },
                         {
-                           "slNo":2,
-                           "sample":"Dilute NaOH solution",
-                           "colourProduced":"Purple",
-                           "approximatePH":"14"
+                           "slNo": 2,
+                           "sample": "Dilute NaOH solution",
+                           "colourProduced": "Purple",
+                           "approximatePH": "14"
                         },
                         {
-                           "slNo":3,
-                           "sample":"Lemon juice",
-                           "colourProduced":"Orange",
-                           "approximatePH":"2"
+                           "slNo": 3,
+                           "sample": "Lemon juice",
+                           "colourProduced": "Orange",
+                           "approximatePH": "2"
                         },
                         {
-                           "slNo":4,
-                           "sample":"Distilled water",
-                           "colourProduced":"Green",
-                           "approximatePH":"7"
+                           "slNo": 4,
+                           "sample": "Distilled water",
+                           "colourProduced": "Green",
+                           "approximatePH": "7"
                         },
                         {
-                           "slNo":5,
-                           "sample":"Acetic (ethanoic) acid solution",
-                           "colourProduced":"Yellow",
-                           "approximatePH":"3"
+                           "slNo": 5,
+                           "sample": "Acetic (ethanoic) acid solution",
+                           "colourProduced": "Yellow",
+                           "approximatePH": "3"
                         },
                         {
-                           "slNo":6,
-                           "sample":"Sodium sulphate solution",
-                           "colourProduced":"Green",
-                           "approximatePH":"7"
+                           "slNo": 6,
+                           "sample": "Sodium sulphate solution",
+                           "colourProduced": "Green",
+                           "approximatePH": "7"
                         },
                         {
-                           "slNo":7,
-                           "sample":"Ammonium chloride solution",
-                           "colourProduced":"Blue",
-                           "approximatePH":"11"
+                           "slNo": 7,
+                           "sample": "Ammonium chloride solution",
+                           "colourProduced": "Blue",
+                           "approximatePH": "11"
                         },
                         {
-                           "slNo":8,
-                           "sample":"Sodium bicarbonate solution",
-                           "colourProduced":"Blue",
-                           "approximatePH":"9"
+                           "slNo": 8,
+                           "sample": "Sodium bicarbonate solution",
+                           "colourProduced": "Blue",
+                           "approximatePH": "9"
                         }
                      ],
-                     "conclusion":[
+                     "conclusion": [
                         "Solutions with pH less than 7 are acidic.",
                         "Solutions with pH more than 7 are basic.",
                         "Solutions with pH equal to 7 are neutral.",
@@ -421,16 +416,16 @@
          ]
       },
       {
-         "class":9,
-         "subjects":[
+         "class": 9,
+         "subjects": [
             {
-               "subject":"Chemistry",
-               "practicals":[
+               "subject": "Chemistry",
+               "practicals": [
                   {
-                     "id":"chem-9-06",
-                     "title":"To study the neutralization with the help of acid and base",
-                     "aim":"To study the neutralization reaction using an acid and a base.",
-                     "requirements":[
+                     "id": "chem-9-06",
+                     "title": "To study the neutralization with the help of acid and base",
+                     "aim": "To study the neutralization reaction using an acid and a base.",
+                     "requirements": [
                         "0.1 N Hydrochloric acid (HCl)",
                         "0.1 N Sodium hydroxide (NaOH)",
                         "Phenolphthalein indicator",
@@ -440,7 +435,7 @@
                         "Clean white tile",
                         "Distilled water"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Wash the burette with water and rinse it with hydrochloric acid. Fill the burette with dilute HCl and remove air bubbles, if any.",
                         "Wash the pipette with water and rinse it with sodium hydroxide solution. Using the pipette, transfer 10 ml of NaOH solution into a clean conical flask.",
                         "Add 1–2 drops of phenolphthalein indicator to the NaOH solution in the conical flask.",
@@ -451,49 +446,49 @@
                         "Record the burette reading.",
                         "Repeat the experiment to obtain consistent readings."
                      ],
-                     "observations":{
-                        "solutionInBurette":"Dilute Hydrochloric acid (HCl)",
-                        "solutionInConicalFlask":"Dilute Sodium hydroxide (NaOH)",
-                        "indicatorUsed":"Phenolphthalein",
-                        "endPoint":"Pink colour changes to colourless"
+                     "observations": {
+                        "solutionInBurette": "Dilute Hydrochloric acid (HCl)",
+                        "solutionInConicalFlask": "Dilute Sodium hydroxide (NaOH)",
+                        "indicatorUsed": "Phenolphthalein",
+                        "endPoint": "Pink colour changes to colourless"
                      },
-                     "observationTable":[
+                     "observationTable": [
                         {
-                           "srNo":1,
-                           "reading":"Pilot",
-                           "volumeOfNaOH_ml":10,
-                           "buretteInitial_ml":0,
-                           "buretteFinal_ml":0,
-                           "difference_ml":0
+                           "srNo": 1,
+                           "reading": "Pilot",
+                           "volumeOfNaOH_ml": 10,
+                           "buretteInitial_ml": 0,
+                           "buretteFinal_ml": 0,
+                           "difference_ml": 0
                         },
                         {
-                           "srNo":2,
-                           "reading":"Accurate I",
-                           "volumeOfNaOH_ml":10,
-                           "buretteInitial_ml":0,
-                           "buretteFinal_ml":2.7,
-                           "difference_ml":2.7
+                           "srNo": 2,
+                           "reading": "Accurate I",
+                           "volumeOfNaOH_ml": 10,
+                           "buretteInitial_ml": 0,
+                           "buretteFinal_ml": 2.7,
+                           "difference_ml": 2.7
                         },
                         {
-                           "srNo":3,
-                           "reading":"Accurate II",
-                           "volumeOfNaOH_ml":10,
-                           "buretteInitial_ml":0,
-                           "buretteFinal_ml":2.8,
-                           "difference_ml":2.8
+                           "srNo": 3,
+                           "reading": "Accurate II",
+                           "volumeOfNaOH_ml": 10,
+                           "buretteInitial_ml": 0,
+                           "buretteFinal_ml": 2.8,
+                           "difference_ml": 2.8
                         },
                         {
-                           "srNo":4,
-                           "reading":"Accurate III",
-                           "volumeOfNaOH_ml":10,
-                           "buretteInitial_ml":0,
-                           "buretteFinal_ml":2.7,
-                           "difference_ml":2.7
+                           "srNo": 4,
+                           "reading": "Accurate III",
+                           "volumeOfNaOH_ml": 10,
+                           "buretteInitial_ml": 0,
+                           "buretteFinal_ml": 2.7,
+                           "difference_ml": 2.7
                         }
                      ],
-                     "constantBuretteReading_ml":2.7,
-                     "chemicalReaction":"HCl + NaOH → NaCl + H₂O",
-                     "conclusion":[
+                     "constantBuretteReading_ml": 2.7,
+                     "chemicalReaction": "HCl + NaOH → NaCl + H₂O",
+                     "conclusion": [
                         "Hydrochloric acid reacts with sodium hydroxide to form salt and water.",
                         "The acidic nature of HCl is neutralized by the basic nature of NaOH.",
                         "This reaction is called a neutralization reaction."
@@ -504,16 +499,16 @@
          ]
       },
       {
-         "class":10,
-         "subjects":[
+         "class": 10,
+         "subjects": [
             {
-               "subject":"Physics",
-               "practicals":[
+               "subject": "Physics",
+               "practicals": [
                   {
-                     "id":"phy-10-02",
-                     "title":"Determination of the effective resistance of the parallel combination of two resistors",
-                     "aim":"To determine the effective resistance of the parallel combination of two resistors.",
-                     "requirements":[
+                     "id": "phy-10-02",
+                     "title": "Determination of the effective resistance of the parallel combination of two resistors",
+                     "aim": "To determine the effective resistance of the parallel combination of two resistors.",
+                     "requirements": [
                         "Two resistors",
                         "Ammeter",
                         "Voltmeter",
@@ -522,7 +517,7 @@
                         "Battery",
                         "Connecting wires"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Select two resistors and note their resistance values.",
                         "Connect the circuit as shown in the diagram with the resistors in parallel.",
                         "Connect the ammeter in series and the voltmeter across the parallel combination.",
@@ -532,52 +527,52 @@
                         "Repeat the experiment for each resistor individually by removing the other resistor.",
                         "Disconnect the circuit after completing the observations."
                      ],
-                     "observations":{
-                        "leastCountVoltmeter_V":1,
-                        "leastCountAmmeter_A":1,
-                        "zeroErrorVoltmeter_V":0,
-                        "zeroErrorAmmeter_A":0
+                     "observations": {
+                        "leastCountVoltmeter_V": 1,
+                        "leastCountAmmeter_A": 1,
+                        "zeroErrorVoltmeter_V": 0,
+                        "zeroErrorAmmeter_A": 0
                      },
-                     "observationTable":[
+                     "observationTable": [
                         {
-                           "resistor":"R1",
-                           "ammeterReading_A":0.05,
-                           "voltmeterReading_V":1.5,
-                           "calculatedResistance_ohm":30
+                           "resistor": "R1",
+                           "ammeterReading_A": 0.05,
+                           "voltmeterReading_V": 1.5,
+                           "calculatedResistance_ohm": 30
                         },
                         {
-                           "resistor":"R1",
-                           "ammeterReading_A":0.04,
-                           "voltmeterReading_V":1.5,
-                           "calculatedResistance_ohm":37.5
+                           "resistor": "R1",
+                           "ammeterReading_A": 0.04,
+                           "voltmeterReading_V": 1.5,
+                           "calculatedResistance_ohm": 37.5
                         },
                         {
-                           "resistor":"R2",
-                           "ammeterReading_A":0.08,
-                           "voltmeterReading_V":3.0,
-                           "calculatedResistance_ohm":37.5
+                           "resistor": "R2",
+                           "ammeterReading_A": 0.08,
+                           "voltmeterReading_V": 3.0,
+                           "calculatedResistance_ohm": 37.5
                         },
                         {
-                           "resistor":"R2",
-                           "ammeterReading_A":0.09,
-                           "voltmeterReading_V":1.5,
-                           "calculatedResistance_ohm":16.7
+                           "resistor": "R2",
+                           "ammeterReading_A": 0.09,
+                           "voltmeterReading_V": 1.5,
+                           "calculatedResistance_ohm": 16.7
                         },
                         {
-                           "resistor":"ParallelCombination",
-                           "ammeterReading_A":0.18,
-                           "voltmeterReading_V":3.0,
-                           "calculatedResistance_ohm":16.5
+                           "resistor": "ParallelCombination",
+                           "ammeterReading_A": 0.18,
+                           "voltmeterReading_V": 3.0,
+                           "calculatedResistance_ohm": 16.5
                         }
                      ],
-                     "calculations":{
-                        "meanResistanceR1_ohm":30,
-                        "meanResistanceR2_ohm":37.5,
-                        "effectiveResistanceParallel_ohm":16.5,
-                        "formulaUsed":"1/Rp = 1/R1 + 1/R2"
+                     "calculations": {
+                        "meanResistanceR1_ohm": 30,
+                        "meanResistanceR2_ohm": 37.5,
+                        "effectiveResistanceParallel_ohm": 16.5,
+                        "formulaUsed": "1/Rp = 1/R1 + 1/R2"
                      },
-                     "result":"The effective resistance of the given parallel combination of resistors is approximately 16.5 ohms.",
-                     "conclusion":[
+                     "result": "The effective resistance of the given parallel combination of resistors is approximately 16.5 ohms.",
+                     "conclusion": [
                         "The effective resistance of resistors connected in parallel is less than the smallest individual resistance.",
                         "The reciprocal of the effective resistance is equal to the sum of the reciprocals of individual resistances."
                      ]
@@ -587,16 +582,16 @@
          ]
       },
       {
-         "class":10,
-         "subjects":[
+         "class": 10,
+         "subjects": [
             {
-               "subject":"Physics",
-               "practicals":[
+               "subject": "Physics",
+               "practicals": [
                   {
-                     "id":"phy-10-08",
-                     "title":"Verification of the laws of refraction of light",
-                     "aim":"To measure the angle of incidence, angle of refraction and angle of emergence and verify the laws of refraction of light.",
-                     "requirements":[
+                     "id": "phy-10-08",
+                     "title": "Verification of the laws of refraction of light",
+                     "aim": "To measure the angle of incidence, angle of refraction and angle of emergence and verify the laws of refraction of light.",
+                     "requirements": [
                         "Rectangular glass slab",
                         "Drawing board",
                         "Drawing paper",
@@ -605,7 +600,7 @@
                         "Protractor",
                         "Sharp pencil"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Fix a drawing paper on the drawing board using drawing pins.",
                         "Place the rectangular glass slab on it and trace its boundary.",
                         "Remove the glass slab and draw a normal at a point on the boundary.",
@@ -618,42 +613,42 @@
                         "Repeat the experiment for different angles of incidence.",
                         "Calculate the ratio sin i / sin r for each observation."
                      ],
-                     "observations":{
-                        "rayPath":"The path of the ray for angles of incidence 30°, 45° and 60° is OABC."
+                     "observations": {
+                        "rayPath": "The path of the ray for angles of incidence 30°, 45° and 60° is OABC."
                      },
-                     "observationTable":[
+                     "observationTable": [
                         {
-                           "angleOfIncidence_deg":30,
-                           "angleOfRefraction_deg":20,
-                           "angleOfEmergence_deg":30,
-                           "sin_i_by_sin_r":1.46
+                           "angleOfIncidence_deg": 30,
+                           "angleOfRefraction_deg": 20,
+                           "angleOfEmergence_deg": 30,
+                           "sin_i_by_sin_r": 1.46
                         },
                         {
-                           "angleOfIncidence_deg":45,
-                           "angleOfRefraction_deg":30,
-                           "angleOfEmergence_deg":45,
-                           "sin_i_by_sin_r":1.41
+                           "angleOfIncidence_deg": 45,
+                           "angleOfRefraction_deg": 30,
+                           "angleOfEmergence_deg": 45,
+                           "sin_i_by_sin_r": 1.41
                         },
                         {
-                           "angleOfIncidence_deg":60,
-                           "angleOfRefraction_deg":38,
-                           "angleOfEmergence_deg":60,
-                           "sin_i_by_sin_r":1.40
+                           "angleOfIncidence_deg": 60,
+                           "angleOfRefraction_deg": 38,
+                           "angleOfEmergence_deg": 60,
+                           "sin_i_by_sin_r": 1.40
                         }
                      ],
-                     "inference":[
+                     "inference": [
                         "The incident ray and emergent ray are parallel to each other.",
                         "The lateral displacement depends on the thickness of the glass slab, refractive index of glass and angle of incidence.",
                         "When light travels from air to glass, it bends towards the normal.",
                         "The angle of incidence is equal to the angle of emergence.",
                         "The incident ray, refracted ray and the normal lie in the same plane."
                      ],
-                     "conclusion":[
+                     "conclusion": [
                         "The ratio of sine of angle of incidence to sine of angle of refraction is constant.",
                         "This constant is called the refractive index of the second medium with respect to the first medium.",
                         "Thus, the laws of refraction of light are verified."
                      ],
-                     "precautions":[
+                     "precautions": [
                         "Pins should be fixed vertically.",
                         "Pins should be well separated to avoid error in alignment.",
                         "Glass slab should not be disturbed while fixing pins."
@@ -664,23 +659,23 @@
          ]
       },
       {
-         "class":10,
-         "subjects":[
+         "class": 10,
+         "subjects": [
             {
-               "subject":"Physics",
-               "practicals":[
+               "subject": "Physics",
+               "practicals": [
                   {
-                     "id":"phy-10-10",
-                     "title":"Determination of the focal length of a convex lens",
-                     "aim":"To determine the focal length of a convex lens by obtaining an image of a distant object.",
-                     "requirements":[
+                     "id": "phy-10-10",
+                     "title": "Determination of the focal length of a convex lens",
+                     "aim": "To determine the focal length of a convex lens by obtaining an image of a distant object.",
+                     "requirements": [
                         "Convex lens",
                         "Lens stand",
                         "Metre scale",
                         "White screen",
                         "Screen holder"
                      ],
-                     "procedure":[
+                     "procedure": [
                         "Mount the convex lens on the lens stand.",
                         "Select a distant object and turn one surface of the lens towards the object.",
                         "Place the white screen on the screen holder and adjust it in front of the lens.",
@@ -694,41 +689,41 @@
                         "Find the average focal length of the lens.",
                         "Compare f₁ and f₂ to check whether the lens is symmetric."
                      ],
-                     "observationTable":[
+                     "observationTable": [
                         {
-                           "srNo":1,
-                           "distantObject":"Electric pole",
-                           "distanceSurface1_cm":19.8,
-                           "distanceSurface2_cm":19.8,
-                           "averageFocalLength_cm":19.8
+                           "srNo": 1,
+                           "distantObject": "Electric pole",
+                           "distanceSurface1_cm": 19.8,
+                           "distanceSurface2_cm": 19.8,
+                           "averageFocalLength_cm": 19.8
                         },
                         {
-                           "srNo":2,
-                           "distantObject":"Tree",
-                           "distanceSurface1_cm":19.9,
-                           "distanceSurface2_cm":19.8,
-                           "averageFocalLength_cm":19.8
+                           "srNo": 2,
+                           "distantObject": "Tree",
+                           "distanceSurface1_cm": 19.9,
+                           "distanceSurface2_cm": 19.8,
+                           "averageFocalLength_cm": 19.8
                         },
                         {
-                           "srNo":3,
-                           "distantObject":"Window",
-                           "distanceSurface1_cm":19.7,
-                           "distanceSurface2_cm":19.7,
-                           "averageFocalLength_cm":19.7
+                           "srNo": 3,
+                           "distantObject": "Window",
+                           "distanceSurface1_cm": 19.7,
+                           "distanceSurface2_cm": 19.7,
+                           "averageFocalLength_cm": 19.7
                         }
                      ],
-                     "calculations":{
-                        "averageF1_cm":19.8,
-                        "averageF2_cm":19.8,
-                        "finalAverageFocalLength_cm":19.8,
-                        "formulaUsed":"f = (f1 + f2) / 2"
+                     "calculations": {
+                        "averageF1_cm": 19.8,
+                        "averageF2_cm": 19.8,
+                        "finalAverageFocalLength_cm": 19.8,
+                        "formulaUsed": "f = (f1 + f2) / 2"
                      },
-                     "inference":[
+                     "inference": [
                         "The average focal length of the given convex lens is 19.8 cm.",
                         "f1 is approximately equal to f2.",
                         "The lens used is symmetric."
                      ],
-                     "precautions":[
+                     "precautions": [
                         "Obtain a sharp image of the distant object on the screen.",
                         "Measure all distances accurately."
                      ]

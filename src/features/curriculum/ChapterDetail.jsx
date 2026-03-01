@@ -6,7 +6,7 @@ import GenericSimulator from "../practical/GenericSimulator.jsx";
 
 const ChapterDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const allChapters = sciencePractical.classes
     .flatMap((cls) => cls.subjects)
@@ -17,11 +17,20 @@ const ChapterDetail = () => {
 
   if (!chapter) return <h2>Chapter not found 😬</h2>;
 
+  const materialItems = [
+    ...(chapter.materials || []),
+    ...(chapter.chemical || []),
+    ...(chapter.requirements || [])
+  ];
+
   const renderContent = (data) => {
     if (!data) return null;
 
     if (Array.isArray(data) && typeof data[0] === "object") {
       const headers = Object.keys(data[0]);
+
+
+    console.log(LeafPractical, GenericSimulator);
 
       return (
         <table className="observation-table">
@@ -58,7 +67,7 @@ const ChapterDetail = () => {
     return <p>{data}</p>;
   };
 
-  const materialsList = chapter.materials ?? chapter.requirements ?? [];
+  // const materialsList = chapter.materials ?? chapter.requirements ?? [];
   const hasLeafPractical = chapter.id === "bio-7-01";
 
   const handlePrevious = () => {
@@ -92,7 +101,7 @@ const ChapterDetail = () => {
                 {renderContent(chapter.aim)}
               </section>
             )}
-            {(materialsList.length > 0 || chapter.chemical?.length > 0) && (
+            {/* {(materialsList.length > 0 || chapter.chemical?.length > 0) && (
               <section className="chapter-doc-section">
                 <h4 className="chapter-doc-heading">
                   Materials / Requirements
@@ -105,7 +114,17 @@ const ChapterDetail = () => {
                   </>
                 )}
               </section>
+            )} */}
+
+            {materialItems.length > 0 && (
+              <section className="chapter-doc-section">
+                <h4 className="chapter-doc-heading">
+                  Materials / Requirements
+                </h4>
+                {renderContent(materialItems)}
+              </section>
             )}
+
             {chapter.procedure?.length > 0 && (
               <section className="chapter-doc-section">
                 <h4 className="chapter-doc-heading">Procedure</h4>
@@ -119,15 +138,15 @@ const ChapterDetail = () => {
             {(chapter.observation?.length > 0 ||
               chapter.observations?.length > 0 ||
               chapter.observationsAndConclusions?.length > 0) && (
-              <section className="chapter-doc-section">
-                <h4 className="chapter-doc-heading">Observation</h4>
-                {chapter.observation?.length > 0
-                  ? renderContent(chapter.observation)
-                  : chapter.observations?.length > 0
-                  ? renderContent(chapter.observations)
-                  : renderContent(chapter.observationsAndConclusions)}
-              </section>
-            )}
+                <section className="chapter-doc-section">
+                  <h4 className="chapter-doc-heading">Observation</h4>
+                  {chapter.observation?.length > 0
+                    ? renderContent(chapter.observation)
+                    : chapter.observations?.length > 0
+                      ? renderContent(chapter.observations)
+                      : renderContent(chapter.observationsAndConclusions)}
+                </section>
+              )}
             {chapter.chemicalReaction && (
               <section className="chapter-doc-section">
                 <h4 className="chapter-doc-heading">Chemical Reaction</h4>
@@ -161,7 +180,7 @@ const ChapterDetail = () => {
       </main>
 
       {/* Bottom navigation */}
-      <footer className="chapter-nav-footer">
+      {/* <footer className="chapter-nav-footer">
         <button
           type="button"
           className="chapter-nav-btn chapter-nav-prev"
@@ -178,7 +197,7 @@ const ChapterDetail = () => {
         >
           Next
         </button>
-      </footer>
+      </footer> */}
     </div>
   );
 };

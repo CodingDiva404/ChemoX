@@ -8,19 +8,13 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
 
   const EvaporatingDish = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <ellipse cx="24" cy="36" rx="18" ry="4" fill="#e8e8e8" stroke="#888" strokeWidth="1.5" />
       <path
-        d="M6 36 Q6 18 24 8 Q42 18 42 36"
+        d="M6 36 Q6 18 24 8 Q42 18 42 36 Z"
         fill="none"
-        stroke="#888"
+        stroke="#555"
         strokeWidth="2"
       />
-      <path
-        d="M8 35 Q8 20 24 10 Q40 20 40 35"
-        fill="#f5f5f5"
-        stroke="#aaa"
-        strokeWidth="1"
-      />
+      <path d="M8 36 Q8 22 24 12 Q40 22 40 36" fill="none" stroke="#888" strokeWidth="1.5" />
     </svg>
   );
 
@@ -56,7 +50,7 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
 
   const GlassRod = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="22" y="4" width="4" height="40" rx="2" fill="#cce5ff" stroke="#88c" strokeWidth="1" />
+      <line x1="24" y1="4" x2="24" y2="44" stroke="#4a90e2" strokeWidth="3" strokeLinecap="round" />
     </svg>
   );
 
@@ -64,9 +58,9 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
       <path
         d="M20 4 L28 4 L32 44 L16 44 Z"
-        fill="#cce5ff"
-        stroke="#88c"
-        strokeWidth="1.5"
+        fill="none"
+        stroke="#4a90e2"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -81,98 +75,94 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
 
   const Dropper = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <path
-        d="M24 4 L24 28 L16 40 L32 40 L24 28"
-        fill="#cce5ff"
-        stroke="#88c"
-        strokeWidth="1.5"
-      />
+      <path d="M24 4 L24 28 L16 40 L32 40 Z" fill="none" stroke="#4a90e2" strokeWidth="2" strokeLinejoin="round" />
     </svg>
   );
 
   const Burette = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="20" y="4" width="8" height="36" rx="2" fill="#cce5ff" stroke="#88c" strokeWidth="1" />
-      <rect x="22" y="38" width="4" height="6" fill="#cce5ff" stroke="#88c" strokeWidth="1" />
+      <path d="M20 4 L28 4 L28 40 L24 46 L20 40 Z" fill="none" stroke="#4a90e2" strokeWidth="2" strokeLinejoin="round" />
     </svg>
   );
 
   const Pipette = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <path
-        d="M24 4 L24 32 L20 44 L28 44 L24 32"
-        fill="#cce5ff"
-        stroke="#88c"
-        strokeWidth="1.5"
-      />
+      <path d="M24 4 L24 32 L20 44 L28 44 Z" fill="none" stroke="#4a90e2" strokeWidth="2" strokeLinejoin="round" />
     </svg>
   );
 
   const ConicalFlask = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <path
-        d="M24 4 L32 4 L40 40 L8 40 L16 4 Z"
-        fill="#cce5ff"
-        stroke="#88c"
-        strokeWidth="1.5"
-      />
+      <path d="M24 4 L32 4 L40 40 L8 40 L16 4 Z" fill="none" stroke="#4a90e2" strokeWidth="2" strokeLinejoin="round" />
     </svg>
   );
 
   const Microscope = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <circle cx="24" cy="32" r="8" fill="#444" />
-      <rect x="22" y="16" width="4" height="16" fill="#555" />
-      <circle cx="24" cy="12" r="6" fill="#888" stroke="#666" strokeWidth="1" />
-      <rect x="8" y="24" width="16" height="4" fill="#555" />
+      <circle cx="24" cy="32" r="8" fill="none" stroke="#555" strokeWidth="2" />
+      <line x1="24" y1="16" x2="24" y2="24" stroke="#555" strokeWidth="2" />
+      <circle cx="24" cy="12" r="5" fill="none" stroke="#666" strokeWidth="2" />
+      <rect x="8" y="22" width="16" height="4" fill="none" stroke="#555" strokeWidth="2" />
     </svg>
   );
 
   const GlassSlide = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="8" y="18" width="32" height="12" rx="2" fill="#e8f4ff" stroke="#88c" strokeWidth="1.5" />
+      <rect x="8" y="18" width="32" height="12" rx="1" fill="none" stroke="#4a90e2" strokeWidth="2" />
     </svg>
   );
 
   const Lens = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <ellipse cx="24" cy="24" rx="18" ry="12" fill="none" stroke="#666" strokeWidth="2" />
-      <ellipse cx="24" cy="24" rx="14" ry="9" fill="#e8e8e8" opacity="0.5" />
+      <ellipse cx="24" cy="24" rx="18" ry="12" fill="none" stroke="#555" strokeWidth="2" />
+      <ellipse cx="24" cy="24" rx="14" ry="9" fill="none" stroke="#888" strokeWidth="1" strokeDasharray="4 2" />
     </svg>
   );
 
   const Powder = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <circle cx="14" cy="32" r="4" fill="#d4a854" />
-      <circle cx="24" cy="36" r="5" fill="#c49a4a" />
-      <circle cx="34" cy="32" r="4" fill="#d4a854" />
-      <circle cx="20" cy="28" r="3" fill="#e4b860" />
-      <circle cx="30" cy="28" r="3" fill="#c49a4a" />
+      <circle cx="14" cy="32" r="4" fill="none" stroke="#c49a4a" strokeWidth="1.5" />
+      <circle cx="24" cy="36" r="5" fill="none" stroke="#c49a4a" strokeWidth="1.5" />
+      <circle cx="34" cy="32" r="4" fill="none" stroke="#c49a4a" strokeWidth="1.5" />
+      <circle cx="20" cy="28" r="3" fill="none" stroke="#d4a854" strokeWidth="1.5" />
+      <circle cx="30" cy="28" r="3" fill="none" stroke="#d4a854" strokeWidth="1.5" />
+    </svg>
+  );
+
+  const Forceps = () => (
+    <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
+      <path d="M16 8 L12 28 L20 42" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" />
+      <path d="M32 8 L36 28 L28 42" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+
+  const BlottingPaper = () => (
+    <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
+      <rect x="10" y="10" width="28" height="32" rx="1" fill="none" stroke="#8b7355" strokeWidth="2" />
+    </svg>
+  );
+
+  const Container = () => (
+    <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
+      <rect x="10" y="12" width="28" height="30" rx="1" fill="none" stroke="#888" strokeWidth="2" />
     </svg>
   );
 
   const PaperStrip = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="12" y="8" width="24" height="32" rx="2" fill="#fff5f5" stroke="#c66" strokeWidth="1.5" />
+      <rect x="12" y="8" width="24" height="32" rx="1" fill="none" stroke="#c66" strokeWidth="2" />
     </svg>
   );
 
   const Bottle = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <path
-        d="M18 8 L20 8 L22 20 L26 20 L28 8 L30 8 L28 44 L20 44 Z"
-        fill="#cce5ff"
-        stroke="#88c"
-        strokeWidth="1.5"
-      />
+      <path d="M18 8 L20 8 L22 20 L26 20 L28 8 L30 8 L28 44 L20 44 Z" fill="none" stroke="#4a90e2" strokeWidth="2" strokeLinejoin="round" />
     </svg>
   );
 
   const Resistor = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="8" y="18" width="32" height="12" rx="2" fill="#c49a4a" stroke="#8b7355" strokeWidth="1" />
-      <line x1="0" y1="24" x2="8" y2="24" stroke="#333" strokeWidth="2" />
-      <line x1="40" y1="24" x2="48" y2="24" stroke="#333" strokeWidth="2" />
+      <path d="M8 24 L16 24 L20 18 L24 30 L28 18 L32 24 L40 24" fill="none" stroke="#8b7355" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 
@@ -184,47 +174,57 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
 
   const Cloth = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="8" y="12" width="32" height="28" rx="2" fill="#8b7355" stroke="#6b5344" strokeWidth="1" />
+      <rect x="8" y="12" width="32" height="28" rx="1" fill="none" stroke="#6b5344" strokeWidth="2" />
     </svg>
   );
 
   const Bread = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <ellipse cx="24" cy="24" rx="18" ry="14" fill="#d4a574" stroke="#b8863c" strokeWidth="1.5" />
+      <rect x="8" y="16" width="32" height="20" rx="3" fill="none" stroke="#b8863c" strokeWidth="2" />
+      <path d="M12 20 Q24 16 36 20" fill="none" stroke="#b8863c" strokeWidth="1" opacity="0.7" />
     </svg>
   );
 
   const Newspaper = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="6" y="6" width="36" height="36" rx="2" fill="#fff" stroke="#888" strokeWidth="1.5" />
-      <line x1="24" y1="6" x2="24" y2="42" stroke="#ccc" strokeWidth="0.5" />
+      <rect x="6" y="6" width="36" height="36" rx="1" fill="none" stroke="#555" strokeWidth="2" />
+      <line x1="24" y1="6" x2="24" y2="42" stroke="#888" strokeWidth="1" />
     </svg>
   );
 
   const Water = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <path d="M24 8 Q8 28 24 42 Q40 28 24 8" fill="#4fc3f7" opacity="0.7" stroke="#29b6f6" strokeWidth="1" />
+      <path d="M24 8 Q8 28 24 42 Q40 28 24 8" fill="none" stroke="#29b6f6" strokeWidth="2" />
     </svg>
   );
 
   const Tile = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="8" y="14" width="32" height="20" rx="2" fill="#f5f5f5" stroke="#888" strokeWidth="1.5" />
+      <rect x="8" y="14" width="32" height="20" rx="1" fill="none" stroke="#888" strokeWidth="2" />
     </svg>
   );
 
   const Screen = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="6" y="8" width="36" height="28" rx="2" fill="#333" stroke="#555" strokeWidth="1" />
-      <rect x="10" y="12" width="28" height="20" fill="#e8f5e9" />
+      <rect x="6" y="8" width="36" height="28" rx="1" fill="none" stroke="#555" strokeWidth="2" />
+      <rect x="10" y="12" width="28" height="20" fill="none" stroke="#888" strokeWidth="1" />
     </svg>
   );
 
-  const GenericLab = () => (
+  /* Lab beaker – vector outline style, not cookie-like */
+  const LabBeaker = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
-      <rect x="16" y="12" width="16" height="24" rx="4" fill="#e8e8e8" stroke="#888" strokeWidth="2" />
+      <path
+        d="M16 8 L18 8 L20 32 L28 32 L30 8 L32 8 L30 42 L18 42 Z"
+        fill="none"
+        stroke="#555"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
     </svg>
   );
+
+  const GenericLab = () => <LabBeaker />;
 
   // Keyword-based icon selection
   if (normalized.includes("evaporat")) return <EvaporatingDish />;
@@ -239,6 +239,7 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
   if (normalized.includes("pipette")) return <Pipette />;
   if (normalized.includes("conical") || normalized.includes("flask")) return <ConicalFlask />;
   if (normalized.includes("microscope")) return <Microscope />;
+  if (normalized.includes("coverslip")) return <GlassSlide />;
   if (normalized.includes("slide")) return <GlassSlide />;
   if (normalized.includes("lens") || normalized.includes("convex")) return <Lens />;
   if (normalized.includes("iron") || normalized.includes("sulphur") || normalized.includes("sulfur") || normalized.includes("powder")) return <Powder />;
@@ -252,6 +253,9 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
   if (normalized.includes("water")) return <Water />;
   if (normalized.includes("tile")) return <Tile />;
   if (normalized.includes("screen")) return <Screen />;
+  if (normalized.includes("forceps")) return <Forceps />;
+  if (normalized.includes("blotting")) return <BlottingPaper />;
+  if (normalized.includes("container")) return <Container />;
 
   return <GenericLab />;
 };
