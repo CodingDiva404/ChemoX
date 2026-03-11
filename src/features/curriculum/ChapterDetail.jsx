@@ -2,7 +2,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
 import LeafPractical from "../practical/LeafPractical.jsx";
+import ObservationOfFungus from '../practical/ObservationOfFungus.jsx'
 import GenericSimulator from "../practical/GenericSimulator.jsx";
+import StaticElectricity from "../practical/StaticElectricity.jsx";
+import FerricSulphide from "../practical/FerricSulphide.jsx";
+import IdentificationOfAcidsBases from "../practical/IdentificationOfAcidsBases.jsx";
+import PHUsingIndicators from "../practical/PHUsingIndicators.jsx";
+import Neutralization from "../practical/Neutralization.jsx";
+import ParallelResistors from "../practical/ParallelResistors.jsx";
+import RefractionVerification from "../practical/RefractionVerification.jsx";
+import ConvexLensFocalLength from "../practical/ConvexLensFocalLength.jsx";
 
 const ChapterDetail = () => {
   const { id } = useParams();
@@ -23,6 +32,32 @@ const ChapterDetail = () => {
     ...(chapter.requirements || [])
   ];
 
+  let experimentComponent;
+  if (chapter.id === "bio-7-01") {
+    experimentComponent = <LeafPractical chapter={chapter} />;
+  } else if (chapter.id === "bio-8-01") {
+    experimentComponent = <ObservationOfFungus />;
+  } else if (chapter.id === "phy-7-02") {
+    experimentComponent = <StaticElectricity />;
+  } else if (chapter.id === "phy-8-01") {
+    experimentComponent = <FerricSulphide />;
+  } else if (chapter.id === "phy-9-01") {
+    experimentComponent = <IdentificationOfAcidsBases />;
+  } else if (chapter.id === "chem-11-01") {
+    experimentComponent = <PHUsingIndicators />;
+  } else if (chapter.id === "chem-9-06") {
+    experimentComponent = <Neutralization />;
+  } else if (chapter.id === "phy-10-02") {
+    experimentComponent = <ParallelResistors />;
+  } else if (chapter.id === "phy-10-08") {
+    experimentComponent = <RefractionVerification />;
+  } else if (chapter.id === "phy-10-10") {
+    experimentComponent = <ConvexLensFocalLength />;
+  } else {
+    experimentComponent = <GenericSimulator chapter={chapter} />;
+  }
+
+
   const renderContent = (data) => {
     if (!data) return null;
 
@@ -30,7 +65,7 @@ const ChapterDetail = () => {
       const headers = Object.keys(data[0]);
 
 
-    console.log(LeafPractical, GenericSimulator);
+      console.log(LeafPractical, GenericSimulator);
 
       return (
         <table className="observation-table">
@@ -54,6 +89,8 @@ const ChapterDetail = () => {
       );
     }
 
+
+
     if (Array.isArray(data)) {
       return (
         <ul>
@@ -67,20 +104,20 @@ const ChapterDetail = () => {
     return <p>{data}</p>;
   };
 
-  // const materialsList = chapter.materials ?? chapter.requirements ?? [];
-  const hasLeafPractical = chapter.id === "bio-7-01";
+  // // const materialsList = chapter.materials ?? chapter.requirements ?? [];
+  // const hasLeafPractical = chapter.id === "bio-7-01";
 
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      navigate(`/chapter/${allChapters[currentIndex - 1].id}`);
-    }
-  };
+  // const handlePrevious = () => {
+  //   if (currentIndex > 0) {
+  //     navigate(`/chapter/${allChapters[currentIndex - 1].id}`);
+  //   }
+  // };
 
-  const handleNext = () => {
-    if (currentIndex < allChapters.length - 1) {
-      navigate(`/chapter/${allChapters[currentIndex + 1].id}`);
-    }
-  };
+  // const handleNext = () => {
+  //   if (currentIndex < allChapters.length - 1) {
+  //     navigate(`/chapter/${allChapters[currentIndex + 1].id}`);
+  //   }
+  // };
 
   return (
     <div className="chapter-detail-container">
@@ -168,11 +205,7 @@ const ChapterDetail = () => {
           <div className="chapter-content-split">
             {/* Stimulator section (main content ~70–75%) */}
             <div className="chapter-stimulator-section">
-              {hasLeafPractical ? (
-                <LeafPractical chapter={chapter} />
-              ) : (
-                <GenericSimulator chapter={chapter} />
-              )}
+              {experimentComponent}
             </div>
 
           </div>

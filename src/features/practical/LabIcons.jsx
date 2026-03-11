@@ -160,6 +160,18 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
     </svg>
   );
 
+  const GlassBottle = () => (
+    <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
+      <ellipse cx="24" cy="10" rx="6" ry="2.5" fill="none" stroke="#4a90e2" strokeWidth="2" />
+      <rect x="20" y="10" width="8" height="6" rx="2" fill="none" stroke="#4a90e2" strokeWidth="2" />
+      <path d="M20 16 L20 22" stroke="#4a90e2" strokeWidth="2" />
+      <path d="M28 16 L28 22" stroke="#4a90e2" strokeWidth="2" />
+      <path d="M18 22 Q18 28 16 32 Q14 36 16 40 Q18 44 24 44 Q30 44 32 40 Q34 36 32 32 Q30 28 30 22 Z" fill="none" stroke="#4a90e2" strokeWidth="2" />
+      <ellipse cx="24" cy="22" rx="6" ry="2" fill="none" stroke="#4a90e2" strokeWidth="2" />
+      <path d="M19 34 Q24 36 29 34" fill="none" stroke="#4a90e2" strokeWidth="1" opacity="0.6" />
+    </svg>
+  );
+
   const Resistor = () => (
     <svg viewBox="0 0 48 48" width={size} height={size} className={className}>
       <path d="M8 24 L16 24 L20 18 L24 30 L28 18 L32 24 L40 24" fill="none" stroke="#8b7355" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -244,6 +256,8 @@ export const LabIcon = ({ name, size = 64, className = "" }) => {
   if (normalized.includes("lens") || normalized.includes("convex")) return <Lens />;
   if (normalized.includes("iron") || normalized.includes("sulphur") || normalized.includes("sulfur") || normalized.includes("powder")) return <Powder />;
   if (normalized.includes("litmus") || normalized.includes("ph paper")) return <PaperStrip />;
+  if (normalized.includes("universal indicator")) return <Bottle />;
+  if (normalized.includes("glass bottle") || (normalized.includes("glass") && normalized.includes("bottle"))) return <GlassBottle />;
   if (normalized.includes("bottle")) return <Bottle />;
   if (normalized.includes("resistor")) return <Resistor />;
   if (normalized.includes("straw")) return <Straw />;

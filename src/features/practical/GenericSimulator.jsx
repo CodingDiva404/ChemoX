@@ -164,7 +164,7 @@ const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
     e.stopPropagation();
 
     // 🔥 Skip validation completely if custom UI exists
-    if (customRenderer) return;
+    // if (customRenderer) return;
 
     setStepError(null);
 
@@ -243,8 +243,8 @@ const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
       <div className="generic-simulator-content">
         <div
           className="generic-simulator-zone"
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
+          onDrop={!customRenderer ? handleDrop : undefined}
+          onDragOver={!customRenderer ? handleDragOver : undefined}
         >
           {stepError && (
             <div className="generic-step-error">
@@ -262,6 +262,8 @@ const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
               placedMaterials,
               currentStep,
               steps,
+              handleDrop,
+              handleDragOver,
             })
           ) : (
             placedMaterials.length > 0 && (
@@ -331,7 +333,7 @@ const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
             Step {currentStep + 1} of {steps.length}
           </span>
           <button
-            type="button" 
+            type="button"
             onClick={nextStep}
             disabled={
               canGoNext
