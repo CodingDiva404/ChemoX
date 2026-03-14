@@ -18,6 +18,159 @@
 .chapter-main-header {
   width: 100%;
   text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.how-to-use-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+}
+
+.how-to-use-btn span {
+  background: white;
+  color: #4a90e2;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.how-to-use-btn:hover {
+  background: #357abd;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Modal Styling */
+.how-to-use-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.how-to-use-modal {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.how-to-use-header {
+  background: #f8fbff;
+  padding: 16px 24px;
+  border-bottom: 1px solid #eef5ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.how-to-use-header h3 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.how-to-use-content {
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.device-instruction {
+  margin-bottom: 24px;
+}
+
+.device-instruction h4 {
+  margin: 0 0 12px 0;
+  color: #4a90e2;
+  font-size: 1.1rem;
+}
+
+.device-instruction ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.device-instruction li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.device-instruction li::before {
+  content: "•";
+  color: #4a90e2;
+  position: absolute;
+  left: -15px;
+  font-weight: bold;
+}
+
+.how-to-use-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #eef5ff;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.got-it-btn {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .how-to-use-btn {
+    position: static;
+    transform: none;
+    margin-top: 8px;
+  }
+  
+  .chapter-main-header {
+    flex-direction: column;
+  }
 }
 
 .chapter-main-title {
@@ -40,7 +193,7 @@
 }
 
 /* =========================
-   Left Column - Document with all details
+   Left Column - Document
 ========================= */
 
 .chapter-doc-panel {
@@ -51,7 +204,7 @@
   padding: 19px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
@@ -61,7 +214,6 @@
   font-weight: 600;
   text-align: center;
   color: #1a1a2e;
-  flex-shrink: 0;
 }
 
 .chapter-doc-content {
@@ -75,50 +227,24 @@
   margin-bottom: 20px;
 }
 
-.chapter-doc-section:last-child {
-  margin-bottom: 0;
-}
-
 .chapter-doc-heading {
   margin: 0 0 8px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #1a1a2e;
-}
-
-.chapter-doc-subheading {
-  margin: 12px 0 6px 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #444;
 }
 
 .chapter-doc-section ul,
 .chapter-doc-section ol {
-  margin: 0 0 0 20px;
-  padding: 0;
-}
-
-.chapter-doc-section li {
-  margin-bottom: 6px;
-}
-
-.chapter-doc-section p {
-  margin: 0 0 8px 0;
-}
-
-.chapter-doc-section table {
-  margin-top: 8px;
+  margin-left: 20px;
 }
 
 .chapter-doc-reaction {
-  font-family: "Cambria Math", "Times New Roman", serif;
+  font-family: "Cambria Math","Times New Roman",serif;
   font-size: 1.1rem;
-  letter-spacing: 0.5px;
 }
 
 /* =========================
-   Right Column - Stimulator + Materials
+   Right Column
 ========================= */
 
 .chapter-content-panel {
@@ -129,7 +255,7 @@
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   min-width: 0;
 }
 
@@ -138,7 +264,6 @@
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  color: #1a1a2e;
 }
 
 .chapter-content-split {
@@ -148,7 +273,10 @@
   min-height: 0;
 }
 
-/* Stimulator section - main content (~70-75%) */
+/* =========================
+   Simulator Section
+========================= */
+
 .chapter-stimulator-section {
   flex: 3;
   min-width: 0;
@@ -171,7 +299,10 @@
   overflow-y: auto;
 }
 
-/* Materials section - sidebar (~25-30%) */
+/* =========================
+   Materials Sidebar
+========================= */
+
 .chapter-materials-section {
   flex: 1;
   min-width: 200px;
@@ -180,20 +311,18 @@
   border: 1px solid #dce7f7;
   border-radius: 10px;
   padding: 16px;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .chapter-materials-section h4 {
   margin: 0 0 12px 0;
   text-align: center;
-  font-size: 1rem;
 }
 
 .chapter-materials-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  overflow-y: auto;
 }
 
 .chapter-material-item {
@@ -204,66 +333,167 @@
   border: 1px solid #e8eef7;
 }
 
-/* Override LeafPractical container when nested */
-.chapter-stimulator-section .leaf-container {
-  flex: 1;
-  height: auto;
-  min-height: 400px;
-  margin: 0;
-}
-
 /* =========================
-   Bottom Navigation
+   Observation Table
 ========================= */
 
-.chapter-nav-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 0;
-  gap: 20px;
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
 }
 
-.chapter-nav-btn {
-  padding: 10px 24px;
-  border: 2px solid #4a90e2;
-  border-radius: 10px;
-  background: #fff;
-  color: #4a90e2;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.chapter-nav-btn:hover:not(:disabled) {
-  background: #4a90e2;
-  color: white;
-}
-
-.chapter-nav-btn:disabled {
-  border-color: #ccc;
-  color: #999;
-  cursor: not-allowed;
-}
-
-/* =========================
-   Observation Table (theory content)
-========================= */
-
-.observation-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+.observation-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
 }
 
 .observation-table th,
-.observation-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
+.observation-table td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
 }
 
-.observation-table th {
-  background-color: #4a90e2;
-  color: white;
+.observation-table th{
+  background:#4a90e2;
+  color:white;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+.chapter-nav-footer{
+  display:flex;
+  justify-content:space-between;
+  padding:16px 0;
+}
+
+.chapter-nav-btn{
+  padding:10px 24px;
+  border:2px solid #4a90e2;
+  border-radius:10px;
+  background:#fff;
+  color:#4a90e2;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+.chapter-nav-btn:hover:not(:disabled){
+  background:#4a90e2;
+  color:white;
+}
+
+.chapter-nav-btn:disabled{
+  border-color:#ccc;
+  color:#999;
+}
+
+/* =========================
+   Tablet Layout (ONLY responsive change)
+========================= */
+
+@media (max-width: 1200px) {
+  .chapter-doc-panel {
+    flex: 0 0 350px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .chapter-detail-container {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .chapter-main-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chapter-doc-panel {
+    width: 100%;
+    max-height: 500px;
+    flex: none;
+  }
+
+  .chapter-content-panel {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Mobile Layout
+========================= */
+
+@media (max-width: 768px) {
+  .chapter-detail-container {
+    padding: 12px;
+  }
+
+  /* Main Header mobile */
+  .chapter-main-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  /* Stack everything */
+  .chapter-main-content {
+    gap: 16px;
+  }
+
+  /* Simulator section FIRST */
+  .chapter-content-panel {
+    order: 1;
+    padding: 12px;
+  }
+
+  /* Document LAST */
+  .chapter-doc-panel {
+    order: 2;
+    padding: 16px;
+    max-height: none;
+  }
+
+  .chapter-doc-title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .chapter-doc-heading {
+    font-size: 0.95rem;
+  }
+
+  .chapter-doc-content {
+    font-size: 0.85rem;
+  }
+
+  /* Simulator + materials stack */
+  .chapter-content-split {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .chapter-content-title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  /* Navigation */
+  .chapter-nav-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chapter-main-title {
+    font-size: 1.2rem;
+  }
+
+  .chapter-doc-panel,
+  .chapter-content-panel {
+    padding: 10px;
+    border-radius: 8px;
+  }
 }

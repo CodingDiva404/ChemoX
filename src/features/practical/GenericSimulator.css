@@ -30,12 +30,13 @@
   border-radius: 12px;
   background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
   min-height: 350px;
-  padding: 24px;
+  padding: 100px 24px 24px; /* Increased top padding to clear the step overlay */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   transition: border-color 0.2s, background 0.2s;
+  overflow: hidden; /* contain absolute children like step overlay */
 }
 
 .generic-simulator-zone:hover,
@@ -185,37 +186,46 @@
 
 .generic-step-overlay {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   left: 20px;
   right: 20px;
+  bottom: auto;
 
-  background: rgba(255, 255, 255, 0.2); /* transparent glass */
-  backdrop-filter: blur(18px);         /* blur behind */
+  background: rgba(255, 255, 255, 0.4); /* clearer glass */
+  backdrop-filter: blur(12px);         /* blur behind */
   -webkit-backdrop-filter: blur(12px);
 
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 14px;
-  padding: 12px 18px;
+  padding: 10px 16px;
 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  pointer-events: none; /* so it doesn't block drops */
 }
+
 .generic-step-badge {
   display: inline-block;
   background: #4a90e2;
   color: white;
-  padding: 4px 12px;
+  padding: 2px 10px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .generic-step-text {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #2c3e50;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #1a1a2e;
+  font-weight: 500;
+}
+
+/* Ensure error stays above overlay */
+.generic-step-error {
+  z-index: 20;
 }
 
 /* =========================
@@ -320,4 +330,82 @@
   font-size: 0.9rem;
   color: #555;
   font-weight: 500;
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+
+@media (max-width: 1024px) {
+  .generic-simulator-content {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .generic-simulator-zone {
+    flex: none;
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .generic-materials-box {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin-top: 16px;
+  }
+
+  .generic-materials-scroll {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 200px;
+  }
+
+  .generic-draggable-item {
+    flex: 0 0 calc(50% - 8px);
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .generic-simulator-zone {
+    padding: 80px 16px 16px; /* Clear step overlay on mobile */
+    min-height: 350px;
+  }
+
+  .generic-step-overlay {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: auto; /* ensure it doesn't stretch */
+    padding: 10px 14px;
+  }
+
+  .generic-step-text {
+    font-size: 0.85rem;
+  }
+
+  .generic-draggable-item {
+    flex: 0 0 100%;
+    max-width: none;
+  }
+
+  .generic-simulator-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .generic-simulator-controls button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .generic-step-indicator {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
 }

@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
 import LeafPractical from "../practical/LeafPractical.jsx";
@@ -16,6 +17,7 @@ import ConvexLensFocalLength from "../practical/ConvexLensFocalLength.jsx";
 const ChapterDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate()
+  const [showHowToUse, setShowHowToUse] = useState(false);
 
   const allChapters = sciencePractical.classes
     .flatMap((cls) => cls.subjects)
@@ -68,6 +70,7 @@ const ChapterDetail = () => {
       console.log(LeafPractical, GenericSimulator);
 
       return (
+        <div className="table-wrapper">
         <table className="observation-table">
           <thead>
             <tr>
@@ -86,6 +89,7 @@ const ChapterDetail = () => {
             ))}
           </tbody>
         </table>
+        </div>
       );
     }
 
@@ -124,6 +128,13 @@ const ChapterDetail = () => {
       {/* Main header */}
       <header className="chapter-main-header">
         <h1 className="chapter-main-title">{chapter.title}</h1>
+        <button 
+          className="how-to-use-btn"
+          onClick={() => setShowHowToUse(true)}
+          title="How to use this practical"
+        >
+          <span>?</span> How to Use
+        </button>
       </header>
 
       {/* Main content area: two columns */}
@@ -211,6 +222,49 @@ const ChapterDetail = () => {
           </div>
         </div>
       </main>
+
+      {showHowToUse && (
+        <div className="how-to-use-overlay" onClick={() => setShowHowToUse(false)}>
+          <div className="how-to-use-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="how-to-use-header">
+              <h3>How to use ChemXplore</h3>
+              <button className="close-modal-btn" onClick={() => setShowHowToUse(false)}>&times;</button>
+            </div>
+            <div className="how-to-use-content">
+              <div className="device-instruction">
+                <h4>💻 Desktop</h4>
+                <ul>
+                  <li>Hover over materials in the right sidebar to see their names and hints.</li>
+                  <li><strong>Drag and Drop</strong> allowed materials from the sidebar into the simulator zone.</li>
+                  <li>Follow the <strong>Step Panel</strong> at the bottom of the simulator to perform the experiment.</li>
+                  <li>Click <strong>Next</strong> or <strong>Previous</strong> to navigate through steps.</li>
+                </ul>
+              </div>
+              <div className="device-instruction">
+                <h4>📱 Tablet</h4>
+                <ul>
+                  <li><strong>Tap and Hold</strong> a material to view its description.</li>
+                  <li><strong>Drag</strong> materials into the simulator zone to interact.</li>
+                  <li>The simulator and notes are stacked for easier access; scroll to view details.</li>
+                  <li>Use the <strong>Navigation Controls</strong> at the bottom of the simulator.</li>
+                </ul>
+              </div>
+              <div className="device-instruction">
+                <h4>📲 Mobile</h4>
+                <ul>
+                  <li>The <strong>Simulator</strong> is at the top. Materials are listed below it.</li>
+                  <li><strong>Drag</strong> materials upwards into the simulator area to use them.</li>
+                  <li>Scroll further down to read the <strong>Aim, Procedure, and Observations</strong>.</li>
+                  <li>Use the large <strong>Next/Prev</strong> buttons to move through the practical.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="how-to-use-footer">
+              <button className="got-it-btn" onClick={() => setShowHowToUse(false)}>Got it!</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Bottom navigation */}
       {/* <footer className="chapter-nav-footer">

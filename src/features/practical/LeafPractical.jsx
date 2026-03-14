@@ -73,6 +73,19 @@ const LeafPractical = ({ chapter }) => {
                 onDragStart={(e) =>
                   e.dataTransfer.setData("text/plain", leaf)
                 }
+                onClick={() => {
+                  /* Mobile-friendly: Click to place leaf */
+                  if (!isDisabled) {
+                    if (isStep1) {
+                      setLeafInWater(leaf);
+                      setSelectedLeaf(leaf);
+                    } else if (isStep2 && leaf === selectedLeaf) {
+                      setLeafInNewspaper(leaf);
+                    }
+                  }
+                }}
+                style={{ cursor: !isDisabled ? "pointer" : "default" }}
+                title={!isDisabled ? "Click or drag to place leaf" : ""}
               />
             );
           })}

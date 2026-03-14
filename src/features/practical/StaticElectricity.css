@@ -1,0 +1,361 @@
+.static-zone {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.bottle-zone {
+  position: absolute;
+  left: 40%;
+  bottom: 100px;
+}
+
+.near-zone {
+  position: absolute;
+  right: 25%;
+  bottom: 120px;
+}
+
+/* Bottle */
+.bottle {
+  width: 60px;
+  height: 120px;
+  background: #bfe3ff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.bottle-neck {
+  width: 35px;
+  height: 25px;
+  background: #bfe3ff;
+  position: absolute;
+  top: -25px;
+  left: 14px;
+  border-radius: 4px;
+}
+
+/* Straw Base */
+.straw {
+  width: 6px;
+  height: 120px;
+  position: absolute;
+  transform-origin: bottom center;
+}
+
+/* Red Straw (on bottle) */
+.red-straw {
+  background: red;
+  left: 24px;
+  bottom: 65px;
+}
+
+/* Blue Straw (second straw) */
+.blue-straw {
+  background: blue;
+  left: 35px;
+  bottom: 65px;
+}
+
+/* Repel Animation */
+/* .repel {
+  transform: rotate(-25deg);
+  transition: 0.5s ease;
+} */
+
+.straw1 {
+  background: red;
+}
+
+.straw2 {
+  background: blue;
+}
+
+
+/* ========================= */
+/* STEP 3 IMPROVED LAYOUT    */
+/* ========================= */
+
+.cloth-zone {
+  position: absolute;
+  left: 15%;
+  bottom: 110px;
+  width: 140px;
+  height: 90px;
+  border: 2px dashed #999;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.cloth {
+  width: 120px;
+  height: 70px;
+  background: #8b4513;
+  border-radius: 8px;
+}
+
+.cloth-zone:has(.cloth) {
+  border-style: solid;
+  margin-left: -50px;
+
+}
+
+/* FIX: Blue straw position when on cloth */
+
+.cloth-zone .blue-straw {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+}
+
+/* Blue straw rubbing area */
+
+.rub-zone {
+  position: absolute;
+  left: 15%;
+  bottom: 210px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Move blue straw nicely */
+
+.rub-zone .blue-straw {
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+/* Rub button */
+
+.rub-btn {
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: white;
+  cursor: pointer;
+}
+
+/* Smooth rubbing animation */
+
+.rub {
+  animation: rubMove 0.35s infinite alternate ease-in-out;
+}
+
+@keyframes rubMove {
+  from {
+    transform: translate(-50%, -10px);
+  }
+
+  to {
+    transform: translate(-50%, 10px);
+  }
+}
+
+/* Instruction text */
+
+.charged-info {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Attraction animation */
+
+.attract {
+  transform: rotate(4deg);
+  transition: 0.5s ease;
+}
+
+
+.charge-effect {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+}
+
+.charge-effect::before,
+.charge-effect::after {
+  content: "⚡";
+  position: absolute;
+  font-size: 14px;
+  animation: spark 0.6s infinite alternate;
+}
+
+.charge-effect::after {
+  left: 15px;
+  animation-delay: 0.3s;
+}
+
+.bottle-straw{
+  left:37px;
+  bottom:64px;
+}
+
+@keyframes spark {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-10px);
+    opacity: 0.3;
+  }
+}
+
+.red-straw.repel{
+  animation: repelLeft 1s ease-in-out ;
+}
+
+.blue-straw.repel{
+  animation: repelRight 1s ease-in-out;
+}
+
+@keyframes repelLeft{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-3px); }
+}
+
+@keyframes repelRight{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(3px); }
+}
+
+/* ============================= */
+/* STEP 5 : Unlike charges attract */
+/* Only top 10% moves/* Repel right slightly   */
+/* ============================= */
+
+.red-straw.attract {
+  animation: attractRight 0.5s forwards ease-in-out;
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+
+@media (max-width: 1024px) {
+  .bottle-zone {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .near-zone {
+    right: 15%;
+  }
+
+  .cloth-zone {
+    left: 10%;
+    width: 120px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .static-zone {
+    height: 400px;
+  }
+
+  .bottle-zone {
+    bottom: 80px;
+  }
+
+  .near-zone {
+    right: 5%;
+    bottom: 100px;
+  }
+
+  .cloth-zone {
+    left: 5%;
+    bottom: 90px;
+    width: 110px;
+    height: 70px;
+  }
+
+  .cloth {
+    width: 100px;
+    height: 60px;
+  }
+
+  .rub-zone {
+    left: 5%;
+    bottom: 180px;
+    width: 110px;
+  }
+
+  .charged-info {
+    font-size: 14px;
+    bottom: 20px;
+    width: 90%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottle {
+    width: 50px;
+    height: 100px;
+  }
+
+  .bottle-neck {
+    width: 30px;
+    left: 10px;
+  }
+
+  .straw {
+    height: 100px;
+  }
+
+  .red-straw {
+    left: 22px;
+  }
+
+  .blue-straw {
+    left: 30px;
+  }
+}
+
+.blue-straw.attract{
+  animation: attractLeft 0.5s forwards ease-in-out;
+}
+
+@keyframes attractRight{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes attractLeft{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(-1deg);
+  }
+}
+
+/* cloth position */
+.bottle-cloth{
+  position:absolute;
+  right:48px;
+  top:-15px;
+}

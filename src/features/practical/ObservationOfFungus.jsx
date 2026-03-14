@@ -16,7 +16,7 @@ const ObservationOfFungus = () => {
   const [sampleTaken, setSampleTaken] = useState(false);
   const [microscopeView, setMicroscopeView] = useState(false);
 
-  // Fungus growth timelapse
+  /* Fungus growth timelapse */
   useEffect(() => {
     if (currentStepState >= 2) {
       const timer = setTimeout(() => {
@@ -56,6 +56,18 @@ const ObservationOfFungus = () => {
       setCurrentStepState(currentStep);
     }
 
+    /* Show only result screen */
+    if (microscopeView) {
+      return (
+        <div className="result-screen">
+          <img src={hyphae} alt="hyphae" />
+          <p className="result-text">
+            Mucor hyphae observed under microscope
+          </p>
+        </div>
+      );
+    }
+
     const humidEnvironment = currentStep >= 1;
 
     const slidePlaced = placedMaterials.includes("Glass Slide");
@@ -80,7 +92,7 @@ const ObservationOfFungus = () => {
 
     return (
       <div
-        className="fungus-workspace"
+        className={`fungus-workspace ${sampleTaken ? "fade-out-experiment" : ""}`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
@@ -89,13 +101,23 @@ const ObservationOfFungus = () => {
           <p className="fungus-hint">Drag the Glass Slide here</p>
         )}
 
-        {/* STEP 1: Prepare slide */}
-        {slidePlaced && !slideInContainer && currentStep === 0 && (
-          <div
-            className="slide-area"
-            draggable={breadPlaced && waterAdded}
-            onDragStart={handlePreparedSlideDrag}
-          >
+    { /* STEP 1: Prepare slide */}
+    {slidePlaced && !slideInContainer && currentStep <= 2 && (
+      <div
+        className="slide-area"
+        draggable={breadPlaced && waterAdded}
+        onDragStart={handlePreparedSlideDrag}
+        onClick={() => {
+          /* Mobile-friendly: Click to place in container if ready */
+          if (breadPlaced && waterAdded && currentStep === 2) {
+            setSlideInContainer(true);
+          }
+        }}
+        style={{ 
+          cursor: (breadPlaced && waterAdded && currentStep === 2) ? "pointer" : "default" 
+        }}
+        title={ (breadPlaced && waterAdded && currentStep === 2) ? "Click or drag to place in container" : "" }
+      >
 
             <img src={slide} className="slide-img" alt="slide" />
 
@@ -128,7 +150,7 @@ const ObservationOfFungus = () => {
                   <div className="bread-wrapper">
                     <img src={bread} className="bread-img" alt="bread" />
 
-                    {/* STEP 4: Fungus */}
+                    {/* STEP 4: Fungus growth */}
                     {showFungus && (
                       <div
                         className="fungus"
@@ -136,6 +158,17 @@ const ObservationOfFungus = () => {
                         onDragStart={(e) => {
                           e.dataTransfer.setData("fungusSample", "true");
                         }}
+                        onClick={() => {
+                          /* Mobile-friendly: Click to take sample to microscope */
+                          if (currentStep >= 4) {
+                            setSampleTaken(true);
+                            setTimeout(() => {
+                              setMicroscopeView(true);
+                            }, 800);
+                          }
+                        }}
+                        style={{ cursor: currentStep >= 4 ? "pointer" : "default" }}
+                        title={currentStep >= 4 ? "Click or drag fungus sample to microscope" : ""}
                       ></div>
                     )}
 
@@ -161,7 +194,7 @@ const ObservationOfFungus = () => {
 
                   setTimeout(() => {
                     setMicroscopeView(true);
-                  }, 1000);
+                  }, 800);
                 }
               }}
               onDragOver={(e) => e.preventDefault()}
@@ -177,13 +210,6 @@ const ObservationOfFungus = () => {
                 <p className="microscope-hint">
                   Drag fungus sample to microscope
                 </p>
-              )}
-
-              {microscopeView && (
-                <div className="microscope-view">
-                  <img src={hyphae} alt="hyphae" />
-                  <p>Mucor hyphae observed under microscope</p>
-                </div>
               )}
 
             </div>

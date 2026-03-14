@@ -65,12 +65,12 @@ const elements = [
   { symbol: "I", name: "Iodine", number: 53, type: "halogen", group: 17, period: 5, protons: 53, neutrons: 74, electrons: 53 },
   { symbol: "Xe", name: "Xenon", number: 54, type: "noble", group: 18, period: 5, protons: 54, neutrons: 77, electrons: 54 },
 
-    // Period 6
+  // Period 6
   { symbol: "Cs", name: "Cesium", number: 55, type: "alkali", group: 1, period: 6, protons: 55, neutrons: 78, electrons: 55 },
   { symbol: "Ba", name: "Barium", number: 56, type: "alkaline", group: 2, period: 6, protons: 56, neutrons: 81, electrons: 56 },
 
   // Lanthanoids (shown separately, period 8 visually)
-  { symbol: "La", name: "Lanthanum", number: 57, type: "lanthanide",  group: 3, period: 6, protons: 57, neutrons: 82, electrons: 57 },
+  { symbol: "La", name: "Lanthanum", number: 57, type: "lanthanide", group: 3, period: 6, protons: 57, neutrons: 82, electrons: 57 },
   { symbol: "Ce", name: "Cerium", number: 58, type: "lanthanoid", group: 4, period: 8, protons: 58, neutrons: 82, electrons: 58 },
   { symbol: "Pr", name: "Praseodymium", number: 59, type: "lanthanoid", group: 5, period: 8, protons: 59, neutrons: 82, electrons: 59 },
   { symbol: "Nd", name: "Neodymium", number: 60, type: "lanthanoid", group: 6, period: 8, protons: 60, neutrons: 84, electrons: 60 },
@@ -103,12 +103,12 @@ const elements = [
   { symbol: "At", name: "Astatine", number: 85, type: "halogen", group: 17, period: 6, protons: 85, neutrons: 125, electrons: 85 },
   { symbol: "Rn", name: "Radon", number: 86, type: "noble", group: 18, period: 6, protons: 86, neutrons: 136, electrons: 86 },
 
-    // Period 7
+  // Period 7
   { symbol: "Fr", name: "Francium", number: 87, type: "alkali", group: 1, period: 7, protons: 87, neutrons: 136, electrons: 87 },
   { symbol: "Ra", name: "Radium", number: 88, type: "alkaline", group: 2, period: 7, protons: 88, neutrons: 138, electrons: 88 },
 
   // Actinoids (shown separately, period 9 visually)
-  { symbol: "Ac", name: "Actinium", number: 89, type: "actinide",  group: 3, period: 7, protons: 89, neutrons: 138, electrons: 89 },
+  { symbol: "Ac", name: "Actinium", number: 89, type: "actinide", group: 3, period: 7, protons: 89, neutrons: 138, electrons: 89 },
   { symbol: "Th", name: "Thorium", number: 90, type: "actinoid", group: 4, period: 9, protons: 90, neutrons: 142, electrons: 90 },
   { symbol: "Pa", name: "Protactinium", number: 91, type: "actinoid", group: 5, period: 9, protons: 91, neutrons: 140, electrons: 91 },
   { symbol: "U", name: "Uranium", number: 92, type: "actinoid", group: 6, period: 9, protons: 92, neutrons: 146, electrons: 92 },
@@ -140,7 +140,7 @@ const elements = [
   { symbol: "Lv", name: "Livermorium", number: 116, type: "post-transition", group: 16, period: 7, protons: 116, neutrons: 177, electrons: 116 },
   { symbol: "Ts", name: "Tennessine", number: 117, type: "halogen", group: 17, period: 7, protons: 117, neutrons: 177, electrons: 117 },
   { symbol: "Og", name: "Oganesson", number: 118, type: "noble", group: 18, period: 7, protons: 118, neutrons: 176, electrons: 118 }
-  
+
 ];
 
 
@@ -148,36 +148,40 @@ const PeriodicTable = () => {
   return (
     <div className="pt-wrapper">
       <h1 className="pt-title">Interactive Periodic Table</h1>
-      <div className="pt-grid">
-        {elements.map((el) => (
-          <div
-            key={el.number}
-            className={`pt-card ${el.type}`}
-            style={{
-              gridColumn: el.group,
-              gridRow: el.period
-            }}
-          >
-            <span className="pt-number">{el.number}</span>
-            <h2 className="pt-symbol">{el.symbol}</h2>
-            <p className="pt-name">{el.name}</p>
 
-            {/* Hover popup with subatomic particles */}
-            <div className="pt-popup">
-              <h4>{el.name} Structure</h4>
-              <p>Protons: {el.protons}</p>
-              <p>Neutrons: {el.neutrons}</p>
-              <p>Electrons: {el.electrons}</p>
+      <p className="pt-hint">Swipe → to explore the periodic table</p>
 
-              {/* Simple animated electron orbits */}
-              <div className="nucleus">
-                {Array.from({ length: Math.min(el.electrons, 3) }).map((_, i) => (
-                  <div key={i} className="electron" style={{ '--i': i }}></div>
-                ))}
+      <div className="pt-scroll">
+        <div className="pt-grid">
+          {elements.map((el) => (
+            <div
+              key={el.number}
+              className={`pt-card ${el.type}`}
+              style={{
+                gridColumn: el.group,
+                gridRow: el.period
+              }}
+            >
+              <span className="pt-number">{el.number}</span>
+              <h2 className="pt-symbol">{el.symbol}</h2>
+              <p className="pt-name">{el.name}</p>
+
+              <div className="pt-popup">
+                <h4>{el.name} Structure</h4>
+                <p>Protons: {el.protons}</p>
+                <p>Neutrons: {el.neutrons}</p>
+                <p>Electrons: {el.electrons}</p>
+
+                <div className="nucleus">
+                  {Array.from({ length: Math.min(el.electrons, 3) }).map((_, i) => (
+                    <div key={i} className="electron"></div>
+                  ))}
+                </div>
               </div>
+
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

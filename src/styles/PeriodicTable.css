@@ -5,19 +5,34 @@
   font-family: sans-serif;
 }
 
+/* Title */
 .pt-title {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1.8rem;
 }
 
+.pt-hint{
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+  margin-bottom:10px;
+}
+
+/* TABLE CONTAINER */
 .pt-grid {
   display: grid;
-  grid-template-columns: repeat(18, 60px); /* 18 groups */
-  grid-auto-rows: 60px; /* uniform row height */
-  gap: 2px;
+  grid-template-columns: repeat(18, 60px);
+  grid-auto-rows: 60px;
+  gap: 3px;
   justify-content: center;
+
+  /* KEY FOR RESPONSIVENESS */
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
+/* Element Card */
 .pt-card {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -25,22 +40,53 @@
   font-size: 12px;
   padding: 4px;
   box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
 }
 
-/* Color by type */
-.pt-card.nonmetal { background: #8fd3f4; }
-.pt-card.noble { background: #ffcc99; }
-.pt-card.alkali { background: #ff6666; }
-.pt-card.alkaline { background: #ffcc66; }
-.pt-card.transition { background: #ffd700; }
-.pt-card.post-transition { background: #cccccc; }
-.pt-card.metalloid { background: #66ff66; }
-.pt-card.halogen { background: #66ccff; }
-.pt-card.lanthanoid { background: #ff99cc; }
-.pt-card.actinoid { background: #ff99ff; }
-.pt-card.empty { background: transparent; border: none; }
+/* Colors */
+.pt-card.nonmetal {
+  background: #8fd3f4;
+}
+
+.pt-card.noble {
+  background: #ffcc99;
+}
+
+.pt-card.alkali {
+  background: #ff6666;
+}
+
+.pt-card.alkaline {
+  background: #ffcc66;
+}
+
+.pt-card.transition {
+  background: #ffd700;
+}
+
+.pt-card.post-transition {
+  background: #cccccc;
+}
+
+.pt-card.metalloid {
+  background: #66ff66;
+}
+
+.pt-card.halogen {
+  background: #66ccff;
+}
+
+.pt-card.lanthanoid {
+  background: #ff99cc;
+}
+
+.pt-card.actinoid {
+  background: #ff99ff;
+}
+
 .pt-card.lanthanide {
-  background-color: #4fc3f7; 
+  background-color: #4fc3f7;
   color: #000;
 }
 
@@ -49,19 +95,31 @@
   color: #000;
 }
 
-/* Text styling */
-.pt-number { font-size: 10px; display: block; }
-.pt-symbol { font-size: 16px; margin: 0; }
-.pt-name { font-size: 10px; margin: 0; }
-
-.pt-card {
-  position: relative;
-  cursor: pointer;
+.pt-card.empty {
+  background: transparent;
+  border: none;
 }
 
+/* Text */
+.pt-number {
+  font-size: 10px;
+  display: block;
+}
+
+.pt-symbol {
+  font-size: 16px;
+  margin: 0;
+}
+
+.pt-name {
+  font-size: 10px;
+  margin: 0;
+}
+
+/* POPUP */
 .pt-popup {
   position: absolute;
-  top: -120px; /* above the element */
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
@@ -73,14 +131,14 @@
   display: none;
   text-align: center;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .pt-card:hover .pt-popup {
   display: block;
 }
 
-/* Nucleus and electrons */
+/* Nucleus */
 .nucleus {
   position: relative;
   width: 50px;
@@ -102,10 +160,77 @@
   animation: orbit 2s linear infinite;
 }
 
-.electron:nth-child(2) { animation-delay: 0.5s; }
-.electron:nth-child(3) { animation-delay: 1s; }
+.electron:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.electron:nth-child(3) {
+  animation-delay: 1s;
+}
 
 @keyframes orbit {
-  0% { transform: rotate(0deg) translateX(-20px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(-20px) rotate(-360deg); }
+  0% {
+    transform: rotate(0deg) translateX(-20px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(-20px) rotate(-360deg);
+  }
+}
+
+.pt-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* ---------------------- */
+/* Tablet adjustments */
+/* ---------------------- */
+
+@media (max-width: 900px) {
+
+  .pt-grid {
+    grid-template-columns: repeat(18, 50px);
+    grid-auto-rows: 50px;
+  }
+
+  .pt-symbol {
+    font-size: 14px;
+  }
+
+}
+
+/* ---------------------- */
+/* Mobile adjustments */
+/* ---------------------- */
+
+@media (max-width: 600px) {
+
+  .pt-grid {
+    grid-template-columns: repeat(18, 42px);
+    grid-auto-rows: 42px;
+    min-width: 1080px;
+
+  }
+
+  .pt-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pt-symbol {
+    font-size: 12px;
+  }
+
+  .pt-name {
+    display: none;
+    /* hide long names on small screens */
+  }
+
+  .pt-number {
+    font-size: 8px;
+  }
+
 }
