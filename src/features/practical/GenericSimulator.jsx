@@ -37,7 +37,13 @@ const getMaterialsForStep = (stepText, materialsList) => {
   });
 };
 
-const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
+const GenericSimulator = ({ 
+  chapter, 
+  customRenderer, 
+  canGoNext, 
+  onStepChange, 
+  onMaterialPlace 
+}) => {
   const materialsList = useMemo(() => getAllMaterials(chapter), [chapter]);
   const steps = useMemo(() => getProcedureSteps(chapter), [chapter]);
 
@@ -45,6 +51,15 @@ const GenericSimulator = ({ chapter, customRenderer, canGoNext }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [removingItem, setRemovingItem] = useState(null);
   const [stepError, setStepError] = useState(null);
+
+  // Sync state with parent if callbacks are provided
+  useEffect(() => {
+    if (onStepChange) onStepChange(currentStep);
+  }, [currentStep, onStepChange]);
+
+  useEffect(() => {
+    if (onMaterialPlace) onMaterialPlace(placedMaterials);
+  }, [placedMaterials, onMaterialPlace]);
 
   const allowedMaterials = useMemo(() => {
     return steps[currentStep]
