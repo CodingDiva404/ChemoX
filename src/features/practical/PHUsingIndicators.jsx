@@ -43,6 +43,7 @@ const PHUsingIndicators = () => {
     placedMaterials,
     handleDrop,
     handleDragOver,
+    currentStep
   }) => {
     return (
       <div
@@ -50,11 +51,14 @@ const PHUsingIndicators = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        {placedMaterials.length === 0 && (
-          <p className="fungus-hint">
-            Drag materials here to set up the experiment
-          </p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && placedMaterials.length === 0 && "Step 1: Drag eight test tubes and place them in the stand."}
+          {currentStep === 1 && "Step 2: Add 10 ml of each sample solution into the respective test tubes."}
+          {currentStep === 2 && "Step 3: Place a small piece of pH paper on the white glazed tile."}
+          {currentStep === 3 && "Step 4: Use a dropper to add a drop of sample solution to the pH paper."}
+          {currentStep === 4 && "Step 5: Observe the colour change and compare with the pH chart."}
+          {currentStep >= 5 && "Continue with Part B using Universal Indicator solution."}
+        </div>
         <div className="fungus-placed-items">
           {placedMaterials.map((item) => (
             <div key={item} className="fungus-item">

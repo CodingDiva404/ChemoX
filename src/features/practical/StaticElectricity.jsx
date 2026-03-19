@@ -126,10 +126,29 @@ const StaticElectricity = () => {
       }
     };
 
+    const renderActionHint = () => (
+      <div className="generic-action-hint">
+        {currentStep === 0 && !straw1Placed && "Step 1: Drag Straw 1 onto the Glass Bottle."}
+        {currentStep === 1 && !straw2Placed && "Step 2: Drag Straw 2 near Straw 1 and observe the interaction."}
+        {currentStep === 2 && !clothPlaced && "Step 3: Drag the Woollen Cloth into the workspace."}
+        {currentStep === 2 && clothPlaced && !straw2PlacedStep3 && "Step 3: Drag Straw 2 onto the Woollen Cloth to rub it."}
+        {currentStep === 2 && isRubbing && "Step 3: Rubbing Straw 2 on the Woollen Cloth... ⚡"}
+        {currentStep === 2 && charged && !strawMovedToBottle && "Step 3: Straw 2 is now charged! Drag it near the bottle."}
+        {currentStep === 3 && !clothStep4 && "Step 4: Drag the Woollen Cloth into the workspace."}
+        {currentStep === 3 && clothStep4 && (!straw1OnCloth || !straw2OnCloth) && "Step 4: Drag both Straw 1 and Straw 2 onto the Woollen Cloth."}
+        {currentStep === 3 && straw1OnCloth && straw2OnCloth && !bothCharged && "Step 4: Click the 'Rub Both Straws' button."}
+        {currentStep === 3 && bothCharged && !straw1Bottle4 && "Step 4: Drag Straw 1 onto the Glass Bottle."}
+        {currentStep === 3 && straw1Bottle4 && !straw2NearBottle4 && "Step 4: Bring Straw 2 near the bottle and observe repulsion."}
+        {currentStep === 4 && !clothNearBottle5 && "Step 5: Bring the charged Woollen Cloth near the straw on the bottle."}
+        {currentStep === 4 && clothNearBottle5 && "Step 5: Observe the attraction between opposite charges."}
+      </div>
+    );
+
     /* STEP 5 RENDER */
     if (currentStep === 4) {
       return (
         <div className="static-zone">
+          {renderActionHint()}
 
           <div
             className="bottle-zone"
@@ -177,6 +196,7 @@ const StaticElectricity = () => {
     if (currentStep === 3) {
       return (
         <div className="static-zone">
+          {renderActionHint()}
 
           <div
             className="bottle-zone"
@@ -262,6 +282,7 @@ const StaticElectricity = () => {
     if (currentStep === 2) {
       return (
         <div className="static-zone">
+          {renderActionHint()}
 
           <div
             className="bottle-zone"
@@ -318,6 +339,7 @@ const StaticElectricity = () => {
     /* STEP 1 + STEP 2 */
     return (
       <div className="static-zone">
+        {renderActionHint()}
 
         <div
           className="bottle-zone"

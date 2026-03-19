@@ -1,8 +1,11 @@
 import sciencePractical from "../../assets/data/sciencePractical.json";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./Curriculum.css";
 
 const Curriculum = () => {
+  const [searchParams] = useSearchParams();
+  const subjectFilter = searchParams.get("subject");
+
   const chapters = sciencePractical.classes.flatMap(cls =>
     cls.subjects.flatMap(sub =>
       sub.practicals.map(practical => ({
@@ -13,12 +16,21 @@ const Curriculum = () => {
     )
   );
 
+  // Apply subject filter if present
+  const filteredChapters = subjectFilter
+    ? chapters.filter(ch => ch.subject === subjectFilter)
+    : chapters;
+
   return (
     <section className="curriculum-section">
       <h2 className="curriculum-heading">📓 Science Curriculum</h2>
 
+      {subjectFilter && (
+        <p className="active-filter">Showing: {subjectFilter} Experiments</p>
+      )}
+
       <div className="curriculum-cards">
-        {chapters.map(chapter => (
+        {filteredChapters.map(chapter => (
           <Link
             key={chapter.id}
             to={`/chapter/${chapter.id}`}

@@ -47,6 +47,7 @@ const GenericSimulator = ({
   const materialsList = useMemo(() => getAllMaterials(chapter), [chapter]);
   const steps = useMemo(() => getProcedureSteps(chapter), [chapter]);
 
+  const [isStarted, setIsStarted] = useState(false);
   const [placedMaterials, setPlacedMaterials] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [removingItem, setRemovingItem] = useState(null);
@@ -234,11 +235,28 @@ const GenericSimulator = ({
 
   return (
     <div className="generic-simulator">
-      <div className="generic-simulator-content">
+      {!isStarted && (
+        <div className="generic-start-overlay">
+          <button 
+            className="generic-play-button" 
+            onClick={() => setIsStarted(true)}
+            aria-label="Start Experiment"
+          >
+            <div className="play-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <span>Start Experiment</span>
+          </button>
+        </div>
+      )}
+
+      <div className={`generic-simulator-content ${!isStarted ? 'is-blurred' : ''}`}>
         <div
           className="generic-simulator-zone"
           onDragOver={handleDragOver}
-          style={{ pointerEvents: customRenderer ? "none" : "auto" }}
+          style={{ pointerEvents: (customRenderer || !isStarted) ? "none" : "auto" }}
         >
           {stepError && (
             <div className="generic-step-error">
@@ -258,22 +276,30 @@ const GenericSimulator = ({
               })}
             </div>
           ) : (
-            placedMaterials.length > 0 && (
-              <div
-                ref={placedContainerRef}
-                className="generic-simulator-placed"
-              >
-                {placedMaterials.map((item) => (
-                  <div
-                    key={item}
-                    data-material={item}
-                    className="generic-placed-item"
-                  >
-                    <span>{item}</span>
-                  </div>
-                ))}
+            <>
+              <div className="generic-action-hint">
+                {placedMaterials.length === 0 
+                  ? `Step ${currentStep + 1}: Drag materials from the sidebar to begin.` 
+                  : `Step ${currentStep + 1}: Follow the procedure steps below.`
+                }
               </div>
-            )
+              {placedMaterials.length > 0 && (
+                <div
+                  ref={placedContainerRef}
+                  className="generic-simulator-placed"
+                >
+                  {placedMaterials.map((item) => (
+                    <div
+                      key={item}
+                      data-material={item}
+                      className="generic-placed-item"
+                    >
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
 
           {hasSteps && steps[currentStep] && (

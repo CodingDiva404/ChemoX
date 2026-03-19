@@ -57,6 +57,15 @@ const LeafPractical = ({ chapter }) => {
 
     return (
       <div className="leaf-custom-ui">
+        <div className="generic-action-hint">
+          {currentStep === 0 && !leafInWater && "Step 1: Select a leaf and wash it with water."}
+          {currentStep === 0 && leafInWater && "Step 1: Leaf washed! Wipe it dry and move to next step."}
+          {currentStep === 1 && !leafInNewspaper && `Step 2: Place the ${selectedLeaf} leaf between the folds of the newspaper.`}
+          {currentStep === 1 && leafInNewspaper && "Step 2: Leaf placed! Change newspaper daily to avoid fungal growth."}
+          {currentStep === 2 && !weekPassed && "Step 3: Click the clock to wait for a week."}
+          {currentStep === 2 && weekPassed && "Step 3: A week has passed! Observe the leaf structure."}
+          {currentStep === 3 && "Step 4: Review the structure and venation of the leaf."}
+        </div>
         {/* Leaf Selection */}
         <div className="leaf-selection">
           {availableLeaves.map((leaf) => {

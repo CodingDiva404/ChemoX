@@ -38,6 +38,7 @@ const ParallelResistors = () => {
     placedMaterials,
     handleDrop,
     handleDragOver,
+    currentStep
   }) => {
     return (
       <div
@@ -45,11 +46,14 @@ const ParallelResistors = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        {placedMaterials.length === 0 && (
-          <p className="fungus-hint">
-            Drag materials here to set up the experiment
-          </p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && placedMaterials.length === 0 && "Step 1: Note the resistance values of the two resistors."}
+          {currentStep === 1 && "Step 2: Connect the resistors in a parallel combination."}
+          {currentStep === 2 && "Step 3: Connect the ammeter in series and voltmeter in parallel."}
+          {currentStep === 3 && "Step 4: Insert the plug key and adjust the rheostat."}
+          {currentStep === 4 && "Step 5: Record the readings from the ammeter and voltmeter."}
+          {currentStep >= 5 && "Step 6: Adjust the rheostat for different current values."}
+        </div>
         <div className="fungus-placed-items">
           {placedMaterials.map((item) => (
             <div key={item} className="fungus-item">

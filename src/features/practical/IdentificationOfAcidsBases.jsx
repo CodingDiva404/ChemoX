@@ -40,6 +40,7 @@ const IdentificationOfAcidsBases = () => {
     placedMaterials,
     handleDrop,
     handleDragOver,
+    currentStep
   }) => {
     return (
       <div
@@ -47,9 +48,15 @@ const IdentificationOfAcidsBases = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        {placedMaterials.length === 0 && (
-          <p className="fungus-hint">Drag materials here to set up the experiment</p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && placedMaterials.length === 0 && "Step 1: Drag four test tubes into the workspace and place them in the stand."}
+          {currentStep === 0 && placedMaterials.includes("Test tubes") && "Step 1: Now add 5 ml of Lemon juice to each of the four test tubes."}
+          {currentStep === 1 && "Step 2: Dip Red Litmus paper into the first test tube and observe."}
+          {currentStep === 2 && "Step 3: Dip Blue Litmus paper into the second test tube and observe."}
+          {currentStep === 3 && "Step 4: Add Phenolphthalein to the third test tube and observe."}
+          {currentStep === 4 && "Step 5: Add Methyl Orange to the fourth test tube and observe."}
+          {currentStep === 5 && "Step 6: Repeat the tests for other solutions like Vinegar, NH4OH, etc."}
+        </div>
         <div className="fungus-placed-items">
           {placedMaterials.map((item) => (
             <div key={item} className="fungus-item">

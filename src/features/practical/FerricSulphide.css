@@ -9,16 +9,6 @@
     box-sizing: border-box;
 }
 
-.ferric-hint {
-    position: absolute;
-    top: 265px;
-    left: 0;
-    right: 0;
-    padding: 0 20px;
-    color: #444;
-    z-index: 5;
-}
-
 /* Dish layout */
 .dish-container {
     display: flex;

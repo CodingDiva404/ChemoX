@@ -303,7 +303,7 @@ const FerricSulphide = () => {
 
   const renderFerricExperiment = ({ placedMaterials }) => (
     <div className="ferric-zone">
-      <div className="ferric-hint">
+      <div className="generic-action-hint">
         {currentStepState === 0 && "Place two evaporating dishes and add iron filings to the first dish and sulphur powder to the second dish."}
         {currentStepState === 1 && "Bring a horseshoe magnet near the dishes and observe the effect."}
         {currentStepState === 2 && "Observation: The black colour of iron filings and yellow colour of sulphur are observed distinctly."}

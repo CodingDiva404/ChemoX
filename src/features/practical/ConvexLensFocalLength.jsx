@@ -29,12 +29,17 @@ const ConvexLensFocalLength = () => {
       ],
     };
 
-  const renderLensFocalExperiment = ({ placedMaterials, handleDrop, handleDragOver }) => {
+  const renderLensFocalExperiment = ({ placedMaterials, handleDrop, handleDragOver, currentStep }) => {
     return (
       <div className="fungus-custom-zone" onDrop={handleDrop} onDragOver={handleDragOver}>
-        {placedMaterials.length === 0 && (
-          <p className="fungus-hint">Drag materials here to set up the experiment</p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && placedMaterials.length === 0 && "Step 1: Mount the convex lens on the lens stand."}
+          {currentStep === 1 && "Step 2: Select a distant object and face the lens towards it."}
+          {currentStep === 2 && "Step 3: Place the white screen in front of the lens."}
+          {currentStep === 3 && "Step 4: Move the screen to obtain a sharp image of the object."}
+          {currentStep === 4 && "Step 5: Measure the distance between the lens and the screen."}
+          {currentStep >= 5 && "Step 6: Repeat the procedure for other objects and rotate the lens."}
+        </div>
         <div className="fungus-placed-items">
           {placedMaterials.map((item) => (
             <div key={item} className="fungus-item">

@@ -72,7 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000; /* High z-index */
   backdrop-filter: blur(4px);
 }
 
@@ -159,18 +159,6 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .how-to-use-btn {
-    position: static;
-    transform: none;
-    margin-top: 8px;
-  }
-  
-  .chapter-main-header {
-    flex-direction: column;
-  }
 }
 
 .chapter-main-title {
@@ -394,106 +382,100 @@
    Tablet Layout (ONLY responsive change)
 ========================= */
 
-@media (max-width: 1200px) {
-  .chapter-doc-panel {
-    flex: 0 0 350px;
-  }
+@media (max-width:1024px){
+
+.chapter-main-content{
+  flex-direction:column;
 }
 
-@media (max-width: 1024px) {
-  .chapter-detail-container {
-    height: auto;
-    overflow-y: auto;
-  }
+.chapter-doc-panel{
+  width:100%;
+  max-height:450px;
+}
 
-  .chapter-main-content {
-    flex-direction: column;
-    align-items: stretch;
-  }
+.chapter-content-panel{
+  width:100%;
+}
 
-  .chapter-doc-panel {
-    width: 100%;
-    max-height: 500px;
-    flex: none;
-  }
-
-  .chapter-content-panel {
-    width: 100%;
-  }
 }
 
 /* =========================
    Mobile Layout
 ========================= */
 
-@media (max-width: 768px) {
-  .chapter-detail-container {
-    padding: 12px;
-  }
+@media (max-width:768px){
 
-  /* Main Header mobile */
-  .chapter-main-title {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-  }
-
-  /* Stack everything */
-  .chapter-main-content {
-    gap: 16px;
-  }
-
-  /* Simulator section FIRST */
-  .chapter-content-panel {
-    order: 1;
-    padding: 12px;
-  }
-
-  /* Document LAST */
-  .chapter-doc-panel {
-    order: 2;
-    padding: 16px;
-    max-height: none;
-  }
-
-  .chapter-doc-title {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-  }
-
-  .chapter-doc-heading {
-    font-size: 0.95rem;
-  }
-
-  .chapter-doc-content {
-    font-size: 0.85rem;
-  }
-
-  /* Simulator + materials stack */
-  .chapter-content-split {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .chapter-content-title {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-  }
-
-  /* Navigation */
-  .chapter-nav-btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
+.chapter-detail-container{
+  padding:12px;
+  height:auto;
 }
 
-@media (max-width: 480px) {
-  .chapter-main-title {
-    font-size: 1.2rem;
-  }
+/* Main Header mobile */
+.chapter-main-header {
+  flex-direction: column;
+}
 
-  .chapter-doc-panel,
-  .chapter-content-panel {
-    padding: 10px;
-    border-radius: 8px;
-  }
+.how-to-use-btn {
+  position: static;
+  transform: none;
+  margin-top: 8px;
+}
+
+.chapter-main-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+/* Stack everything */
+.chapter-main-content{
+  flex-direction:column;
+  gap:16px;
+}
+
+/* Simulator section FIRST */
+.chapter-content-panel{
+  order:1;
+  width:100%;
+  padding:14px;
+}
+
+/* Materials below simulator */
+.chapter-materials-section{
+  order:2;
+  width:100%;
+  max-width:100%;
+  margin-top:12px;
+}
+
+/* Document LAST */
+.chapter-doc-panel{
+  order:3;
+  width:100%;
+  max-height:none;
+  padding:16px;
+}
+
+/* Simulator + materials stack */
+.chapter-content-split{
+  flex-direction:column;
+  gap:16px;
+}
+
+/* Improve simulator spacing */
+.chapter-stimulator-section{
+  width:100%;
+}
+
+/* Materials list nicer */
+.chapter-material-item{
+  font-size:0.95rem;
+  padding:10px;
+}
+
+/* Document readability */
+.chapter-doc-content{
+  font-size:0.9rem;
+  line-height:1.6;
+}
+
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import SubjectCard from './SubjectCard.jsx';
 
 const subjects = [
@@ -8,13 +9,16 @@ const subjects = [
 ];
 
 const SubjectSelector = () => {
+  const navigate = useNavigate();
+
   const handleCardClick = (subjectName) => {
-    console.log(`Subject clicked: ${subjectName}`);
+    navigate(`/curriculum?subject=${subjectName}`);
   };
 
   return (
     <section className="subject-selector-container">
       <h2 className="section-title">Choose Your Subject</h2>
+
       <div className="card-grid">
         {subjects.map((subject) => (
           <SubjectCard
@@ -26,6 +30,7 @@ const SubjectSelector = () => {
           />
         ))}
       </div>
+
     </section>
   );
 };

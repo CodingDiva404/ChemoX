@@ -1,8 +1,75 @@
 /* =========================
+   Play Button Overlay (Glassmorphism)
+========================= */
+
+.generic-start-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.generic-play-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #1a1a2e;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.generic-play-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.play-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: #4a90e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.play-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+  margin-left: 4px; /* nudge play icon for optical centering */
+}
+
+.is-blurred {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================
    Generic Simulator Layout
 ========================= */
 
 .generic-simulator {
+  position: relative; /* ensure overlay anchors correctly */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -179,6 +246,42 @@
   opacity: 1;
 }
 
+
+/* =========================
+   Action Hints
+========================= */
+
+.generic-action-hint {
+  position: absolute;
+  top: 135px; /* Sits below the step overlay */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 5px solid #4a90e2;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 5;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  animation: hintFadeIn 0.5s ease-out;
+  text-align: left;
+}
+
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 768px) {
+  .generic-action-hint {
+    top: 120px;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+}
 
 /* =========================
    Step Overlay

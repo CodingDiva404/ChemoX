@@ -96,10 +96,16 @@ const ObservationOfFungus = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-
-        {!slidePlaced && (
-          <p className="fungus-hint">Drag the Glass Slide here</p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && !slidePlaced && "Step 1: Drag the Glass Slide into the workspace."}
+          {currentStep === 0 && slidePlaced && !breadPlaced && "Step 1: Now drag the Bread or roti onto the Glass Slide."}
+          {currentStep === 1 && !waterAdded && "Step 2: Add a little water to dampen the bread piece."}
+          {currentStep === 2 && !slideInContainer && "Step 3: Click or drag the prepared slide into the container."}
+          {currentStep === 3 && "Step 4: Keep the container in a warm and humid corner for 2-3 days."}
+          {currentStep === 4 && !showFungus && "Step 5: Observe the bread piece after 2–3 days for fungus growth."}
+          {currentStep === 4 && showFungus && !sampleTaken && "Step 6: Drag a fungus sample from the bread to the microscope."}
+          {currentStep === 5 && sampleTaken && "Step 7: Observe the Mucor hyphae under the microscope."}
+        </div>
 
     { /* STEP 1: Prepare slide */}
     {slidePlaced && !slideInContainer && currentStep <= 2 && (
@@ -205,13 +211,6 @@ const ObservationOfFungus = () => {
                 className="microscope-img"
                 alt="microscope"
               />
-
-              {!sampleTaken && (
-                <p className="microscope-hint">
-                  Drag fungus sample to microscope
-                </p>
-              )}
-
             </div>
           )}
 

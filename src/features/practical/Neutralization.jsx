@@ -38,6 +38,7 @@ const Neutralization = () => {
     placedMaterials,
     handleDrop,
     handleDragOver,
+    currentStep
   }) => {
     return (
       <div
@@ -45,9 +46,14 @@ const Neutralization = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        {placedMaterials.length === 0 && (
-          <p className="fungus-hint">Drag materials here to set up the experiment</p>
-        )}
+        <div className="generic-action-hint">
+          {currentStep === 0 && placedMaterials.length === 0 && "Step 1: Set up the burette and fill it with dilute HCl."}
+          {currentStep === 1 && "Step 2: Transfer 10 ml of NaOH solution into a conical flask using a pipette."}
+          {currentStep === 2 && "Step 3: Add 1–2 drops of Phenolphthalein to the NaOH solution."}
+          {currentStep === 3 && "Step 4: Place the conical flask on a white tile."}
+          {currentStep === 4 && "Step 5: Slowly add HCl from the burette while swirling the conical flask."}
+          {currentStep === 5 && "Step 6: Observe the pink colour fade as neutralization occurs."}
+        </div>
         <div className="fungus-placed-items">
           {placedMaterials.map((item) => (
             <div key={item} className="fungus-item">

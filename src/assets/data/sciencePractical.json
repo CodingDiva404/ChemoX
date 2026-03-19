@@ -254,7 +254,72 @@
                         "Add 3–4 drops of methyl orange in test tube 4 and observe.",
                         "Repeat the same steps for vinegar, ammonium hydroxide, baking soda solution, soap solution, dilute hydrochloric acid and distilled water."
                      ],
-                     "observations": [],
+                     "observations": [
+                        {
+                           "solution": "Lime Juice",
+                           "red_litmus": "No colour change",
+                           "blue_litmus": "Turns red",
+                           "phenolphthalein": "Colourless",
+                           "methyl_orange": "Turns pink",
+                           "nature": "Acidic in nature"
+                        },
+                        {
+                           "solution": "Vinegar",
+                           "red_litmus": "No colour change",
+                           "blue_litmus": "Turns red",
+                           "phenolphthalein": "Colourless",
+                           "methyl_orange": "Turns pink",
+                           "nature": "Acidic in nature"
+                        },
+                        {
+                           "solution": "Ammonium Hydroxide",
+                           "red_litmus": "Turns blue",
+                           "blue_litmus": "No colour change",
+                           "phenolphthalein": "Turns pink",
+                           "methyl_orange": "Turns yellow",
+                           "nature": "Basic in nature"
+                        },
+                        {
+                           "solution": "Baking Soda Solution",
+                           "red_litmus": "Turns blue",
+                           "blue_litmus": "No colour change",
+                           "phenolphthalein": "Turns pink",
+                           "methyl_orange": "Turns yellow",
+                           "nature": "Basic in nature"
+                        },
+                        {
+                           "solution": "Soap Solution",
+                           "red_litmus": "Turns blue",
+                           "blue_litmus": "No colour change",
+                           "phenolphthalein": "Turns pink",
+                           "methyl_orange": "Turns yellow",
+                           "nature": "Basic in nature"
+                        },
+                        {
+                           "solution": "Dilute Hydrochloric Acid",
+                           "red_litmus": "No colour change",
+                           "blue_litmus": "Turns red",
+                           "phenolphthalein": "Colourless",
+                           "methyl_orange": "Turns pink",
+                           "nature": "Acidic in nature"
+                        },
+                        {
+                           "solution": "Distilled Water",
+                           "red_litmus": "No colour change",
+                           "blue_litmus": "No colour change",
+                           "phenolphthalein": "Colourless",
+                           "methyl_orange": "Orange",
+                           "nature": "Neutral in nature"
+                        }
+                     ],
+                     "inferences": [
+                        "Red litmus paper turns blue in alkali.",
+                        "Blue litmus paper turns red in acid.",
+                        "Colourless phenolphthalein turns pink in alkali.",
+                        "Orange colour of methyl orange turns pink in acid and yellow in alkali.",
+                        "Distilled water is neutral in nature.",
+                        "Thus certain indicators are useful in identification of acids and bases."
+                     ],
                      "conclusion": [
                         "Indicators help in identifying acids and bases.",
                         "Distilled water is neutral in nature."
