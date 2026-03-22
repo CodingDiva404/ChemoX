@@ -253,7 +253,7 @@
 
 .generic-action-hint {
   position: absolute;
-  top: 135px; /* Sits below the step overlay */
+  top: 260px; /* Sits below the step overlay */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
