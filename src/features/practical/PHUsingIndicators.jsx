@@ -1,14 +1,13 @@
 import GenericSimulator from "../practical/GenericSimulator";
 import { LabIcon } from "../practical/LabIcons";
-import "./ObservationOfFungus.css";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
-const PHUsingIndicators = () => {
+const PHUsingIndicators = ({ chapter: chapterProp }) => {
   const allChapters = sciencePractical.classes
     .flatMap((cls) => cls.subjects)
     .flatMap((sub) => sub.practicals);
 
-  const chapter =
+  const chapter = chapterProp || 
     allChapters.find((p) => p.id === "chem-11-01") || {
       id: "chem-11-01",
       title:

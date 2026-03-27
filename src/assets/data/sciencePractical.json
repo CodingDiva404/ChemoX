@@ -219,13 +219,13 @@
          ]
       },
       {
-         "class": 9,
+         "class": 10,
          "subjects": [
             {
                "subject": "Chemistry",
                "practicals": [
                   {
-                     "id": "phy-9-01",
+                     "id": "chem-10-12",
                      "title": "Identification of Acids and Bases using Indicators",
                      "aim": "To identify acids and bases using indicators.",
                      "materials": [
@@ -247,21 +247,22 @@
                         "Dilute hydrochloric acid"
                      ],
                      "procedure": [
-                        "Take 5 ml of lime juice in four different test tubes. Keep them in a test tube stand.",
-                        "Dip red litmus paper strip in the solution in test tube 1 and observe.",
-                        "Dip blue litmus paper strip in the solution in test tube 2 and observe.",
-                        "Add 3–4 drops of phenolphthalein in test tube 3 and observe.",
-                        "Add 3–4 drops of methyl orange in test tube 4 and observe.",
-                        "Repeat the same steps for vinegar, ammonium hydroxide, baking soda solution, soap solution, dilute hydrochloric acid and distilled water."
+                        "Take 5 ml of lime juice in four different test tubes and place them in a stand.",
+                        "Dip red litmus paper strip in test tube 1 and observe color change.",
+                        "Dip blue litmus paper strip in test tube 2 and observe color change.",
+                        "Add 3–4 drops of phenolphthalein in test tube 3 and observe color change.",
+                        "Add 3–4 drops of methyl orange in test tube 4 and observe color change.",
+                        "Repeat the same steps with vinegar in four test tubes.",
+                        "Repeat the experiment with ammonium hydroxide, baking soda solution, soap solution, dilute hydrochloric acid, and distilled water."
                      ],
                      "observations": [
                         {
-                           "solution": "Lime Juice",
+                           "solution": "Lime juice",
                            "red_litmus": "No colour change",
                            "blue_litmus": "Turns red",
                            "phenolphthalein": "Colourless",
                            "methyl_orange": "Turns pink",
-                           "nature": "Acidic in nature"
+                           "nature": "Acidic"
                         },
                         {
                            "solution": "Vinegar",
@@ -269,101 +270,58 @@
                            "blue_litmus": "Turns red",
                            "phenolphthalein": "Colourless",
                            "methyl_orange": "Turns pink",
-                           "nature": "Acidic in nature"
+                           "nature": "Acidic"
                         },
                         {
-                           "solution": "Ammonium Hydroxide",
+                           "solution": "Ammonium hydroxide",
                            "red_litmus": "Turns blue",
                            "blue_litmus": "No colour change",
                            "phenolphthalein": "Turns pink",
                            "methyl_orange": "Turns yellow",
-                           "nature": "Basic in nature"
+                           "nature": "Basic"
                         },
                         {
-                           "solution": "Baking Soda Solution",
+                           "solution": "Baking soda solution",
                            "red_litmus": "Turns blue",
                            "blue_litmus": "No colour change",
                            "phenolphthalein": "Turns pink",
                            "methyl_orange": "Turns yellow",
-                           "nature": "Basic in nature"
+                           "nature": "Basic"
                         },
                         {
-                           "solution": "Soap Solution",
+                           "solution": "Soap solution",
                            "red_litmus": "Turns blue",
                            "blue_litmus": "No colour change",
                            "phenolphthalein": "Turns pink",
                            "methyl_orange": "Turns yellow",
-                           "nature": "Basic in nature"
+                           "nature": "Basic"
                         },
                         {
-                           "solution": "Dilute Hydrochloric Acid",
+                           "solution": "Dilute hydrochloric acid",
                            "red_litmus": "No colour change",
                            "blue_litmus": "Turns red",
                            "phenolphthalein": "Colourless",
                            "methyl_orange": "Turns pink",
-                           "nature": "Acidic in nature"
+                           "nature": "Acidic"
                         },
                         {
-                           "solution": "Distilled Water",
+                           "solution": "Distilled water",
                            "red_litmus": "No colour change",
                            "blue_litmus": "No colour change",
                            "phenolphthalein": "Colourless",
                            "methyl_orange": "Orange",
-                           "nature": "Neutral in nature"
+                           "nature": "Neutral"
                         }
                      ],
-                     "inferences": [
-                        "Red litmus paper turns blue in alkali.",
-                        "Blue litmus paper turns red in acid.",
-                        "Colourless phenolphthalein turns pink in alkali.",
-                        "Orange colour of methyl orange turns pink in acid and yellow in alkali.",
-                        "Distilled water is neutral in nature.",
-                        "Thus certain indicators are useful in identification of acids and bases."
-                     ],
-                     "conclusion": [
-                        "Indicators help in identifying acids and bases.",
-                        "Distilled water is neutral in nature."
-                     ]
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "class": 10,
-         "subjects": [
-            {
-               "subject": "Chemistry",
-               "practicals": [
-                  {
-                     "id": "phy-10-01",
-                     "title": "Identification of Acids and Bases using Indicators",
-                     "aim": "To identify acids and bases using indicators.",
-                     "materials": [
-                        "Test tubes",
-                        "Test Tube Stand",
-                        "Water"
-                     ],
-                     "chemical": [
-                        "Red litmus paper",
-                        "Blue litmus paper",
-                        "Phenolphthalein",
-                        "Methyl orange",
-                        "Distilled water",
-                        "Lemon juice",
-                        "Vinegar",
-                        "Ammonium hydroxide (NH4OH)",
-                        "Baking soda (NaHCO3)",
-                        "Soap solution",
-                        "Dilute hydrochloric acid"
-                     ],
-                     "procedure": [
-                        "Repeat the indicator tests for all given solutions.",
-                        "Observe and record the colour changes carefully."
-                     ],
-                     "observations": [],
                      "conclusion": [
                         "Indicators are reliable tools for identifying acidic and basic substances."
+                     ],
+                     "inferences": [
+                        "Red litmus paper turns blue in alkaline solutions.",
+                        "Blue litmus paper turns red in acidic solutions.",
+                        "Phenolphthalein is colourless in acids and turns pink in bases.",
+                        "Methyl orange turns pink in acids and yellow in bases.",
+                        "Distilled water is neutral and shows no change with litmus."
                      ]
                   }
                ]

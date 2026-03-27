@@ -1,0 +1,161 @@
+.acids-bases-workspace {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.lab-setup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.tube-stand-container {
+  position: relative;
+  width: 500px;
+  height: 200px;
+}
+
+.test-tube-stand {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #e0e0e0, #bdbdbd);
+  border: 4px solid #8c8c8c;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 20px 10px;
+  position: relative;
+}
+
+.test-tube-stand::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #a9a9a9;
+}
+
+.tube-slot {
+  width: 60px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 2;
+}
+
+.test-tube {
+  width: 45px;
+  height: 170px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.1)
+  );
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 0 0 25px 25px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 10px rgba(255,255,255,0.5),
+    0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tube-liquid {
+  width: 100%;
+  height: 40%;
+  transition: all 0.5s ease;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.test-tube::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  width: 6px;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+.tube-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+}
+
+.indicator-applied {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+
+.experiment-result {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  text-align: left;
+  border-left: 5px solid #2ecc71;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.experiment-result h4 {
+  margin: 0 0 10px 0;
+  color: #1a1a2e;
+}
+
+.experiment-result ul {
+  padding-left: 20px;
+  margin: 0 0 15px 0;
+}
+
+.experiment-result li {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.reset-btn {
+  background: #2ecc71;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.reset-btn:hover {
+  background: #27ae60;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

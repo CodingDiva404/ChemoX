@@ -13,6 +13,7 @@ import Neutralization from "../practical/Neutralization.jsx";
 import ParallelResistors from "../practical/ParallelResistors.jsx";
 import RefractionVerification from "../practical/RefractionVerification.jsx";
 import ConvexLensFocalLength from "../practical/ConvexLensFocalLength.jsx";
+import PendingPractical from "../practical/PendingPractical.jsx";
 
 const ChapterDetail = () => {
   const { id } = useParams();
@@ -127,20 +128,10 @@ const ChapterDetail = () => {
     experimentComponent = <StaticElectricity />;
   } else if (chapter.id === "phy-8-01") {
     experimentComponent = <FerricSulphide />;
-  } else if (chapter.id === "phy-9-01") {
-    experimentComponent = <IdentificationOfAcidsBases />;
-  } else if (chapter.id === "chem-11-01") {
-    experimentComponent = <PHUsingIndicators />;
-  } else if (chapter.id === "chem-9-06") {
-    experimentComponent = <Neutralization />;
-  } else if (chapter.id === "phy-10-02") {
-    experimentComponent = <ParallelResistors />;
-  } else if (chapter.id === "phy-10-08") {
-    experimentComponent = <RefractionVerification />;
-  } else if (chapter.id === "phy-10-10") {
-    experimentComponent = <ConvexLensFocalLength />;
   } else {
-    experimentComponent = <GenericSimulator chapter={chapter} />;
+    // The following experiments are currently under development
+    // IDs: phy-9-01, chem-11-01, chem-9-06, phy-10-02, phy-10-08, phy-10-10
+    experimentComponent = <PendingPractical chapter={chapter} />;
   }
 
 
@@ -149,9 +140,6 @@ const ChapterDetail = () => {
 
     if (Array.isArray(data) && typeof data[0] === "object") {
       const headers = Object.keys(data[0]);
-
-
-      console.log(LeafPractical, GenericSimulator);
 
       return (
         <div className="table-wrapper">

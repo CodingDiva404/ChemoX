@@ -250,6 +250,7 @@ const GenericSimulator = ({
             <span>Start Experiment</span>
           </button>
         </div>
+    
       )}
 
       <div className={`generic-simulator-content ${!isStarted ? 'is-blurred' : ''}`}>
@@ -265,8 +266,9 @@ const GenericSimulator = ({
             </div>
           )}
 
+
           {customRenderer ? (
-            <div style={{ pointerEvents: "auto", width: "100%" }}>
+            <div style={{ pointerEvents: "auto", width: "100%", height: "100%" }}>
               {customRenderer({
                 placedMaterials,
                 currentStep,
@@ -340,10 +342,10 @@ const GenericSimulator = ({
                       }
                     }}
                     className={`generic-draggable-item ${
-                      !isAllowed ? "generic-draggable-disabled" : ""
+                      (!isAllowed && !customRenderer) ? "generic-draggable-disabled" : ""
                     }`}
                     title={
-                      isAllowed
+                      (isAllowed || customRenderer)
                         ? `Click or drag to simulator (Step ${currentStep + 1})`
                         : `Not needed in Step ${
                             currentStep + 1

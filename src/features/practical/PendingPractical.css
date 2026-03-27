@@ -1,0 +1,138 @@
+.pending-practical-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pending-content {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  animation: pendingPopUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pendingPopUp {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.pending-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: pendingBounce 2s infinite ease-in-out;
+}
+
+@keyframes pendingBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.pending-title {
+  color: #1a1a2e;
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.pending-text {
+  color: #4a5568;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.pending-text strong {
+  color: #4a90e2;
+}
+
+.pending-loader {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #4a90e2;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+.pending-footer {
+  color: #718096;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .pending-content {
+    padding: 30px 20px;
+    margin: 20px;
+    max-width: 100%;
+  }
+
+  .pending-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .pending-title {
+    font-size: 1.4rem;
+  }
+
+  .pending-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .pending-loader {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pending-content {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .pending-icon {
+    font-size: 2.5rem;
+  }
+
+  .pending-title {
+    font-size: 1.25rem;
+  }
+
+  .pending-text {
+    font-size: 0.95rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 12px;
+  }
+}
