@@ -73,9 +73,6 @@ const ChapterDetail = () => {
 
       console.log("AI RESPONSE:", data);
 
-      /* =========================
-         🔥 FIX SPLIT (IMPORTANT)
-      ========================= */
       const text = data.text || "";
       const points = text
         .split("-")
@@ -99,9 +96,21 @@ const ChapterDetail = () => {
     setIsGenerating(false);
   };
 
+  // ✅ Clear backend cache
+  const clearBackendCache = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/clear-cache", { method: "POST" });
+      const data = await res.json();
+      console.log(data.message); // "Cache cleared ✅"
+      alert(data.message);
+    } catch (err) {
+      console.error("Failed to clear backend cache", err);
+      alert("Failed to clear cache");
+    }
+  };
+
   const formatAIText = (text) => {
     if (!text) return "";
-    // Basic markdown bold implementation: **text** -> <strong>text</strong>
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
@@ -129,34 +138,23 @@ const ChapterDetail = () => {
   } else if (chapter.id === "phy-8-01") {
     experimentComponent = <FerricSulphide />;
   } else {
-    // The following experiments are currently under development
-    // IDs: phy-9-01, chem-11-01, chem-9-06, phy-10-02, phy-10-08, phy-10-10
     experimentComponent = <PendingPractical chapter={chapter} />;
   }
 
-
   const renderContent = (data) => {
     if (!data) return null;
-
     if (Array.isArray(data) && typeof data[0] === "object") {
       const headers = Object.keys(data[0]);
-
       return (
         <div className="table-wrapper">
           <table className="observation-table">
             <thead>
-              <tr>
-                {headers.map((key) => (
-                  <th key={key}>{key}</th>
-                ))}
-              </tr>
+              <tr>{headers.map((key) => (<th key={key}>{key}</th>))}</tr>
             </thead>
             <tbody>
               {data.map((row, index) => (
                 <tr key={index}>
-                  {headers.map((key) => (
-                    <td key={key}>{row[key]}</td>
-                  ))}
+                  {headers.map((key) => (<td key={key}>{row[key]}</td>))}
                 </tr>
               ))}
             </tbody>
@@ -165,14 +163,10 @@ const ChapterDetail = () => {
       );
     }
 
-
-
     if (Array.isArray(data)) {
       return (
         <ul>
-          {data.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
+          {data.map((item, i) => (<li key={i}>{item}</li>))}
         </ul>
       );
     }
@@ -180,24 +174,8 @@ const ChapterDetail = () => {
     return <p>{data}</p>;
   };
 
-  // // const materialsList = chapter.materials ?? chapter.requirements ?? [];
-  // const hasLeafPractical = chapter.id === "bio-7-01";
-
-  // const handlePrevious = () => {
-  //   if (currentIndex > 0) {
-  //     navigate(`/chapter/${allChapters[currentIndex - 1].id}`);
-  //   }
-  // };
-
-  // const handleNext = () => {
-  //   if (currentIndex < allChapters.length - 1) {
-  //     navigate(`/chapter/${allChapters[currentIndex + 1].id}`);
-  //   }
-  // };
-
   return (
     <div className="chapter-detail-container">
-      {/* Main header */}
       <header className="chapter-main-header">
         <h1 className="chapter-main-title">{chapter.title}</h1>
         <div className="header-actions">
@@ -208,6 +186,16 @@ const ChapterDetail = () => {
           >
             <span className="ai-icon">✨</span> AI Theory
           </button>
+
+          {/* Clear Backend Cache */}
+          <button
+            className="ai-clear-cache-btn"
+            onClick={clearBackendCache}
+            title="Clear Backend Cache"
+          >
+            🗑️ Clear Cache
+          </button>
+
           <button
             className="how-to-use-btn"
             onClick={() => setShowHowToUse(true)}
@@ -218,9 +206,7 @@ const ChapterDetail = () => {
         </div>
       </header>
 
-      {/* Main content area: two columns */}
       <main className="chapter-main-content">
-        {/* Left column: document with all details */}
         <aside className="chapter-doc-panel">
           <h2 className="chapter-doc-title">{chapter.title}</h2>
           <div className="chapter-doc-content">
@@ -230,21 +216,6 @@ const ChapterDetail = () => {
                 {renderContent(chapter.aim)}
               </section>
             )}
-            {/* {(materialsList.length > 0 || chapter.chemical?.length > 0) && (
-              <section className="chapter-doc-section">
-                <h4 className="chapter-doc-heading">
-                  Materials / Requirements
-                </h4>
-                {materialsList.length > 0 && renderContent(materialsList)}
-                {chapter.chemical?.length > 0 && (
-                  <>
-                    <p className="chapter-doc-subheading">Chemical</p>
-                    {renderContent(chapter.chemical)}
-                  </>
-                )}
-              </section>
-            )} */}
-
             {materialItems.length > 0 && (
               <section className="chapter-doc-section">
                 <h4 className="chapter-doc-heading">
@@ -253,7 +224,6 @@ const ChapterDetail = () => {
                 {renderContent(materialItems)}
               </section>
             )}
-
             {chapter.procedure?.length > 0 && (
               <section className="chapter-doc-section">
                 <h4 className="chapter-doc-heading">Procedure</h4>
@@ -291,62 +261,17 @@ const ChapterDetail = () => {
           </div>
         </aside>
 
-        {/* Right column: Stimulator + Materials */}
         <div className="chapter-content-panel">
           <h2 className="chapter-content-title">{chapter.title}</h2>
           <div className="chapter-content-split">
-            {/* Stimulator section (main content ~70–75%) */}
             <div className="chapter-stimulator-section">
               {experimentComponent}
             </div>
-
           </div>
         </div>
       </main>
 
-      {showHowToUse && (
-        <div className="how-to-use-overlay" onClick={() => setShowHowToUse(false)}>
-          <div className="how-to-use-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="how-to-use-header">
-              <h3>How to use ChemXplore</h3>
-              <button className="close-modal-btn" onClick={() => setShowHowToUse(false)}>&times;</button>
-            </div>
-            <div className="how-to-use-content">
-              <div className="device-instruction">
-                <h4>💻 Desktop</h4>
-                <ul>
-                  <li>Hover over materials in the right sidebar to see their names and hints.</li>
-                  <li><strong>Drag and Drop</strong> allowed materials from the sidebar into the simulator zone.</li>
-                  <li>Follow the <strong>Step Panel</strong> at the bottom of the simulator to perform the experiment.</li>
-                  <li>Click <strong>Next</strong> or <strong>Previous</strong> to navigate through steps.</li>
-                </ul>
-              </div>
-              <div className="device-instruction">
-                <h4>📱 Tablet</h4>
-                <ul>
-                  <li><strong>Tap and Hold</strong> a material to view its description.</li>
-                  <li><strong>Drag</strong> materials into the simulator zone to interact.</li>
-                  <li>The simulator and notes are stacked for easier access; scroll to view details.</li>
-                  <li>Use the <strong>Navigation Controls</strong> at the bottom of the simulator.</li>
-                </ul>
-              </div>
-              <div className="device-instruction">
-                <h4>📲 Mobile</h4>
-                <ul>
-                  <li>The <strong>Simulator</strong> is at the top. Materials are listed below it.</li>
-                  <li><strong>Drag</strong> materials upwards into the simulator area to use them.</li>
-                  <li>Scroll further down to read the <strong>Aim, Procedure, and Observations</strong>.</li>
-                  <li>Use the large <strong>Next/Prev</strong> buttons to move through the practical.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="how-to-use-footer">
-              <button className="got-it-btn" onClick={() => setShowHowToUse(false)}>Got it!</button>
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* AI Theory Overlay */}
       {showAITheory && (
         <div className="ai-theory-overlay" onClick={() => setShowAITheory(false)}>
           <div className="ai-theory-modal" onClick={(e) => e.stopPropagation()}>
@@ -372,7 +297,7 @@ const ChapterDetail = () => {
                     {aiTheoryContent.map((point, index) => (
                       <div key={index} className="ai-theory-card">
                         <span className="ai-bullet">⚡</span>
-                        <p>{formatAIText(point)}</p>
+                        <p>{point}</p>
                       </div>
                     ))}
                   </div>
@@ -388,26 +313,6 @@ const ChapterDetail = () => {
           </div>
         </div>
       )}
-
-      {/* Bottom navigation */}
-      {/* <footer className="chapter-nav-footer">
-        <button
-          type="button"
-          className="chapter-nav-btn chapter-nav-prev"
-          onClick={handlePrevious}
-          disabled={currentIndex <= 0}
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          className="chapter-nav-btn chapter-nav-next"
-          onClick={handleNext}
-          disabled={currentIndex >= allChapters.length - 1}
-        >
-          Next
-        </button>
-      </footer> */}
     </div>
   );
 };

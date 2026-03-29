@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./LeafPractical.css";
 import GenericSimulator from "../practical/GenericSimulator";
 
@@ -18,7 +18,26 @@ const LeafPractical = ({ chapter }) => {
   const [leafInWater, setLeafInWater] = useState(null);
   const [leafInNewspaper, setLeafInNewspaper] = useState(null);
   const [selectedLeaf, setSelectedLeaf] = useState(null);
-  const [weekPassed, setWeekPassed] = useState(false); // Step 3 completion (week step becomes Step 4 now)
+  const [newspaperChanged, setNewspaperChanged] = useState(false); // Step 3 completion
+  const [weekPassed, setWeekPassed] = useState(false); // Step 4 completion (after 2s)
+  const [simCurrentStep, setSimCurrentStep] = useState(0);
+
+  useEffect(() => {
+    // Step 4 simulation: show clock for 2s then reveal summary.
+    if (simCurrentStep === 3) {
+      setWeekPassed(false);
+      const timer = setTimeout(() => setWeekPassed(true), 2000);
+      return () => clearTimeout(timer);
+    }
+
+    // Reset when leaving the observation step.
+    setWeekPassed(false);
+  }, [simCurrentStep]);
+
+  useEffect(() => {
+    // Step 3 must be completed fresh whenever user goes back before it.
+    if (simCurrentStep < 2) setNewspaperChanged(false);
+  }, [simCurrentStep]);
 
   const materialImages = {
     Maize: leaf2,
@@ -28,10 +47,10 @@ const LeafPractical = ({ chapter }) => {
   };
 
   const renderLeafExperiment = ({ placedMaterials, currentStep }) => {
-    const isStep1 = currentStep === 0;
-    const isStep2 = currentStep === 1;
-    const isStep3 = currentStep === 2; // Week step now
-    const isStep4 = currentStep === 3; // Summary
+    const isStep1 = currentStep === 0; // Wash with water
+    const isStep2 = currentStep === 1; // Keep between folds of newspaper
+    const isStep3 = currentStep === 2; // Change newspaper (same action as step 2)
+    const isStep4 = currentStep === 3; // Observe after 2s (summary)
     const availableLeaves = placedMaterials.filter((m) => m !== "Newspaper");
     const allowDrop = (e) => e.preventDefault();
 
@@ -45,15 +64,15 @@ const LeafPractical = ({ chapter }) => {
       }
     };
 
-    /* STEP 2: Newspaper Drop */
+    /* STEP 2 & STEP 3: Newspaper Drop */
     const handleNewspaperDrop = (e) => {
       e.preventDefault();
       const leaf = e.dataTransfer.getData("text/plain");
-      if (leaf === selectedLeaf) setLeafInNewspaper(leaf);
-    };
+      if (leaf !== selectedLeaf) return;
 
-    /* STEP 3: Week Passed Animation */
-    const handleWeekPass = () => setWeekPassed(true);
+      if (currentStep === 1) setLeafInNewspaper(leaf);
+      if (currentStep === 2) setNewspaperChanged(true);
+    };
 
     return (
       <div className="leaf-custom-ui">
@@ -62,16 +81,17 @@ const LeafPractical = ({ chapter }) => {
           {currentStep === 0 && leafInWater && "Step 1: Leaf washed! Wipe it dry and move to next step."}
           {currentStep === 1 && !leafInNewspaper && `Step 2: Place the ${selectedLeaf} leaf between the folds of the newspaper.`}
           {currentStep === 1 && leafInNewspaper && "Step 2: Leaf placed! Change newspaper daily to avoid fungal growth."}
-          {currentStep === 2 && !weekPassed && "Step 3: Click the clock to wait for a week."}
-          {currentStep === 2 && weekPassed && "Step 3: A week has passed! Observe the leaf structure."}
-          {currentStep === 3 && "Step 4: Review the structure and venation of the leaf."}
+          {currentStep === 2 && !newspaperChanged && "Step 3: Change the newspaper (place the same leaf again)."}
+          {currentStep === 2 && newspaperChanged && "Step 3: Newspaper changed! Wait for observation (step 4)."}
+          {currentStep === 3 && !weekPassed && "Step 4: Clock time-lapse... (2 seconds) Observe the leaf structure."}
+          {currentStep === 3 && weekPassed && "Step 4: Observation complete! Review the summary below."}
         </div>
         {/* Leaf Selection */}
         <div className="leaf-selection">
           {availableLeaves.map((leaf) => {
             let isDisabled = false;
             if (isStep1) isDisabled = leafInWater && leafInWater !== leaf;
-            if (isStep2) isDisabled = leaf !== selectedLeaf;
+            if (isStep2 || isStep3) isDisabled = leaf !== selectedLeaf;
             return (
               <img
                 key={leaf}
@@ -88,8 +108,9 @@ const LeafPractical = ({ chapter }) => {
                     if (isStep1) {
                       setLeafInWater(leaf);
                       setSelectedLeaf(leaf);
-                    } else if (isStep2 && leaf === selectedLeaf) {
+                    } else if ((isStep2 || isStep3) && leaf === selectedLeaf) {
                       setLeafInNewspaper(leaf);
+                      if (isStep3) setNewspaperChanged(true);
                     }
                   }
                 }}
@@ -138,8 +159,8 @@ const LeafPractical = ({ chapter }) => {
           </div>
         )}
 
-        {/* STEP 2: Newspaper Drop */}
-        {isStep2 && (
+        {/* STEP 2 & STEP 3: Newspaper Drop */}
+        {(isStep2 || isStep3) && (
           <div
             className="newspaper-container"
             onDrop={handleNewspaperDrop}
@@ -156,10 +177,10 @@ const LeafPractical = ({ chapter }) => {
           </div>
         )}
 
-        {/* STEP 3: Week Clock */}
-        {isStep3 && (
-          <div className="week-clock-container" onClick={handleWeekPass}>
-            <svg className="clock-svg" viewBox="0 0 100 100">
+        {/* STEP 4: Clock time-lapse */}
+        {isStep4 && !weekPassed && (
+          <div className="week-clock-container">
+            <svg className="clock-svg" viewBox="0 0 100 100" aria-hidden="true">
               <circle
                 cx="50"
                 cy="50"
@@ -187,14 +208,12 @@ const LeafPractical = ({ chapter }) => {
                 className="minute-hand"
               />
             </svg>
-            <div className="week-message">
-              {weekPassed ? "Week passed ✅" : "Click to advance week"}
-            </div>
+            <div className="week-message">Time-lapse running...</div>
           </div>
         )}
 
         {/* STEP 4: Summary */}
-        {isStep4 && selectedLeaf && (
+        {isStep4 && weekPassed && selectedLeaf && (
           <div className="summary-container">
             <h2>Practical Summary</h2>
             <div className="summary-card">
@@ -217,10 +236,11 @@ const LeafPractical = ({ chapter }) => {
     <GenericSimulator
       chapter={chapter}
       customRenderer={renderLeafExperiment}
+      onStepChange={(step) => setSimCurrentStep(step)}
       canGoNext={(step) => {
         if (step === 0) return !!leafInWater;        
         if (step === 1) return !!leafInNewspaper;   
-        if (step === 2) return true;                
+        if (step === 2) return newspaperChanged;
         return true;                                
       }}
     />
