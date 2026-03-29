@@ -4,15 +4,15 @@ import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
 import LeafPractical from "../practical/LeafPractical.jsx";
 import ObservationOfFungus from '../practical/ObservationOfFungus.jsx'
-import GenericSimulator from "../practical/GenericSimulator.jsx";
+// import GenericSimulator from "../practical/GenericSimulator.jsx";
 import StaticElectricity from "../practical/StaticElectricity.jsx";
 import FerricSulphide from "../practical/FerricSulphide.jsx";
-import IdentificationOfAcidsBases from "../practical/IdentificationOfAcidsBases.jsx";
-import PHUsingIndicators from "../practical/PHUsingIndicators.jsx";
-import Neutralization from "../practical/Neutralization.jsx";
-import ParallelResistors from "../practical/ParallelResistors.jsx";
-import RefractionVerification from "../practical/RefractionVerification.jsx";
-import ConvexLensFocalLength from "../practical/ConvexLensFocalLength.jsx";
+// import IdentificationOfAcidsBases from "../practical/IdentificationOfAcidsBases.jsx";
+// import PHUsingIndicators from "../practical/PHUsingIndicators.jsx";
+// import Neutralization from "../practical/Neutralization.jsx";
+// import ParallelResistors from "../practical/ParallelResistors.jsx";
+// import RefractionVerification from "../practical/RefractionVerification.jsx";
+// import ConvexLensFocalLength from "../practical/ConvexLensFocalLength.jsx";
 import PendingPractical from "../practical/PendingPractical.jsx";
 
 const ChapterDetail = () => {
