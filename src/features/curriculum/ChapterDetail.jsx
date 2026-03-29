@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
 import LeafPractical from "../practical/LeafPractical.jsx";
@@ -17,7 +17,7 @@ import PendingPractical from "../practical/PendingPractical.jsx";
 
 const ChapterDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [showHowToUse, setShowHowToUse] = useState(false);
   const [showAITheory, setShowAITheory] = useState(false);
   const [aiTheoryContent, setAITheoryContent] = useState([]);
@@ -28,14 +28,14 @@ const ChapterDetail = () => {
     .flatMap((sub) => sub.practicals);
 
   const chapter = allChapters.find((p) => p.id === id);
-  const currentIndex = allChapters.findIndex((p) => p.id === id);
+  // const currentIndex = allChapters.findIndex((p) => p.id === id);
 
   // Auto-generate AI Theory on mount
-  useEffect(() => {
-    if (chapter) {
-      generateAITheory();
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (chapter) {
+  //     generateAITheory();
+  //   }
+  // }, [id]);
 
   const getCacheKey = () => `theory-${chapter.id}`;
 
@@ -109,16 +109,16 @@ const ChapterDetail = () => {
     }
   };
 
-  const formatAIText = (text) => {
-    if (!text) return "";
-    const parts = text.split(/(\*\*.*?\*\*)/g);
-    return parts.map((part, i) => {
-      if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i}>{part.slice(2, -2)}</strong>;
-      }
-      return part;
-    });
-  };
+  // const formatAIText = (text) => {
+  //   if (!text) return "";
+  //   const parts = text.split(/(\*\*.*?\*\*)/g);
+  //   return parts.map((part, i) => {
+  //     if (part.startsWith("**") && part.endsWith("**")) {
+  //       return <strong key={i}>{part.slice(2, -2)}</strong>;
+  //     }
+  //     return part;
+  //   });
+  // };
 
   if (!chapter) return <h2>Chapter not found 😬</h2>;
 

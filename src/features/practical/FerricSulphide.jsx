@@ -20,11 +20,11 @@ const FerricSulphide = () => {
   const [allPlacedMaterials, setAllPlacedMaterials] = useState([]);
 
   // Step 4 states
-  const [step4Active, setStep4Active] = useState(false);
+  // const [step4Active, setStep4Active] = useState(false);
   const [rodPlaced, setRodPlaced] = useState(false);
-  const [isDraggingDish1, setIsDraggingDish1] = useState(false);
-  const [dish1OverDish2, setDish1OverDish2] = useState(false);
-  const [ironTransferred, setIronTransferred] = useState(false);
+  // const [isDraggingDish1, setIsDraggingDish1] = useState(false);
+  // const [dish1OverDish2, setDish1OverDish2] = useState(false);
+  // const [ironTransferred, setIronTransferred] = useState(false);
   const [isIronTransferring, setIsIronTransferring] = useState(false);
   const [ironInDish2, setIronInDish2] = useState(false);
   const [isStirring, setIsStirring] = useState(false);

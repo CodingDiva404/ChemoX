@@ -50,7 +50,7 @@ const GenericSimulator = ({
   const [isStarted, setIsStarted] = useState(false);
   const [placedMaterials, setPlacedMaterials] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
-  const [removingItem, setRemovingItem] = useState(null);
+  // const [removingItem, setRemovingItem] = useState(null);
   const [stepError, setStepError] = useState(null);
 
   // Sync state with parent if callbacks are provided
@@ -115,31 +115,31 @@ const GenericSimulator = ({
   }, [currentStep]);
 
   /* Step transition animation */
-  useEffect(() => {
-    const el = stepOverlayRef.current;
-    if (!el || steps.length === 0) return;
+  // useEffect(() => {
+  //   const el = stepOverlayRef.current;
+  //   if (!el || steps.length === 0) return;
 
-    if (currentStep !== prevStepRef.current) {
-      gsap.fromTo(
-        el,
-        {
-          opacity: 0,
-          y: 20,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-          overwrite: true,
-        }
-      );
+  //   if (currentStep !== prevStepRef.current) {
+  //     gsap.fromTo(
+  //       el,
+  //       {
+  //         opacity: 0,
+  //         y: 20,
+  //         scale: 0.95,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         y: 0,
+  //         scale: 1,
+  //         duration: 0.5,
+  //         ease: "back.out(1.7)",
+  //         overwrite: true,
+  //       }
+  //     );
 
-      prevStepRef.current = currentStep;
-    }
-  }, [currentStep, steps.length]);
+  //     prevStepRef.current = currentStep;
+  //   }
+  // }, [currentStep, steps.length]);
 
   /* Initial step animation */
   useEffect(() => {
