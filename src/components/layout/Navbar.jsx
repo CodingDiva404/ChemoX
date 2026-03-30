@@ -30,11 +30,11 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li>
+          {/* <li>
             <Link to="/library" className="navLink">
               Library
             </Link>
-          </li>
+          </li> */}
 
           <li>
             <Link to="/perodic-table" className="navLink">
