@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../../App.css";
-import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const logo = `${process.env.PUBLIC_URL}/logo.png`;
 
   return (
     <nav className="navBar">

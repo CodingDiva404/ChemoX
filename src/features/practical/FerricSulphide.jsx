@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import GenericSimulator from "../practical/GenericSimulator";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
-import dishImg from "../../assets/images/evaporating-dish.png";
-import magnetImg from "../../assets/images/magnet.png";
-import tripodImg from "../../assets/images/tripod.png";
-import burnerImg from "../../assets/images/burner.png";
-
 import "./FerricSulphide.css";
 
 const FerricSulphide = () => {
+  const dishImg = `${process.env.PUBLIC_URL}/images/evaporating-dish.png`;
+  const magnetImg = `${process.env.PUBLIC_URL}/images/magnet.png`;
+  const tripodImg = `${process.env.PUBLIC_URL}/images/tripod.png`;
+  const burnerImg = `${process.env.PUBLIC_URL}/images/burner.png`;
+
   const [dish1, setDish1] = useState(null);
   const [dish2, setDish2] = useState(null);
   const [dish1Chemical, setDish1Chemical] = useState(null);

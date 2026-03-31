@@ -3,12 +3,12 @@ import GenericSimulator from "../practical/GenericSimulator";
 import "./ObservationOfFungus.css";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
-import bread from "../../assets/images/bread-slice.png";
-import slide from "../../assets/images/glass-slide.png";
-import microscope from "../../assets/images/microscope.png";
-import hyphae from "../../assets/images/hyphae.png";
-
 const ObservationOfFungus = () => {
+  const bread = `${process.env.PUBLIC_URL}/images/bread-slice.png`;
+  const slide = `${process.env.PUBLIC_URL}/images/glass-slide.png`;
+  const microscope = `${process.env.PUBLIC_URL}/images/microscope.png`;
+  const hyphae = `${process.env.PUBLIC_URL}/images/hyphae.png`;
+
   const [simCurrentStep, setSimCurrentStep] = useState(0);
   const [latestPlacedMaterials, setLatestPlacedMaterials] = useState([]);
   const [humidTimerDone, setHumidTimerDone] = useState(false);
