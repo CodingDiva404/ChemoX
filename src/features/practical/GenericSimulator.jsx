@@ -153,7 +153,7 @@ const GenericSimulator = ({
         { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
       );
     }
-  }, []);
+  }, [currentStep, steps.length]);
 
   const handleDragStart = (e, item, isAllowed) => {
     if (!isAllowed) {

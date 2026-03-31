@@ -29,7 +29,6 @@ const FerricSulphide = () => {
   const [ironInDish2, setIronInDish2] = useState(false);
   const [isStirring, setIsStirring] = useState(false);
   const [stirred, setStirred] = useState(false);
-  const [showColorChange, setShowColorChange] = useState(false);
 
   // Step 5 states
   const [dish2OnTripod, setDish2OnTripod] = useState(false);
@@ -75,7 +74,6 @@ const FerricSulphide = () => {
       const timer = setTimeout(() => {
         setIsStirring(false);
         setStirred(true);
-        setShowColorChange(true);
       }, 3000);
       return () => clearTimeout(timer);
     }
