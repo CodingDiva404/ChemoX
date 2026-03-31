@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState , useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 import "./ChapterDetails.css";
 import LeafPractical from "../practical/LeafPractical.jsx";
@@ -29,17 +29,14 @@ const ChapterDetail = () => {
   const chapter = allChapters.find((p) => p.id === id);
   // const currentIndex = allChapters.findIndex((p) => p.id === id);
 
-  // Auto-generate AI Theory on mount
-  useEffect(() => {
-    if (chapter) {
-      generateAITheory();
-    }
-  }, [id]);
+  const getCacheKey = useCallback(() => {
+    if (!chapter?.id) return null;
+    return `theory-${chapter.id}`;
+  }, [chapter?.id]);
 
-  const getCacheKey = () => `theory-${chapter.id}`;
-
-  const generateAITheory = async () => {
+  const generateAITheory = useCallback(async () => {
     const cacheKey = getCacheKey();
+    if (!cacheKey || !chapter) return;
 
     /* =========================
        🧠 FRONTEND CACHE CHECK
@@ -93,7 +90,12 @@ const ChapterDetail = () => {
     }
 
     setIsGenerating(false);
-  };
+  }, [chapter, getCacheKey]);
+
+  // Auto-generate AI Theory on mount / chapter change
+  useEffect(() => {
+    if (chapter) generateAITheory();
+  }, [chapter, generateAITheory]);
 
   // ✅ Clear backend cache
   const clearBackendCache = async () => {
