@@ -3,12 +3,13 @@ import GenericSimulator from "../practical/GenericSimulator";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
 import "./FerricSulphide.css";
-import dishImg from "../../assets/images/evaporating-dish.png";
-import magnetImg from "../../assets/images/magnet.png";
-import tripodImg from "../../assets/images/tripod.png";
-import burnerImg from "../../assets/images/burner.png";
 
 const FerricSulphide = () => {
+  const dishImg = "/evaporating-dish.png";
+  const magnetImg = "/magnet.png";
+  const tripodImg = "/tripod.png";
+  const burnerImg = "/burner.png";
+
   const [dish1, setDish1] = useState(null);
   const [dish2, setDish2] = useState(null);
   const [dish1Chemical, setDish1Chemical] = useState(null);

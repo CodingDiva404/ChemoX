@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
-import kid from "../../assets/images/1.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const kid = "/1.png";
 
   const handleStart = () => {
     navigate("/curriculum");

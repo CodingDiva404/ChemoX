@@ -2,11 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import "./LeafPractical.css";
 import GenericSimulator from "../practical/GenericSimulator";
 
-import newspaperImg from "../../assets/images/newspaper.png";
-import leaf1 from "../../assets/images/canna.png";
-import leaf2 from "../../assets/images/maize.png";
-import leaf3 from "../../assets/images/peepal.png";
-
 // Simulated observation table
 const observationTable = {
   Maize: { structure: "Parallel venation, long narrow leaf" },
@@ -15,6 +10,11 @@ const observationTable = {
 };
 
 const LeafPractical = ({ chapter }) => {
+  const newspaperImg = "/newspaper.png";
+  const leaf1 = "/canna.png";
+  const leaf2 = "/maize.png";
+  const leaf3 = "/peepal.png";
+
   // Remove "change newspaper daily" from simulator steps (keep only 3 steps in the simulator UI).
   const simulatorChapter = useMemo(() => {
     const proc = chapter?.procedure ?? [];
