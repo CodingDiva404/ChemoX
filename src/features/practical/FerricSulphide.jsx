@@ -160,7 +160,7 @@ const FerricSulphide = () => {
     }
   };
 
-  const renderDish = (dish, chemical, magnet, placeholder, isDish2) => {
+  const renderDish = (dish, chemical, magnet, placeholder, isDish2, handleDrop) => {
     const isDish1 = !isDish2;
 
     return (
@@ -344,8 +344,8 @@ const FerricSulphide = () => {
 
       {currentStepState < 4 ? (
         <div className="dish-container">
-          {renderDish(dish1, dish1Chemical, dish1Magnet, "Dish 1", false)}
-          {renderDish(dish2, dish2Chemical, dish2Magnet, "Dish 2", true)}
+          {renderDish(dish1, dish1Chemical, dish1Magnet, "Dish 1", false, handleDrop)}
+          {renderDish(dish2, dish2Chemical, dish2Magnet, "Dish 2", true, handleDrop)}
         </div>
       ) : (
         /* Step 5 & 6: Heating & Final Observation */
