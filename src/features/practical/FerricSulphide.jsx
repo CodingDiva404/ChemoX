@@ -3,13 +3,12 @@ import GenericSimulator from "../practical/GenericSimulator";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
 import "./FerricSulphide.css";
+import dishImg from "../../assets/images/evaporating-dish.png";
+import magnetImg from "../../assets/images/magnet.png";
+import tripodImg from "../../assets/images/tripod.png";
+import burnerImg from "../../assets/images/burner.png";
 
 const FerricSulphide = () => {
-  const dishImg = `${process.env.PUBLIC_URL}/images/evaporating-dish.png`;
-  const magnetImg = `${process.env.PUBLIC_URL}/images/magnet.png`;
-  const tripodImg = `${process.env.PUBLIC_URL}/images/tripod.png`;
-  const burnerImg = `${process.env.PUBLIC_URL}/images/burner.png`;
-
   const [dish1, setDish1] = useState(null);
   const [dish2, setDish2] = useState(null);
   const [dish1Chemical, setDish1Chemical] = useState(null);
@@ -81,22 +80,28 @@ const FerricSulphide = () => {
 
   // Handle Heating completion
   useEffect(() => {
+    let timer;
+    let coolingTimer;
+
     if (burnerOn && dish2OnTripod && !isRedHot) {
       setIsHeating(true);
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setIsHeating(false);
         setIsRedHot(true);
         // Automatically turn off burner after mixture is red hot
         setBurnerOn(false);
         
         // Start cooling sequence automatically after burner is off
-        const coolingTimer = setTimeout(() => {
+        coolingTimer = setTimeout(() => {
           setIsCooled(true);
         }, 3000);
-        return () => clearTimeout(coolingTimer);
       }, 4000);
-      return () => clearTimeout(timer);
     }
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(coolingTimer);
+    };
   }, [burnerOn, dish2OnTripod, isRedHot]);
 
   // canGoNext logic
@@ -167,6 +172,8 @@ const FerricSulphide = () => {
           
           if (currentStepState === 0 || currentStepState === 1) {
             handlePlacement(item, isDish2);
+            // Also inform GenericSimulator of material drop
+            handleDrop(e);
           } else if (currentStepState === 3 && isDish2) {
             if (item === "Iron filings" || item === "Dish 1") {
               // Transfer iron filings from Dish 1 to Dish 2
@@ -217,8 +224,21 @@ const FerricSulphide = () => {
                   setIsIronTransferring(false);
                 }, 2000);
               }
+
+              /* Dish 2 Stirring */
+              if (isDish2 && currentStepState === 3 && rodPlaced && !stirred) {
+                setIsStirring(true);
+                setTimeout(() => {
+                  setIsStirring(false);
+                  setStirred(true);
+                }, 2500);
+              }
             }}
-            style={{ cursor: (isDish1 && currentStepState === 3 && !ironInDish2) ? "grab" : "default" }}
+            style={{ 
+              cursor: (isDish1 && currentStepState === 3 && !ironInDish2) || 
+                      (isDish2 && currentStepState === 3 && rodPlaced && !stirred) 
+                      ? "pointer" : "default" 
+            }}
           >
             <img src={dishImg} alt="dish" className="dish-img" />
 
@@ -299,8 +319,12 @@ const FerricSulphide = () => {
     );
   };
 
-  const renderFerricExperiment = ({ placedMaterials }) => (
-    <div className="ferric-zone">
+  const renderFerricExperiment = ({ placedMaterials, handleDrop, handleDragOver }) => (
+    <div 
+      className="ferric-zone"
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
       <div className="generic-action-hint">
         {currentStepState === 0 && "Place two evaporating dishes and add iron filings to the first dish and sulphur powder to the second dish."}
         {currentStepState === 1 && "Bring a horseshoe magnet near the dishes and observe the effect."}

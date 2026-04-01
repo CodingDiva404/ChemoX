@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import "./LeafPractical.css";
 import GenericSimulator from "../practical/GenericSimulator";
 
+import newspaperImg from "../../assets/images/newspaper.png";
+import leaf1 from "../../assets/images/canna.png";
+import leaf2 from "../../assets/images/maize.png";
+import leaf3 from "../../assets/images/peepal.png";
+
 // Simulated observation table
 const observationTable = {
   Maize: { structure: "Parallel venation, long narrow leaf" },
@@ -19,11 +24,6 @@ const LeafPractical = ({ chapter }) => {
       procedure: proc.filter((_, i) => i !== 2),
     };
   }, [chapter]);
-
-  const newspaperImg = `${process.env.PUBLIC_URL}/images/newspaper.png`;
-  const leaf1 = `${process.env.PUBLIC_URL}/images/canna.png`;
-  const leaf2 = `${process.env.PUBLIC_URL}/images/maize.png`;
-  const leaf3 = `${process.env.PUBLIC_URL}/images/peepal.png`;
 
   const [leafInWater, setLeafInWater] = useState(null);
   const [leafInNewspaper, setLeafInNewspaper] = useState(null);
@@ -49,205 +49,104 @@ const LeafPractical = ({ chapter }) => {
     if (simCurrentStep !== 1) setNewspaperFolded(false);
   }, [simCurrentStep, selectedLeaf]);
 
-  const materialImages = {
-    Maize: leaf2,
-    Peepal: leaf3,
-    Canna: leaf1,
-    Newspaper: newspaperImg,
-  };
-
-  const renderLeafExperiment = ({ placedMaterials, currentStep }) => {
-    const isStep1 = currentStep === 0; // Wash with water
-    const isStep2 = currentStep === 1; // Keep between folds of newspaper
-    const isStep3 = currentStep === 2; // Observe after 2s (summary)
-    const availableLeaves = placedMaterials.filter((m) => m !== "Newspaper");
-    const allowDrop = (e) => e.preventDefault();
-
-    /* STEP 1: Water Drop */
+  const renderLeafExperiment = ({
+    placedMaterials,
+    handleDrop,
+    handleDragOver,
+    currentStep,
+  }) => {
+    // Logic for Step 1: Placing leaf in water
     const handleWaterDrop = (e) => {
       e.preventDefault();
-      const leaf = e.dataTransfer.getData("text/plain");
-      if (!leafInWater && leaf) {
-        setLeafInWater(leaf);
-        setSelectedLeaf(leaf);
+      const item = e.dataTransfer.getData("text/plain");
+      if (["Canna", "Maize", "Peepal"].includes(item)) {
+        setLeafInWater(item);
+        setSelectedLeaf(item);
+        handleDrop(e);
       }
     };
 
-    /* STEP 2: Newspaper Drop */
+    // Logic for Step 2: Placing leaf in newspaper
     const handleNewspaperDrop = (e) => {
       e.preventDefault();
-      const leaf = e.dataTransfer.getData("text/plain");
-      if (leaf !== selectedLeaf) return;
-
-      if (currentStep === 1) setLeafInNewspaper(leaf);
+      const item = e.dataTransfer.getData("text/plain");
+      if (item === selectedLeaf) {
+        setLeafInNewspaper(item);
+        setLeafInWater(null);
+      }
     };
 
     return (
-      <div className="leaf-custom-ui">
+      <div className="leaf-workspace" onDragOver={handleDragOver} onDrop={handleDrop}>
         <div className="generic-action-hint">
-          {currentStep === 0 && !leafInWater && "Step 1: Select a leaf and wash it with water."}
-          {currentStep === 0 && leafInWater && "Step 1: Leaf washed! Wipe it dry and move to next step."}
-          {currentStep === 1 && !leafInNewspaper && `Step 2: Place the ${selectedLeaf} leaf between the folds of the newspaper.`}
-          {currentStep === 1 && leafInNewspaper && !newspaperFolded && "Step 2: Leaf placed! Click the newspaper to fold it."}
-          {currentStep === 1 && leafInNewspaper && newspaperFolded && "Step 2: Newspaper folded! Click Next."}
-          {currentStep === 2 && !weekPassed && "Step 3: Clock time-lapse... (2 seconds) Observe the leaf structure."}
-          {currentStep === 2 && weekPassed && "Step 3: Observation complete! Review the summary below."}
-        </div>
-        {/* Leaf Selection */}
-        <div className="leaf-selection">
-          {availableLeaves.map((leaf) => {
-            let isDisabled = false;
-            if (isStep1) isDisabled = leafInWater && leafInWater !== leaf;
-            if (isStep2) isDisabled = leaf !== selectedLeaf;
-            return (
-              <img
-                key={leaf}
-                src={materialImages[leaf]}
-                alt={leaf}
-                className={`leaf-image ${isDisabled ? "disabled" : ""}`}
-                draggable={!isDisabled}
-                onDragStart={(e) =>
-                  e.dataTransfer.setData("text/plain", leaf)
-                }
-                onClick={() => {
-                  /* Mobile-friendly: Click to place leaf */
-                  if (!isDisabled) {
-                    if (isStep1) {
-                      setLeafInWater(leaf);
-                      setSelectedLeaf(leaf);
-                    } else if (isStep2 && leaf === selectedLeaf) {
-                      setLeafInNewspaper(leaf);
-                    }
-                  }
-                }}
-                style={{ cursor: !isDisabled ? "pointer" : "default" }}
-                title={!isDisabled ? "Click or drag to place leaf" : ""}
-              />
-            );
-          })}
+          {currentStep === 0 && !leafInWater && "Step 1: Drag a leaf into the beaker of water."}
+          {currentStep === 0 && leafInWater && "Step 1 complete: Leaf is in water. Click Next."}
+          
+          {currentStep === 1 && !leafInNewspaper && "Step 2: Drag the leaf from the water to the newspaper."}
+          {currentStep === 1 && leafInNewspaper && !newspaperFolded && "Step 2: Now click the newspaper to fold it."}
+          {currentStep === 1 && newspaperFolded && "Step 2 complete: Leaf is pressed. Click Next."}
+          
+          {currentStep === 2 && !weekPassed && "Step 3: Keeping it for a week... (2 seconds simulation)"}
+          {currentStep === 2 && weekPassed && "Step 3 complete: Observe the preserved leaf."}
         </div>
 
-        {/* STEP 1: Water Container */}
-        {isStep1 && (
-          <div
-            className="water-container"
+        <div className="experiment-row">
+          {/* Beaker Area */}
+          <div 
+            className="beaker-zone" 
             onDrop={handleWaterDrop}
-            onDragOver={allowDrop}
+            onDragOver={(e) => e.preventDefault()}
           >
-            <svg viewBox="0 0 200 250" className="water-svg">
-              <path
-                d="M40 40 L40 200 Q40 220 60 220 L140 220 Q160 220 160 200 L160 40"
-                fill="none"
-                stroke="#3498db"
-                strokeWidth="4"
-              />
-              <defs>
-                <clipPath id="glassClip">
-                  <path d="M40 40 L40 200 Q40 220 60 220 L140 220 Q160 220 160 200 L160 40" />
-                </clipPath>
-              </defs>
-              <g clipPath="url(#glassClip)">
-                <path
-                  className="wave"
-                  d="M0 140 Q50 130 100 140 T200 140 V250 H0 Z"
-                  fill="#6ec6ff"
-                  opacity="0.8"
+            <div className="beaker">
+              <div className="water-line" />
+              {leafInWater && (
+                <img 
+                  src={leafInWater === "Canna" ? leaf1 : leafInWater === "Maize" ? leaf2 : leaf3} 
+                  className="leaf-in-beaker" 
+                  alt="leaf"
+                  draggable
+                  onDragStart={(e) => e.dataTransfer.setData("text/plain", leafInWater)}
                 />
-              </g>
-            </svg>
-            {leafInWater && (
-              <img
-                src={materialImages[leafInWater]}
-                alt=""
-                className="leaf-in-water"
-              />
-            )}
-          </div>
-        )}
-
-        {/* STEP 2: Newspaper Drop */}
-        {isStep2 && (
-          <div
-            className={isStep2 && leafInNewspaper ? "newspaper-fold-container" : "newspaper-container"}
-            onDrop={handleNewspaperDrop}
-            onDragOver={allowDrop}
-            onClick={() => {
-              if (isStep2 && leafInNewspaper) setNewspaperFolded((v) => !v);
-            }}
-            style={{
-              cursor: isStep2 && leafInNewspaper ? "pointer" : "default",
-            }}
-            title={isStep2 && leafInNewspaper ? "Click to fold/unfold newspaper" : ""}
-          >
-            <div className={isStep2 && leafInNewspaper ? "newspaper-wrapper" : undefined}>
-              <img
-                src={newspaperImg}
-                alt="Newspaper"
-                className={
-                  isStep2 && leafInNewspaper
-                    ? `newspaper-fold-img ${newspaperFolded ? "folded" : ""}`
-                    : "newspaper-img"
-                }
-              />
+              )}
             </div>
-            {leafInNewspaper && (
-              <img
-                src={materialImages[leafInNewspaper]}
-                className={`leaf-in-newspaper ${newspaperFolded ? "folded" : ""}`}
-                alt=""
+            <p className="zone-label">Beaker of Water</p>
+          </div>
+
+          {/* Newspaper Area */}
+          <div 
+            className={`newspaper-zone ${newspaperFolded ? "folded" : ""}`}
+            onDrop={handleNewspaperDrop}
+            onDragOver={(e) => e.preventDefault()}
+            onClick={() => {
+              if (leafInNewspaper && !newspaperFolded) setNewspaperFolded(true);
+            }}
+          >
+            <img src={newspaperImg} className="newspaper-img" alt="newspaper" />
+            {leafInNewspaper && !newspaperFolded && (
+              <img 
+                src={leafInNewspaper === "Canna" ? leaf1 : leafInNewspaper === "Maize" ? leaf2 : leaf3} 
+                className="leaf-on-paper" 
+                alt="leaf" 
               />
             )}
+            <p className="zone-label">Newspaper</p>
           </div>
-        )}
+        </div>
 
-        {/* STEP 3: Clock time-lapse */}
-        {isStep3 && !weekPassed && (
-          <div className="week-clock-container">
-            <svg className="clock-svg" viewBox="0 0 100 100" aria-hidden="true">
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="#333"
-                strokeWidth="3"
-                fill="#f5f5f5"
+        {/* Observation View (Step 3) */}
+        {currentStep === 2 && weekPassed && selectedLeaf && (
+          <div className="leaf-observation-overlay">
+            <div className="observation-card">
+              <h3>{selectedLeaf} Leaf Preserved</h3>
+              <img 
+                src={selectedLeaf === "Canna" ? leaf1 : selectedLeaf === "Maize" ? leaf2 : leaf3} 
+                className="leaf-preserved" 
+                alt="preserved" 
               />
-              <line
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="30"
-                stroke="#333"
-                strokeWidth="3"
-                className="hour-hand"
-              />
-              <line
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="20"
-                stroke="#333"
-                strokeWidth="2"
-                className="minute-hand"
-              />
-            </svg>
-            <div className="week-message">Time-lapse running...</div>
-          </div>
-        )}
-
-        {/* STEP 3: Summary */}
-        {isStep3 && weekPassed && selectedLeaf && (
-          <div className="summary-container">
-            <h2>Practical Summary</h2>
-            <div className="summary-card">
-              <img
-                src={materialImages[selectedLeaf]}
-                alt={selectedLeaf}
-                className="summary-leaf-img"
-              />
-              <h3>{selectedLeaf}</h3>
-              <p>Structure: {observationTable[selectedLeaf]?.structure}</p>
-              <p>Status: Leaf was washed, pressed, and placed in newspaper.</p>
+              <div className="observation-details">
+                <p><strong>Observation:</strong> {observationTable[selectedLeaf].structure}</p>
+                <p className="sci-note">Note: Changing the newspaper daily prevents fungal growth.</p>
+              </div>
             </div>
           </div>
         )}
@@ -260,10 +159,11 @@ const LeafPractical = ({ chapter }) => {
       chapter={simulatorChapter}
       customRenderer={renderLeafExperiment}
       onStepChange={(step) => setSimCurrentStep(step)}
-      canGoNext={(step) => {
-        if (step === 0) return !!leafInWater;        
+      canGoNext={(step, placedMaterials) => {
+        if (step === 0) return !!leafInWater;
         if (step === 1) return !!leafInNewspaper && newspaperFolded;
-        return true;                                
+        if (step === 2) return weekPassed;
+        return true;
       }}
     />
   );

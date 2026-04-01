@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../App.css';
+import mascot from "../../assets/images/1.png";
 
 const Footer = () => {
-  const mascot = `${process.env.PUBLIC_URL}/images/1.png`;
   return (
     <footer className="footer-container">
       <div className="footer-left">

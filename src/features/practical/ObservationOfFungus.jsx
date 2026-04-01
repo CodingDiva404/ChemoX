@@ -3,12 +3,12 @@ import GenericSimulator from "../practical/GenericSimulator";
 import "./ObservationOfFungus.css";
 import sciencePractical from "../../assets/data/sciencePractical.json";
 
-const ObservationOfFungus = () => {
-  const bread = `${process.env.PUBLIC_URL}/images/bread-slice.png`;
-  const slide = `${process.env.PUBLIC_URL}/images/glass-slide.png`;
-  const microscope = `${process.env.PUBLIC_URL}/images/microscope.png`;
-  const hyphae = `${process.env.PUBLIC_URL}/images/hyphae.png`;
+import bread from "../../assets/images/bread-slice.png";
+import slide from "../../assets/images/glass-slide.png";
+import microscope from "../../assets/images/microscope.png";
+import hyphae from "../../assets/images/hyphae.png";
 
+const ObservationOfFungus = () => {
   const [simCurrentStep, setSimCurrentStep] = useState(0);
   const [latestPlacedMaterials, setLatestPlacedMaterials] = useState([]);
   const [humidTimerDone, setHumidTimerDone] = useState(false);
@@ -116,7 +116,12 @@ const ObservationOfFungus = () => {
     const handleContainerDrop = (e) => {
       e.preventDefault();
       const prepared = e.dataTransfer.getData("preparedSlide");
-      if (prepared === "true") setSlideInContainer(true);
+      if (prepared === "true") {
+        setSlideInContainer(true);
+      } else {
+        // Fallback to generic handleDrop for materials
+        handleDrop(e);
+      }
     };
 
     return (
@@ -253,10 +258,12 @@ const ObservationOfFungus = () => {
 
                 if (sample === "true" && canTakeSample) {
                   setSampleTaken(true);
-
                   setTimeout(() => {
                     setMicroscopeView(true);
                   }, 800);
+                } else {
+                  // Fallback to generic handleDrop for materials
+                  handleDrop(e);
                 }
               }}
               onDragOver={(e) => e.preventDefault()}

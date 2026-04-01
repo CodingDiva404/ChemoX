@@ -91,7 +91,7 @@
   .pending-content {
     padding: 30px 20px;
     margin: 20px;
-    max-width: 100%;
+    max-width: 90%;
   }
 
   .pending-icon {
@@ -100,15 +100,11 @@
   }
 
   .pending-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .pending-text {
     font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .pending-loader {
     margin-bottom: 20px;
   }
 }
@@ -116,6 +112,7 @@
 @media (max-width: 480px) {
   .pending-content {
     padding: 24px 16px;
+    margin: 15px;
     border-radius: 16px;
   }
 
@@ -129,10 +126,6 @@
 
   .pending-text {
     font-size: 0.95rem;
-  }
-
-  .dot {
-    width: 10px;
-    height: 12px;
+    margin-bottom: 15px;
   }
 }

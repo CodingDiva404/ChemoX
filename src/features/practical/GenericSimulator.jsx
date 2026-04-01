@@ -63,10 +63,13 @@ const GenericSimulator = ({
   }, [placedMaterials, onMaterialPlace]);
 
   const allowedMaterials = useMemo(() => {
+    // If customRenderer is present, allow all materials to avoid step blocking.
+    if (customRenderer) return materialsList;
+
     return steps[currentStep]
       ? getMaterialsForStep(steps[currentStep], materialsList)
       : materialsList;
-  }, [steps, currentStep, materialsList]);
+  }, [steps, currentStep, materialsList, customRenderer]);
 
   const placedContainerRef = useRef(null);
   const stepOverlayRef = useRef(null);
