@@ -160,7 +160,7 @@ const FerricSulphide = () => {
     }
   };
 
-  const renderDish = (dish, chemical, magnet, placeholder, isDish2, handleDrop) => {
+  const renderDish = (dish, chemical, magnet, placeholder, isDish2, onDropCallback) => {
     const isDish1 = !isDish2;
 
     return (
@@ -173,7 +173,7 @@ const FerricSulphide = () => {
           if (currentStepState === 0 || currentStepState === 1) {
             handlePlacement(item, isDish2);
             // Also inform GenericSimulator of material drop
-            handleDrop(e);
+            if (onDropCallback) onDropCallback(e);
           } else if (currentStepState === 3 && isDish2) {
             if (item === "Iron filings" || item === "Dish 1") {
               // Transfer iron filings from Dish 1 to Dish 2
